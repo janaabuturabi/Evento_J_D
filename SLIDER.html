@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>Eventat Slider – Enhanced</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #111; display: flex; justify-content: center; align-items: center; height: 100vh; font-family: sans-serif; }
+
+    .slider {
+      position: relative;
+      width: 80%;
+      max-width: 1000px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.5);
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.6s ease-in-out;
+    }
+    .slide {
+      position: relative;
+      flex-shrink: 0;
+      width: 100%;
+      height: 450px; /* يمكن تعديله */
+    }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* تراكب تدرّج أسفل الصورة لعرض نص */
+    .slide .overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1rem 1.5rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: #fff;
+    }
+    .slide .overlay h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.7);
+    }
+
+    /* الأسهم */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.4);
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      width: 48px; height: 48px;
+      cursor: pointer;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.3s;
+      background-color: rgba(0,0,0,0); /* برتقالي شفاف */
+
+    }
+    .arrow:hover { background: rgb(244, 97, 17,0); }
+    .prev { left: 1rem; }
+    .next { right: 1rem; }
+
+    /* نقاط التنقل (dots) */
+    .dots {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.6rem;
+    }
+    .dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.6);
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .dot.active {
+      background: #fff;
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+
+<div class="slider" id="slider">
+  <div class="slides" id="slides">
+    <div class="slide">
+      <img src="IMAGE/destinations-3.jpg" alt="Slide 1">
+      <div class="overlay"><h2>عنوان الفرصة الأولى</h2></div>
+    </div>
+    <div class="slide">
+      <img src="IMAGE/home-background.jpg" alt="Slide 2">
+      <div class="overlay"><h2>فعاليات قادمة</h2></div>
+    </div>
+    <div class="slide">
+      <img src="IMAGE/destinations-1.jpg" alt="Slide 3">
+      <div class="overlay"><h2>انضم إلينا الآن</h2></div>
+    </div>
+    <!-- أضف المزيد حسب حاجتك -->
+  </div>
+  <button class="arrow prev" id="prev">&#10094;</button>
+  <button class="arrow next" id="next">&#10095;</button>
+  <div class="dots" id="dots"></div>
+</div>
+
+<script>
+  const slidesContainer = document.getElementById('slides');
+  const slides = Array.from(slidesContainer.children);
+  const total = slides.length;
+  let index = 0;
+  const intervalTime = 4000;
+  let slideInterval;
+
+  // إنشاء نقاط التنقل
+  const dotsContainer = document.getElementById('dots');
+  slides.forEach((_, i) => {
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    dot.addEventListener('click', () => {
+      goToSlide(i);
+      resetInterval();
+    });
+    dotsContainer.append(dot);
+  });
+  const dots = Array.from(dotsContainer.children);
+
+  function updateDots() {
+    dots.forEach(d => d.classList.remove('active'));
+    dots[index].classList.add('active');
+  }
+
+  function goToSlide(i) {
+    index = (i + total) % total;
+    slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+    updateDots();
+  }
+  function nextSlide() { goToSlide(index + 1); }
+  function prevSlide() { goToSlide(index - 1); }
+
+  document.getElementById('next').addEventListener('click', () => { nextSlide(); resetInterval(); });
+  document.getElementById('prev').addEventListener('click', () => { prevSlide(); resetInterval(); });
+
+  function startInterval() { slideInterval = setInterval(nextSlide, intervalTime); }
+  function resetInterval() { clearInterval(slideInterval); startInterval(); }
+
+  // إيقاف عند المرور بالماوس ثم استئناف
+  const slider = document.getElementById('slider');
+  slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+  slider.addEventListener('mouseleave', () => startInterval());
+
+  // بدء التشغيل
+  goToSlide(0);
+  startInterval();
+</script>
+
+</body>
+</html>
