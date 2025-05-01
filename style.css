@@ -751,6 +751,17 @@ footer .footer .copyright a {
     margin-left: 1rem;
     text-align: center;
 }
+
+footer a:hover {
+    color: rgba(255, 255, 255, 0.05); /* This is the light skin color, change it as you like */
+    text-decoration: none; /* Optional, to remove the underline */
+}
+
+footer .about-us a:hover {
+    color: rgba(255, 255, 255, 0.07);
+}
+
+
 /* footer section ends here  */
 /* media section starts here  */
 @media (max-width: 1020px) {
