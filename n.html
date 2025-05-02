@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Details</title>
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>tailwind.config={theme:{extend:{colors:{primary:'#004047',secondary:'#2A9D8F'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+  <style>
+    :where([class^="ri-"])::before { content: "\f3c2"; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+  <style>
+    :where([class^="ri-"])::before { content: "\f3c2"; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+    }
+    .filter-tag {
+      transition: all 0.2s ease;
+    }
+    .filter-tag:hover {
+      background-color: #e5e7eb;
+    }
+    .event-card {
+      transition: all 0.3s ease;
+    }
+    .event-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    input[type="checkbox"] {
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      margin-right: 8px;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    input[type="checkbox"]:checked {
+      background-color: #004047;
+      border-color: #004047;
+    }
+    input[type="checkbox"]:checked::after {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 2px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+    input[type="radio"] {
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border: 1px solid #d1d5db;
+      border-radius: 50%;
+      margin-right: 8px;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    input[type="radio"]:checked {
+      border-color: #004047;
+    }
+    input[type="radio"]:checked::after {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 4px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #004047;
+    }
+    .custom-select {
+      position: relative;
+      display: inline-block;
+    }
+    .custom-select select {
+      appearance: none;
+      padding-right: 2rem;
+    }
+    .custom-select::after {
+      content: "";
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid #6b7280;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+<header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+  <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+    <a href="#" class="flex items-center text-gray-900">
+      <div class="w-5 h-5 flex items-center justify-center mr-2">
+        <i class="ri-arrow-left-line"></i>
+      </div>
+      <span>Back to Events</span>
+    </a>
+    <button class="bg-primary text-white px-4 py-2 !rounded-button font-medium flex items-center whitespace-nowrap">
+      <div class="w-5 h-5 flex items-center justify-center mr-2">
+        <i class="ri-share-line"></i>
+      </div>
+      Share Event
+    </button>
+  </div>
+</header>
+<div class="container mx-auto px-4 pt-24 pb-12">
+  <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+    <!-- Event Image -->
+    <div class="relative h-96">
+      <img src="https://readdy.ai/api/search-image?query=a%20grand%20music%20festival%20event%20with%20spectacular%20stage%20setup%2C%20professional%20lighting%20rigs%2C%20and%20dynamic%20performance%20space.%20Modern%20concert%20venue%20with%20high-tech%20equipment%20and%20impressive%20visual%20displays.%20Large%20LED%20screens%20showing%20visuals.%20Professional%20sound%20system%20visible.%20Clean%2C%20contemporary%20design%20with%20dramatic%20lighting%20effects&width=1200&height=600&seq=13&orientation=landscape" alt="Summer Music Festival 2025" class="w-full h-full object-cover">
+    </div>
+    <!-- Event Details -->
+    <div class="p-8">
+      <!-- Title and Goal Section -->
+      <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-4">Summer Music Festival 2025</h1>
+        <p class="text-lg text-gray-600">Experience the ultimate celebration of music, featuring world-class artists across multiple genres, interactive art installations, and unforgettable performances.</p>
+      </div>
+      <!-- Date, Time, Location Section -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+        <div>
+          <h2 class="text-xl font-semibold text-gray-900 mb-4">Date & Time</h2>
+          <div class="space-y-3">
+            <div class="flex items-center">
+              <div class="w-5 h-5 flex items-center justify-center text-primary mr-3">
+                <i class="ri-calendar-line"></i>
+              </div>
+              <span class="text-gray-700">May 15-17, 2025</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-5 h-5 flex items-center justify-center text-primary mr-3">
+                <i class="ri-time-line"></i>
+              </div>
+              <span class="text-gray-700">4:00 PM - 11:00 PM (Daily)</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h2 class="text-xl font-semibold text-gray-900 mb-4">Location</h2>
+          <div class="flex items-start">
+            <div class="w-5 h-5 flex items-center justify-center text-primary mr-3 mt-1">
+              <i class="ri-map-pin-line"></i>
+            </div>
+            <div>
+              <p class="text-gray-700">Central Park</p>
+              <p class="text-gray-700">New York, NY 10024</p>
+              <a href="#map" class="text-primary font-medium mt-2 inline-block">View on map</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Map Section -->
+      <div id="map" class="mb-8">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Event Location</h2>
+        <div class="rounded-lg overflow-hidden h-64 bg-cover bg-center" style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png')"></div>
+      </div>
+      <!-- Target Audience Section -->
+      <div class="mb-8">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Target Audience</h2>
+        <div class="flex flex-wrap gap-2">
+          <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Music Enthusiasts</span>
+          <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Adults 18+</span>
+          <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Families</span>
+          <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Art Lovers</span>
+        </div>
+      </div>
+      <!-- Activities Section -->
+      <div class="mb-8">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Event Activities</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="border border-gray-200 rounded-lg p-4">
+            <div class="flex items-center mb-3">
+              <div class="w-8 h-8 flex items-center justify-center bg-primary/10 text-primary rounded-full mr-3">
+                <i class="ri-music-line"></i>
+              </div>
+              <h3 class="font-medium text-gray-900">Live Performances</h3>
+            </div>
+            <p class="text-gray-600">Multiple stages featuring diverse musical acts from rock to electronic</p>
+          </div>
+          <div class="border border-gray-200 rounded-lg p-4">
+            <div class="flex items-center mb-3">
+              <div class="w-8 h-8 flex items-center justify-center bg-primary/10 text-primary rounded-full mr-3">
+                <i class="ri-palette-line"></i>
+              </div>
+              <h3 class="font-medium text-gray-900">Art Installations</h3>
+            </div>
+            <p class="text-gray-600">Interactive art exhibits and immersive experiences throughout the venue</p>
+          </div>
+          <div class="border border-gray-200 rounded-lg p-4">
+            <div class="flex items-center mb-3">
+              <div class="w-8 h-8 flex items-center justify-center bg-primary/10 text-primary rounded-full mr-3">
+                <i class="ri-store-2-line"></i>
+              </div>
+              <h3 class="font-medium text-gray-900">Food & Beverage</h3>
+            </div>
+            <p class="text-gray-600">Gourmet food vendors and craft beverage stations</p>
+          </div>
+          <div class="border border-gray-200 rounded-lg p-4">
+            <div class="flex items-center mb-3">
+              <div class="w-8 h-8 flex items-center justify-center bg-primary/10 text-primary rounded-full mr-3">
+                <i class="ri-group-line"></i>
+              </div>
+              <h3 class="font-medium text-gray-900">Workshop Sessions</h3>
+            </div>
+            <p class="text-gray-600">Music production workshops and artist meet-and-greets</p>
+          </div>
+        </div>
+      </div>
+      <!-- Price Section -->
+      <div class="mb-8">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Ticket Options</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="border border-gray-200 rounded-lg p-4">
+            <h3 class="font-medium text-gray-900 mb-2">Single Day Pass</h3>
+            <p class="text-2xl font-bold text-primary mb-2">$85</p>
+            <ul class="text-sm text-gray-600 space-y-2">
+              <li class="flex items-center">
+                <div class="w-4 h-4 flex items-center justify-center text-primary mr-2">
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                Access to all stages
+              </li>
+              <li class="flex items-center">
+                <div class="w-4 h-4 flex items-center justify-center text-primary mr-2">
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                Food & beverage vendors
+              </li>
+              <li class="flex items-center">
+                <div class="w-4 h-4 flex items-center justify-center text-primary mr-2">
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                Art installations
+              </li>
+            </ul>
+          </div>
+          <div class="border-2 border-primary rounded-lg p-4 relative">
+            <div class="absolute top-0 right-0 bg-primary text-white text-xs px-2 py-1 rounded-bl-lg">Popular</div>
+            <h3 class="font-medium text-gray-900 mb-2">3-Day Pass</h3>
+            <p class="text-2xl font-bold text-primary mb-2">$199</p>
+            <ul class="text-sm text-gray-600 space-y-2">
+              <li class="flex items-center">
+                <div class="w-4 h-4 flex items-center justify-center text-primary mr-2">
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                All Single Day Pass features
+              </li>
+              <li class="flex items-center">
+                <div class="w-4 h-4 flex items-center justify-center text-primary mr-2">
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                Priority entrance
+              </li>
+              <li class="flex items-center">
+                <div class="w-4 h-4 flex items-center justify-center text-primary mr-2">
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                Exclusive workshop access
+              </li>
+              <li class="flex items-center">
+                <div class="w-4 h-4 flex items-center justify-center text-primary mr-2">
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                Festival merchandise pack
+              </li>
+            </ul>
+          </div>
+          <div class="border border-gray-200 rounded-lg p-4">
+            <h3 class="font-medium text-gray-900 mb-2">VIP Experience</h3>
+            <p class="text-2xl font-bold text-primary mb-2">$399</p>
+            <ul class="text-sm text-gray-600 space-y-2">
+              <li class="flex items-center">
+                <div class="w-4 h-4 flex items-center justify-center text-primary mr-2">
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                All 3-Day Pass features
+              </li>
+              <li class="flex items-center">
+                <div class="w-4 h-4 flex items-center justify-center text-primary mr-2">
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                VIP lounge access
+              </li>
+              <li class="flex items-center">
+                <div class="w-4 h-4 flex items-center justify-center text-primary mr-2">
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                Meet & greet passes
+              </li>
+              <li class="flex items-center">
+                <div class="w-4 h-4 flex items-center justify-center text-primary mr-2">
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                Exclusive viewing areas
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Register Button -->
+      <div class="flex justify-center">
+        <button class="bg-primary text-white px-8 py-3 !rounded-button font-medium text-lg flex items-center whitespace-nowrap">
+          <div class="w-5 h-5 flex items-center justify-center mr-2">
+            <i class="ri-ticket-line"></i>
+          </div>
+          Register Now
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container mx-auto px-4 pt-24 pb-12 flex flex-col md:flex-row gap-6">
+  <!-- Filter Panel -->
+  <aside class="w-full md:w-1/4 lg:w-1/5 bg-white rounded shadow-sm p-4 h-fit">
+    <div class="mb-6">
+      <h2 class="text-lg font-semibold text-gray-900 mb-4">Filters</h2>
+      <!-- Audience Filter -->
+      <div class="mb-4">
+        <div class="flex justify-between items-center cursor-pointer mb-2" id="audience-toggle">
+          <h3 class="text-md font-medium text-gray-800">Audience</h3>
+          <div class="w-5 h-5 flex items-center justify-center text-gray-500">
+            <i class="ri-arrow-down-s-line"></i>
+          </div>
+        </div>
+        <div id="audience-filters" class="pl-1">
+          <div class="flex items-center mb-2">
+            <input type="checkbox" id="kids" class="audience-checkbox" value="For Kids">
+            <label for="kids" class="text-sm text-gray-700 cursor-pointer">For Kids</label>
+          </div>
+          <div class="flex items-center mb-2">
+            <input type="checkbox" id="adults" class="audience-checkbox" value="For Adults">
+            <label for="adults" class="text-sm text-gray-700 cursor-pointer">For Adults</label>
+          </div>
+          <div class="flex items-center mb-2">
+            <input type="checkbox" id="families" class="audience-checkbox" value="For Families">
+            <label for="families" class="text-sm text-gray-700 cursor-pointer">For Families</label>
+          </div>
+          <div class="flex items-center">
+            <input type="checkbox" id="seniors" class="audience-checkbox" value="For Seniors">
+            <label for="seniors" class="text-sm text-gray-700 cursor-pointer">For Seniors</label>
+          </div>
+        </div>
+      </div>
+      <!-- Type Filter -->
+      <div class="mb-4">
+        <div class="flex justify-between items-center cursor-pointer mb-2" id="type-toggle">
+          <h3 class="text-md font-medium text-gray-800">Type</h3>
+          <div class="w-5 h-5 flex items-center justify-center text-gray-500">
+            <i class="ri-arrow-down-s-line"></i>
+          </div>
+        </div>
+        <div id="type-filters" class="pl-1">
+          <div class="flex items-center mb-2">
+            <input type="checkbox" id="entertainment" class="type-checkbox" value="Entertainment">
+            <label for="entertainment" class="text-sm text-gray-700 cursor-pointer">Entertainment</label>
+          </div>
+          <div class="flex items-center mb-2">
+            <input type="checkbox" id="educational" class="type-checkbox" value="Educational">
+            <label for="educational" class="text-sm text-gray-700 cursor-pointer">Educational</label>
+          </div>
+          <div class="flex items-center mb-2">
+            <input type="checkbox" id="cultural" class="type-checkbox" value="Cultural">
+            <label for="cultural" class="text-sm text-gray-700 cursor-pointer">Cultural</label>
+          </div>
+          <div class="flex items-center mb-2">
+            <input type="checkbox" id="sports" class="type-checkbox" value="Sports">
+            <label for="sports" class="text-sm text-gray-700 cursor-pointer">Sports</label>
+          </div>
+          <div class="flex items-center">
+            <input type="checkbox" id="networking" class="type-checkbox" value="Networking">
+            <label for="networking" class="text-sm text-gray-700 cursor-pointer">Networking</label>
+          </div>
+        </div>
+      </div>
+      <!-- Time Filter -->
+      <div class="mb-4">
+        <div class="flex justify-between items-center cursor-pointer mb-2" id="time-toggle">
+          <h3 class="text-md font-medium text-gray-800">Time</h3>
+          <div class="w-5 h-5 flex items-center justify-center text-gray-500">
+            <i class="ri-arrow-down-s-line"></i>
+          </div>
+        </div>
+        <div id="time-filters" class="pl-1">
+          <div class="flex items-center mb-2">
+            <input type="radio" name="time" id="today" class="time-radio" value="Today">
+            <label for="today" class="text-sm text-gray-700 cursor-pointer">Today</label>
+          </div>
+          <div class="flex items-center mb-2">
+            <input type="radio" name="time" id="this-week" class="time-radio" value="This Week">
+            <label for="this-week" class="text-sm text-gray-700 cursor-pointer">This Week</label>
+          </div>
+          <div class="flex items-center mb-2">
+            <input type="radio" name="time" id="this-month" class="time-radio" value="This Month">
+            <label for="this-month" class="text-sm text-gray-700 cursor-pointer">This Month</label>
+          </div>
+          <div class="flex items-center">
+            <input type="radio" name="time" id="custom" class="time-radio" value="Custom">
+            <label for="custom" class="text-sm text-gray-700 cursor-pointer">Custom</label>
+          </div>
+        </div>
+      </div>
+      <!-- Location Filter -->
+      <div class="mb-4">
+        <div class="flex justify-between items-center cursor-pointer mb-2" id="location-toggle">
+          <h3 class="text-md font-medium text-gray-800">Location</h3>
+          <div class="w-5 h-5 flex items-center justify-center text-gray-500">
+            <i class="ri-arrow-down-s-line"></i>
+          </div>
+        </div>
+        <div id="location-filters" class="pl-1">
+          <div class="relative mb-2">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <div class="w-4 h-4 flex items-center justify-center text-gray-500">
+                <i class="ri-search-line"></i>
+              </div>
+            </div>
+            <input type="text" id="location-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md block w-full pl-10 p-2.5" placeholder="Search location">
+          </div>
+          <div class="max-h-40 overflow-y-auto">
+            <div class="flex items-center mb-2">
+              <input type="checkbox" id="new-york" class="location-checkbox" value="New York">
+              <label for="new-york" class="text-sm text-gray-700 cursor-pointer">New York</label>
+            </div>
+            <div class="flex items-center mb-2">
+              <input type="checkbox" id="los-angeles" class="location-checkbox" value="Los Angeles">
+              <label for="los-angeles" class="text-sm text-gray-700 cursor-pointer">Los Angeles</label>
+            </div>
+            <div class="flex items-center mb-2">
+              <input type="checkbox" id="chicago" class="location-checkbox" value="Chicago">
+              <label for="chicago" class="text-sm text-gray-700 cursor-pointer">Chicago</label>
+            </div>
+            <div class="flex items-center mb-2">
+              <input type="checkbox" id="miami" class="location-checkbox" value="Miami">
+              <label for="miami" class="text-sm text-gray-700 cursor-pointer">Miami</label>
+            </div>
+            <div class="flex items-center">
+              <input type="checkbox" id="san-francisco" class="location-checkbox" value="San Francisco">
+              <label for="san-francisco" class="text-sm text-gray-700 cursor-pointer">San Francisco</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Price Filter -->
+      <div class="mb-4">
+        <div class="flex justify-between items-center cursor-pointer mb-2" id="price-toggle">
+          <h3 class="text-md font-medium text-gray-800">Price</h3>
+          <div class="w-5 h-5 flex items-center justify-center text-gray-500">
+            <i class="ri-arrow-down-s-line"></i>
+          </div>
+        </div>
+        <div id="price-filters" class="pl-1">
+          <div class="flex items-center mb-2">
+            <input type="checkbox" id="free" class="price-checkbox" value="Free">
+            <label for="free" class="text-sm text-gray-700 cursor-pointer">Free</label>
+          </div>
+          <div class="flex items-center mb-2">
+            <input type="checkbox" id="paid" class="price-checkbox" value="Paid">
+            <label for="paid" class="text-sm text-gray-700 cursor-pointer">Paid</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <!-- Main Content -->
+  <main class="w-full md:w-3/4 lg:w-4/5">
+    <!-- Active Filters -->
+    <div id="active-filters-container" class="bg-white rounded shadow-sm p-4 mb-4 hidden">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="text-sm font-medium text-gray-700 mr-1">Active Filters:</span>
+        <div id="active-filters" class="flex flex-wrap gap-2"></div>
+        <button id="clear-all" class="text-sm text-primary font-medium ml-auto whitespace-nowrap">Clear All</button>
+      </div>
+    </div>
+    <!-- Sort Controls -->
+    <div class="bg-white rounded shadow-sm p-4 mb-4 flex justify-between items-center">
+      <p class="text-sm text-gray-600"><span id="event-count">12</span> events found</p>
+      <div class="flex items-center gap-4">
+        <div class="flex items-center">
+          <label for="sort-by" class="text-sm text-gray-700 mr-2">Sort by:</label>
+          <div class="custom-select">
+            <select id="sort-by" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary focus:border-primary block w-full p-2.5 pr-8">
+              <option value="newest">Newest to Oldest</option>
+              <option value="oldest">Oldest to Newest</option>
+              <option value="popular">Most Popular</option>
+              <option value="rating">Highest Rated</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+            </select>
+          </div>
+        </div>
+        <button class="bg-primary text-white px-4 py-2 !rounded-button font-medium flex items-center whitespace-nowrap">
+          <div class="w-5 h-5 flex items-center justify-center mr-2">
+            <i class="ri-add-line"></i>
+          </div>
+          Create Event
+        </button>
+      </div>
+    </div>
+    <!-- Event List -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- Event 1 -->
+      <div class="event-card bg-white rounded shadow-sm overflow-hidden">
+        <div class="relative h-48">
+          <img src="https://readdy.ai/api/search-image?query=a%20vibrant%20music%20festival%20with%20colorful%20stage%20lights%2C%20excited%20crowd%2C%20and%20performers%20on%20stage.%20Modern%20event%20with%20professional%20lighting%20and%20sound%20equipment.%20High%20energy%20atmosphere%20with%20diverse%20audience%20enjoying%20live%20music%20performance&width=600&height=400&seq=1&orientation=landscape" alt="Summer Music Festival" class="w-full h-full object-cover object-top">
+          <div class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded-full">Entertainment</div>
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-semibold text-gray-900 mb-1">Summer Music Festival</h3>
+          <div class="flex items-center mb-2">
+            <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
+              <i class="ri-calendar-line"></i>
+            </div>
+            <span class="text-sm text-gray-600">May 15, 2025 • 4:00 PM</span>
+          </div>
+          <div class="flex items-center mb-3">
+            <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
+              <i class="ri-map-pin-line"></i>
+            </div>
+            <span class="text-sm text-gray-600">Central Park, New York</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center text-yellow-500 mr-1">
+                <i class="ri-star-fill"></i>
+              </div>
+              <span class="text-sm text-gray-700">4.8 (245 reviews)</span>
+            </div>
+            <span class="text-sm font-medium text-gray-900">$45.00</span>
+          </div>
+        </div>
+      </div>
+      <!-- Event 2 -->
+      <div class="event-card bg-white rounded shadow-sm overflow-hidden">
+        <div class="relative h-48">
+          <img src="https://readdy.ai/api/search-image?query=an%20educational%20workshop%20with%20people%20gathered%20around%20tables%20with%20science%20experiments%2C%20microscopes%2C%20and%20interactive%20displays.%20Bright%2C%20clean%20environment%20with%20professional%20educators%20demonstrating%20concepts%20to%20engaged%20participants%20of%20various%20ages&width=600&height=400&seq=2&orientation=landscape" alt="Science Workshop for Kids" class="w-full h-full object-cover object-top">
+          <div class="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded-full">Educational</div>
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-semibold text-gray-900 mb-1">Science Workshop for Kids</h3>
+          <div class="flex items-center mb-2">
+            <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
+              <i class="ri-calendar-line"></i>
+            </div>
+            <span class="text-sm text-gray-600">May 8, 2025 • 10:00 AM</span>
+          </div>
+          <div class="flex items-center mb-3">
+            <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
+              <i class="ri-map-pin-line"></i>
+            </div>
+            <span class="text-sm text-gray-600">Science Museum, Chicago</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center text-yellow-500 mr-1">
+                <i class="ri-star-fill"></i>
+              </div>
+              <span class="text-sm text-gray-700">4.6 (128 reviews)</span>
+            </div>
+            <span class="text-sm font-medium text-gray-900">$15.00</span>
+          </div>
+        </div>
+      </div>
+      <!-- Event 3 -->
+      <div class="event-card bg-white rounded shadow-sm overflow-hidden">
+        <div class="relative h-48">
+          <img src="https://readdy.ai/api/search-image?query=a%20cultural%20art%20exhibition%20in%20a%20modern%20gallery%20with%20elegant%20lighting%20highlighting%20paintings%20and%20sculptures.%20Well-dressed%20attendees%20viewing%20artwork%20displayed%20on%20white%20walls.%20Professional%20gallery%20setting%20with%20minimalist%20design%20and%20perfect%20lighting%20to%20showcase%20diverse%20artistic%20styles&width=600&height=400&seq=3&orientation=landscape" alt="Contemporary Art Exhibition" class="w-full h-full object-cover object-top">
+          <div class="absolute top-2 right-2 bg-purple-600 text-white text-xs px-2 py-1 rounded-full">Cultural</div>
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-semibold text-gray-900 mb-1">Contemporary Art Exhibition</h3>
+          <div class="flex items-center mb-2">
+            <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
+              <i class="ri-calendar-line"></i>
+            </div>
+            <span class="text-sm text-gray-600">May 10-30, 2025 • 9:00 AM - 6:00 PM</span>
+          </div>
+          <div class="flex items-center mb-3">
+            <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
+              <i class="ri-map-pin-line"></i>
+            </div>
+            <span class="text-sm text-gray-600">Modern Art Gallery, Los Angeles</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center text-yellow-500 mr-1">
+                <i class="ri-star-fill"></i>
+              </div>
+              <span class="text-sm text-gray-700">4.9 (312 reviews)</span>
+            </div>
+            <span class="text-sm font-medium text-gray-900">$22.50</span>
+          </div>
+        </div>
+      </div>
+      <!-- Event 4 -->
+      <div class="event-card bg-white rounded shadow-sm overflow-hidden">
+        <div class="relative h-48">
+          <img src="https://readdy.ai/api/search-image?query=a%20professional%20networking%20event%20in%20a%20modern%20corporate%20space%20with%20business%20professionals%20mingling%2C%20exchanging%20business%20cards%2C%20and%20engaging%20in%20conversation.%20Clean%2C%20well-lit%20environment%20with%20refreshment%20tables%20and%20professional%20atmosphere.%20Diverse%20group%20of%20business%20people%20in%20formal%20attire%20networking&width=600&height=400&seq=4&orientation=landscape" alt="Business Networking Mixer" class="w-full h-full object-cover object-top">
+          <div class="absolute top-2 right-2 bg-blue-600 text-white text-xs px-2 py-1 rounded-full">Networking</div>
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-semibold text-gray-900 mb-1">Business Networking Mixer</h3>
+          <div class="flex items-center mb-2">
+            <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
+              <i class="ri-calendar-line"></i>
+            </div>
+            <span class="text-sm text-gray-600">May 12, 2025 • 6:30 PM</span>
+          </div>
+          <div class="flex items-center mb-3">
+            <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
+              <i class="ri-map-pin-line"></i>
+            </div>
+            <span class="text-sm text-gray-600">Downtown Conference Center, San Francisco</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center text-yellow-500 mr-1">
+                <i class="ri-star-fill"></i>
+              </div>
+              <span class="text-sm text-gray-700">4.5 (98 reviews)</span>
+            </div>
+            <span class="text-sm font-medium text-gray-900">$30.00</span>
+          </div>
+        </div>
+      </div>
+      <!-- Event 5 -->
+      <div class="event-card bg-white rounded shadow-sm overflow-hidden">
+        <div class="relative h-48">
+          <img src="https://readdy.ai/api/search-image?query=a%20family-friendly%20outdoor%20movie%20night%20with%20large%20screen%20in%20a%20park%20setting.%20Families%20sitting%20on%20blankets%20and%20lawn%20chairs%20under%20evening%20sky.%20Professional%20projection%20equipment%20and%20sound%20system.%20Relaxed%20atmosphere%20with%20people%20of%20all%20ages%20enjoying%20the%20outdoor%20cinema%20experience&width=600&height=400&seq=5&orientation=landscape" alt="Outdoor Movie Night" class="w-full h-full object-cover object-top">
+          <div class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded-full">Entertainment</div>
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-semibold text-gray-900 mb-1">Outdoor Movie Night</h3>
+          <div class="flex items-center mb-2">
+            <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
+              <i class="ri-calendar-line"></i>
+            </div>
+            <span class="text-sm text-gray-600">May 20, 2025 • 8:00 PM</span>
+          </div>
+          <div class="flex items-center mb-3">
+            <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
+              <i class="ri-map-pin-line"></i>
+            </div>
+            <span class="text-sm text-gray-600">Riverside Park, Miami</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center text-yellow-500 mr-1">
+                <i class="ri-star-fill"></i>
+              </div>
+              <span class="text-sm text-gray-700">4.7 (156 reviews)</span>
+            </div>
+            <span class="text-sm font-medium text-gray-900">Free</span>
+          </div>
+        </div>
+      </div>
+      <!-- Event 6 -->
+      <div class="event-card bg-white rounded shadow-sm overflow-hidden">
+        <div class="relative h-48">
+          <img src="https://readdy.ai/api/search-image?query=a%20professional%20sports%20event%20in%20a%20stadium%20with%20players%20competing%20on%20field%20and%20excited%20fans%20in%20stands.%20Dynamic%20action%20shot%20with%20professional%20athletes%20in%20uniform.%20Stadium%20lights%20illuminating%20the%20field%20with%20crowd%20cheering%20in%20background.%20High-energy%20competitive%20atmosphere&width=600&height=400&seq=6&orientation=landscape" alt="Championship Basketball Game" class="w-full h-full object-cover object-top">
+          <div class="absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded-full">Sports</div>
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-semibold text-gray-900 mb-1">Championship Basketball Game</h3>
+          <div class="flex items-center mb-2">
+            <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
+              <i class="ri-calendar-line"></i>
+            </div>
+            <span class="text-sm text-gray-600">May 18, 2025 • 7:30 PM</span>
+          </div>
+          <div class="flex items-center mb-3">
+            <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
+              <i class="ri-map-pin-line"></i>
+            </div>
+            <span class="text-sm text-gray-600">Sports Arena, Chicago</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center text-yellow-500 mr-1">
+                <i class="ri-star-fill"></i>
+              </div>
+              <span class="text-sm text-gray-700">4.9 (423 reviews)</span>
+            </div>
+            <span class="text-sm font-medium text-gray-900">$75.00</span>
+          </div>
+        </div>
+      </div>
+      <!-- Event 7 -->
+      <div class="event-card bg-white rounded shadow-sm overflow-hidden">
+        <div class="relative h-48">
+          <img src="https://readdy.ai/api/search-image?query=a%20cooking%20class%20with%20professional%20chef%20instructing%20participants%20at%20cooking%20stations.%20Modern%20kitchen%20with%20stainless%20steel%20equipment%20and%20ingredients%20laid%20out.%20Students%20in%20aprons%20learning%20culinary%20techniques.%20Clean%2C%20well-organized%20culinary%20classroom%20with%20professional%20lighting&width=600&height=400&seq=7&orientation=landscape" alt="Gourmet Cooking Class" class="w-full h-full object-cover object-top">
+          <div class="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded-full">Educational</div>
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-semibold text-gray-900 mb-1">Gourmet Cooking Class</h3>
+          <div class="flex items-center mb-2">
+            <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
+              <i class="ri-calendar-line"></i>
+            </div>
+            <span class="text-sm text-gray-600">May 14, 2025 • 6:00 PM</span>
+          </div>
+          <div class="flex items-center mb-3">
+            <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
+              <i class="ri-map-pin-line"></i>
+            </div>
+            <span class="text-sm text-gray-600">Culinary Institute, New York</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center text-yellow-500 mr-1">
+                <i class="ri-star-fill"></i>
+              </div>
+              <span class="text-sm text-gray-700">4.8 (187 reviews)</span>
+            </div>
+            <span class="text-sm font-medium text-gray-900">$65.00</span>
+          </div>
+        </div>
+      </div>
+      <!-- Event 8 -->
+      <div class="event-card bg-white rounded shadow-sm overflow-hidden">
+        <div class="relative h-48">
+          <img src="https://readdy.ai/api/search-image?query=a%20cultural%20festival%20with%20traditional%20dancers%20in%20colorful%20costumes%20performing%20on%20stage.%20Vibrant%20decorations%20and%20cultural%20displays%20surrounding%20the%20venue.%20Diverse%20audience%20watching%20the%20performance.%20Festive%20atmosphere%20with%20cultural%20food%20stalls%20and%20craft%20displays%20visible%20in%20background&width=600&height=400&seq=8&orientation=landscape" alt="International Cultural Festival" class="w-full h-full object-cover object-top">
+          <div class="absolute top-2 right-2 bg-purple-600 text-white text-xs px-2 py-1 rounded-full">Cultural</div>
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-semibold text-gray-900 mb-1">International Cultural Festival</h3>
+          <div class="flex items-center mb-2">
+            <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
+              <i class="ri-calendar-line"></i>
+            </div>
+            <span class="text-sm text-gray-600">May 25-26, 2025 • 11:00 AM - 8:00 PM</span>
+          </div>
+          <div class="flex items-center mb-3">
+            <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
+              <i class="ri-map-pin-line"></i>
+            </div>
+            <span class="text-sm text-gray-600">Civic Center Plaza, San Francisco</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center text-yellow-500 mr-1">
+                <i class="ri-star-fill"></i>
+              </div>
+              <span class="text-sm text-gray-700">4.7 (276 reviews)</span>
+            </div>
+            <span class="text-sm font-medium text-gray-900">$10.00</span>
+          </div>
+        </div>
+      </div>
+      <!-- Event 9 -->
+      <div class="event-card bg-white rounded shadow-sm overflow-hidden">
+        <div class="relative h-48">
+          <img src="https://readdy.ai/api/search-image?query=a%20tech%20conference%20with%20keynote%20speaker%20presenting%20on%20stage%20with%20large%20digital%20screens%20displaying%20presentation.%20Modern%20conference%20hall%20with%20professional%20lighting%20and%20sound.%20Audience%20of%20tech%20professionals%20seated%20in%20rows.%20High-tech%20atmosphere%20with%20digital%20displays%20and%20professional%20staging&width=600&height=400&seq=9&orientation=landscape" alt="Tech Innovation Summit" class="w-full h-full object-cover object-top">
+          <div class="absolute top-2 right-2 bg-blue-600 text-white text-xs px-2 py-1 rounded-full">Networking</div>
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-semibold text-gray-900 mb-1">Tech Innovation Summit</h3>
+          <div class="flex items-center mb-2">
+            <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
+              <i class="ri-calendar-line"></i>
+            </div>
+            <span class="text-sm text-gray-600">May 22-23, 2025 • 9:00 AM - 5:00 PM</span>
+          </div>
+          <div class="flex items-center mb-3">
+            <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
+              <i class="ri-map-pin-line"></i>
+            </div>
+            <span class="text-sm text-gray-600">Convention Center, Los Angeles</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center text-yellow-500 mr-1">
+                <i class="ri-star-fill"></i>
+              </div>
+              <span class="text-sm text-gray-700">4.8 (342 reviews)</span>
+            </div>
+            <span class="text-sm font-medium text-gray-900">$199.00</span>
+          </div>
+        </div>
+      </div>
+      <!-- Event 10 -->
+      <div class="event-card bg-white rounded shadow-sm overflow-hidden">
+        <div class="relative h-48">
+          <img src="https://readdy.ai/api/search-image?query=a%20childrens%20storytelling%20event%20in%20a%20bright%2C%20colorful%20library%20setting.%20Professional%20storyteller%20engaging%20with%20children%20sitting%20in%20a%20semicircle.%20Bookshelves%20and%20educational%20posters%20visible%20in%20background.%20Warm%2C%20inviting%20atmosphere%20with%20children%20of%20various%20ages%20listening%20attentively&width=600&height=400&seq=10&orientation=landscape" alt="Children's Storytelling Hour" class="w-full h-full object-cover object-top">
+          <div class="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded-full">Educational</div>
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-semibold text-gray-900 mb-1">Children's Storytelling Hour</h3>
+          <div class="flex items-center mb-2">
+            <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
+              <i class="ri-calendar-line"></i>
+            </div>
+            <span class="text-sm text-gray-600">May 9, 2025 • 11:00 AM</span>
+          </div>
+          <div class="flex items-center mb-3">
+            <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
+              <i class="ri-map-pin-line"></i>
+            </div>
+            <span class="text-sm text-gray-600">Public Library, Miami</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center text-yellow-500 mr-1">
+                <i class="ri-star-fill"></i>
+              </div>
+              <span class="text-sm text-gray-700">4.9 (112 reviews)</span>
+            </div>
+            <span class="text-sm font-medium text-gray-900">Free</span>
+          </div>
+        </div>
+      </div>
+      <!-- Event 11 -->
+      <div class="event-card bg-white rounded shadow-sm overflow-hidden">
+        <div class="relative h-48">
+          <img src="https://readdy.ai/api/search-image?query=a%20yoga%20and%20wellness%20retreat%20in%20a%20serene%20natural%20setting%20with%20participants%20on%20yoga%20mats.%20Professional%20instructor%20leading%20class%20outdoors.%20Beautiful%20natural%20backdrop%20with%20trees%20and%20water.%20Peaceful%20atmosphere%20with%20people%20in%20yoga%20poses%20on%20mats%20arranged%20in%20rows&width=600&height=400&seq=11&orientation=landscape" alt="Yoga & Wellness Retreat" class="w-full h-full object-cover object-top">
+          <div class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded-full">Entertainment</div>
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-semibold text-gray-900 mb-1">Yoga & Wellness Retreat</h3>
+          <div class="flex items-center mb-2">
+            <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
+              <i class="ri-calendar-line"></i>
+            </div>
+            <span class="text-sm text-gray-600">May 16-17, 2025 • All Day</span>
+          </div>
+          <div class="flex items-center mb-3">
+            <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
+              <i class="ri-map-pin-line"></i>
+            </div>
+            <span class="text-sm text-gray-600">Wellness Center, Los Angeles</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center text-yellow-500 mr-1">
+                <i class="ri-star-fill"></i>
+              </div>
+              <span class="text-sm text-gray-700">4.7 (189 reviews)</span>
+            </div>
+            <span class="text-sm font-medium text-gray-900">$120.00</span>
+          </div>
+        </div>
+      </div>
+      <!-- Event 12 -->
+      <div class="event-card bg-white rounded shadow-sm overflow-hidden">
+        <div class="relative h-48">
+          <img src="https://readdy.ai/api/search-image?query=a%20charity%20run%20event%20with%20participants%20in%20numbered%20bibs%20running%20on%20a%20track.%20Crowd%20cheering%20along%20the%20route%20with%20event%20banners%20visible.%20Professional%20event%20setup%20with%20starting%20line%2C%20timing%20equipment%2C%20and%20water%20stations.%20Diverse%20group%20of%20runners%20participating%20in%20organized%20race&width=600&height=400&seq=12&orientation=landscape" alt="Charity 5K Run" class="w-full h-full object-cover object-top">
+          <div class="absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded-full">Sports</div>
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-semibold text-gray-900 mb-1">Charity 5K Run</h3>
+          <div class="flex items-center mb-2">
+            <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
+              <i class="ri-calendar-line"></i>
+            </div>
+            <span class="text-sm text-gray-600">May 29, 2025 • 8:00 AM</span>
+          </div>
+          <div class="flex items-center mb-3">
+            <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
+              <i class="ri-map-pin-line"></i>
+            </div>
+            <span class="text-sm text-gray-600">Lakefront Trail, Chicago</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center text-yellow-500 mr-1">
+                <i class="ri-star-fill"></i>
+              </div>
+              <span class="text-sm text-gray-700">4.6 (203 reviews)</span>
+            </div>
+            <span class="text-sm font-medium text-gray-900">$25.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Pagination -->
+    <div class="mt-6 flex justify-center">
+      <nav class="flex items-center">
+        <button class="w-10 h-10 flex items-center justify-center rounded-l border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">
+          <div class="w-5 h-5 flex items-center justify-center">
+            <i class="ri-arrow-left-s-line"></i>
+          </div>
+        </button>
+        <button class="w-10 h-10 flex items-center justify-center border-t border-b border-gray-300 bg-primary text-white">1</button>
+        <button class="w-10 h-10 flex items-center justify-center border-t border-b border-gray-300 bg-white text-gray-700 hover:bg-gray-50">2</button>
+        <button class="w-10 h-10 flex items-center justify-center border-t border-b border-gray-300 bg-white text-gray-700 hover:bg-gray-50">3</button>
+        <button class="w-10 h-10 flex items-center justify-center rounded-r border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">
+          <div class="w-5 h-5 flex items-center justify-center">
+            <i class="ri-arrow-right-s-line"></i>
+          </div>
+        </button>
+      </nav>
+    </div>
+  </main>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+// Event card click handler
+    document.querySelectorAll('.event-card').forEach(card => {
+      card.addEventListener('click', function() {
+        const modal = document.createElement('div');
+        modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+        modal.innerHTML = `
+<div class="bg-white rounded-lg overflow-hidden max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+<div class="relative h-72">
+<img src="${this.querySelector('img').src}" alt="Event Image" class="w-full h-full object-cover">
+<button class="absolute top-4 right-4 bg-white/80 backdrop-blur-sm rounded-full p-2 text-gray-700 hover:text-gray-900" id="closeModal">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-close-line"></i>
+</div>
+</button>
+</div>
+<div class="p-6">
+<div class="mb-6">
+<h2 class="text-2xl font-bold text-gray-900 mb-2">${this.querySelector('h3').textContent}</h2>
+<p class="text-gray-600">Join us for an unforgettable experience featuring world-class performances, interactive activities, and memorable moments.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div>
+<h3 class="text-lg font-semibold text-gray-900 mb-3">Date & Location</h3>
+<div class="space-y-2">
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-calendar-line"></i>
+</div>
+<span class="text-gray-700">${this.querySelector('.text-sm.text-gray-600').textContent}</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="text-gray-700">${this.querySelectorAll('.text-sm.text-gray-600')[1].textContent}</span>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-gray-900 mb-3">Target Audience</h3>
+<div class="flex flex-wrap gap-2">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Music Lovers</span>
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">All Ages</span>
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Families</span>
+</div>
+</div>
+</div>
+<div class="mb-6">
+<h3 class="text-lg font-semibold text-gray-900 mb-3">Event Location</h3>
+<div class="rounded-lg overflow-hidden h-48 bg-cover bg-center" style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png')"></div>
+</div>
+<div class="mb-6">
+<h3 class="text-lg font-semibold text-gray-900 mb-3">Activities & Programs</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="border border-gray-200 rounded-lg p-4">
+<div class="flex items-center mb-2">
+<div class="w-8 h-8 flex items-center justify-center bg-primary/10 text-primary rounded-full mr-3">
+<i class="ri-music-line"></i>
+</div>
+<h4 class="font-medium text-gray-900">Live Performances</h4>
+</div>
+<p class="text-sm text-gray-600">Experience amazing live performances from talented artists</p>
+</div>
+<div class="border border-gray-200 rounded-lg p-4">
+<div class="flex items-center mb-2">
+<div class="w-8 h-8 flex items-center justify-center bg-primary/10 text-primary rounded-full mr-3">
+<i class="ri-group-line"></i>
+</div>
+<h4 class="font-medium text-gray-900">Interactive Sessions</h4>
+</div>
+<p class="text-sm text-gray-600">Engage in fun and interactive group activities</p>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between border-t border-gray-200 pt-6">
+<div>
+<p class="text-sm text-gray-600 mb-1">Ticket Price</p>
+<p class="text-2xl font-bold text-primary">${this.querySelector('.text-sm.font-medium.text-gray-900').textContent}</p>
+</div>
+<button class="bg-primary text-white px-6 py-3 !rounded-button font-medium flex items-center whitespace-nowrap">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-ticket-line"></i>
+</div>
+Register Now
+</button>
+</div>
+</div>
+</div>
+`;
+        document.body.appendChild(modal);
+        const closeBtn = modal.querySelector('#closeModal');
+        closeBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          modal.remove();
+        });
+        modal.addEventListener('click', function(e) {
+          if (e.target === modal) {
+            modal.remove();
+          }
+        });
+      });
+    });
+    const registerBtn = document.querySelector('button:last-child');
+    registerBtn.addEventListener('click', function() {
+      const modal = document.createElement('div');
+      modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+      modal.innerHTML = `
+<div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-semibold text-gray-900">Choose Ticket Type</h3>
+<button class="text-gray-500 hover:text-gray-700" id="closeModal">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-close-line"></i>
+</div>
+</button>
+</div>
+<div class="space-y-4 mb-6">
+<div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+<div>
+<h4 class="font-medium text-gray-900">Single Day Pass</h4>
+<p class="text-sm text-gray-600">Access to all basic features</p>
+</div>
+<p class="text-lg font-bold text-primary">$85</p>
+</div>
+<div class="flex items-center justify-between p-4 border-2 border-primary rounded-lg bg-primary/5">
+<div>
+<h4 class="font-medium text-gray-900">3-Day Pass</h4>
+<p class="text-sm text-gray-600">Most popular choice</p>
+</div>
+<p class="text-lg font-bold text-primary">$199</p>
+</div>
+<div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+<div>
+<h4 class="font-medium text-gray-900">VIP Experience</h4>
+<p class="text-sm text-gray-600">Premium features included</p>
+</div>
+<p class="text-lg font-bold text-primary">$399</p>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-3 !rounded-button font-medium">Continue to Payment</button>
+</div>
+`;
+      document.body.appendChild(modal);
+      const closeBtn = modal.querySelector('#closeModal');
+      closeBtn.addEventListener('click', function() {
+        modal.remove();
+      });
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          modal.remove();
+        }
+      });
+    });
+  });
+  toggleSections.forEach(section => {
+    const toggleBtn = document.getElementById(`${section}-toggle`);
+    const filterSection = document.getElementById(`${section}-filters`);
+    toggleBtn.addEventListener('click', function() {
+      const icon = this.querySelector('i');
+      if (filterSection.style.display === 'none') {
+        filterSection.style.display = 'block';
+        icon.classList.remove('ri-arrow-right-s-line');
+        icon.classList.add('ri-arrow-down-s-line');
+      } else {
+        filterSection.style.display = 'none';
+        icon.classList.remove('ri-arrow-down-s-line');
+        icon.classList.add('ri-arrow-right-s-line');
+      }
+    });
+  });
+  // Handle filter selection and active filters display
+  const activeFiltersContainer = document.getElementById('active-filters-container');
+  const activeFilters = document.getElementById('active-filters');
+  const clearAllBtn = document.getElementById('clear-all');
+  // Track selected filters
+  let selectedFilters = {
+    audience: [],
+    type: [],
+    time: null,
+    location: [],
+    price: []
+  };
+  // Function to update active filters display
+  function updateActiveFilters() {
+// Clear current filters
+    activeFilters.innerHTML = '';
+// Count total active filters
+    let totalFilters = 0;
+// Add audience filters
+    selectedFilters.audience.forEach(filter => {
+      addFilterTag('audience', filter);
+      totalFilters++;
+    });
+// Add type filters
+    selectedFilters.type.forEach(filter => {
+      addFilterTag('type', filter);
+      totalFilters++;
+    });
+// Add time filter
+    if (selectedFilters.time) {
+      addFilterTag('time', selectedFilters.time);
+      totalFilters++;
+    }
+// Add location filters
+    selectedFilters.location.forEach(filter => {
+      addFilterTag('location', filter);
+      totalFilters++;
+    });
+// Add price filters
+    selectedFilters.price.forEach(filter => {
+      addFilterTag('price', filter);
+      totalFilters++;
+    });
+// Show/hide active filters container
+    if (totalFilters > 0) {
+      activeFiltersContainer.classList.remove('hidden');
+    } else {
+      activeFiltersContainer.classList.add('hidden');
+    }
+// Update visible events based on filters
+    updateVisibleEvents();
+  }
+  function updateVisibleEvents() {
+    const eventCards = document.querySelectorAll('.event-card');
+    let visibleCount = 0;
+    eventCards.forEach(card => {
+      let shouldShow = false;
+// Get event type from the category badge
+      const categoryBadge = card.querySelector('.absolute.top-2.right-2');
+      const eventType = categoryBadge.textContent;
+// Check if event matches any selected type filter
+      if (selectedFilters.type.length === 0 || selectedFilters.type.includes(eventType)) {
+        shouldShow = true;
+      }
+// Get event price
+      const priceElement = card.querySelector('.text-sm.font-medium.text-gray-900');
+      const price = priceElement.textContent;
+      const isFree = price === 'Free';
+// Check price filters
+      if (selectedFilters.price.length > 0) {
+        shouldShow = shouldShow && (
+                (selectedFilters.price.includes('Free') && isFree) ||
+                (selectedFilters.price.includes('Paid') && !isFree)
+        );
+      }
+// Update visibility
+      if (shouldShow) {
+        card.style.display = 'block';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+// Update event count
+    document.getElementById('event-count').textContent = visibleCount;
+  }
+  // Function to add a filter tag
+  function addFilterTag(category, value) {
+    const tag = document.createElement('div');
+    tag.className = 'filter-tag bg-gray-100 rounded-full py-1 px-3 text-sm text-gray-700 flex items-center';
+    tag.innerHTML = `
+<span class="mr-1">${category}: ${value}</span>
+<div class="w-4 h-4 flex items-center justify-center cursor-pointer" data-category="${category}" data-value="${value}">
+<i class="ri-close-line"></i>
+</div>
+`;
+// Add click event to remove tag
+    tag.querySelector('div').addEventListener('click', function() {
+      removeFilter(this.dataset.category, this.dataset.value);
+    });
+    activeFilters.appendChild(tag);
+  }
+  // Function to remove a filter
+  function removeFilter(category, value) {
+    if (category === 'time') {
+      selectedFilters.time = null;
+      document.querySelectorAll('input[name="time"]').forEach(radio => {
+        radio.checked = false;
+      });
+    } else {
+      selectedFilters[category] = selectedFilters[category].filter(item => item !== value);
+// Uncheck the corresponding checkbox
+      const checkbox = document.getElementById(value.toLowerCase().replace(/\s+/g, '-'));
+      if (checkbox) {
+        checkbox.checked = false;
+      }
+    }
+    updateActiveFilters();
+  }
+  // Handle audience filter checkboxes
+  document.querySelectorAll('.audience-checkbox').forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+      if (this.checked) {
+        selectedFilters.audience.push(this.value);
+      } else {
+        selectedFilters.audience = selectedFilters.audience.filter(item => item !== this.value);
+      }
+      updateActiveFilters();
+    });
+  });
+  // Handle type filter checkboxes
+  document.querySelectorAll('.type-checkbox').forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+      if (this.checked) {
+        selectedFilters.type.push(this.value);
+      } else {
+        selectedFilters.type = selectedFilters.type.filter(item => item !== this.value);
+      }
+      updateActiveFilters();
+    });
+  });
+  // Handle time filter radio buttons
+  document.querySelectorAll('.time-radio').forEach(radio => {
+    radio.addEventListener('change', function() {
+      selectedFilters.time = this.value;
+      updateActiveFilters();
+    });
+  });
+  // Handle location filter checkboxes
+  document.querySelectorAll('.location-checkbox').forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+      if (this.checked) {
+        selectedFilters.location.push(this.value);
+      } else {
+        selectedFilters.location = selectedFilters.location.filter(item => item !== this.value);
+      }
+      updateActiveFilters();
+    });
+  });
+  // Handle price filter checkboxes
+  document.querySelectorAll('.price-checkbox').forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+      if (this.checked) {
+        selectedFilters.price.push(this.value);
+      } else {
+        selectedFilters.price = selectedFilters.price.filter(item => item !== this.value);
+      }
+      updateActiveFilters();
+    });
+  });
+  // Handle clear all button
+  clearAllBtn.addEventListener('click', function() {
+// Reset all filters
+    selectedFilters = {
+      audience: [],
+      type: [],
+      time: null,
+      location: [],
+      price: []
+    };
+// Uncheck all checkboxes
+    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+      checkbox.checked = false;
+    });
+// Uncheck all radio buttons
+    document.querySelectorAll('input[type="radio"]').forEach(radio => {
+      radio.checked = false;
+    });
+    updateActiveFilters();
+  });
+  // Location search functionality
+  const locationSearch = document.getElementById('location-search');
+  const locationCheckboxes = document.querySelectorAll('.location-checkbox');
+  locationSearch.addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    locationCheckboxes.forEach(checkbox => {
+      const label = checkbox.nextElementSibling;
+      const locationName = label.textContent.toLowerCase();
+      if (locationName.includes(searchTerm)) {
+        checkbox.parentElement.style.display = 'flex';
+      } else {
+        checkbox.parentElement.style.display = 'none';
+      }
+    });
+  });
+  // Sort dropdown functionality
+//   const sortDropdown = document.getElementById('sort-by');
+//   sortDropdown.addEventListener('change', function() {
+// // In a real application, this would trigger a re-fetch or re-sort of the events
+//     console.log('Sort by:', this.value);
+//   });
+//   });
+</script>
+</body>
+</html>

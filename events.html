@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>EVENTO</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="IMAGE/favicon1.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+            rel="stylesheet"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+        }
+        .filter-tag {
+            transition: all 0.2s ease;
+        }
+        .filter-tag:hover {
+            background-color: #e5e7eb;
+        }
+        .event-card {
+            transition: all 0.3s ease;
+        }
+        .event-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        input[type="checkbox"] {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            margin-right: 8px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        input[type="checkbox"]:checked {
+            background-color: #004047;
+            border-color: #004047;
+        }
+        input[type="checkbox"]:checked::after {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        input[type="radio"] {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 1px solid #d1d5db;
+            border-radius: 50%;
+            margin-right: 8px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        input[type="radio"]:checked {
+            border-color: #004047;
+        }
+        input[type="radio"]:checked::after {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: 4px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #004047;
+        }
+        .custom-select {
+            position: relative;
+            display: inline-block;
+        }
+        .custom-select select {
+            appearance: none;
+            padding-right: 2rem;
+        }
+        .custom-select::after {
+            content: "";
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #6b7280;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+<section class="home">
+    <div class="home-box">
+        <nav>
+            <div class="logo bars">
+                <div class="bar">
+                    <i class="fa fa-bars"></i>
+                </div>
+                <h3>EVENTO</h3>
+            </div>
+            <div class="menu">
+                <div class="close">
+                    <i class="fa fa-close"></i>
+                </div>
+                <ul>
+                    <li><a href="index.html">home</a></li>
+                    <li><a href="about.html">about</a></li>
+                    <li><a href="index.html">Contact us</a></li>
+                </ul>
+            </div>
+            <div class="signup-login">
+                <a href="#">sign up</a>
+                <a href="#">login</a>
+            </div>
+        </nav>
+
+        <div class="content">
+            <h5>Evento</h5>
+            <h1>Catch the moment before it’s gone.</h1>
+            <p>Explore top events, feel the energy, and be part of something amazing — your next experience starts here
+            </p>
+
+            <div class="search">
+                <i class="fa fa-search"></i>
+                <input type="text" placeholder="Your perfect event is just one search ...">
+                <button>search</button>
+            </div>
+        </div>
+    </div>
+</section>
+<div
+        class="container mx-auto px-4 pt-24 pb-12 flex flex-col md:flex-row gap-6"
+>
+    <!-- Filter Panel -->
+    <aside
+            class="w-full md:w-1/4 lg:w-1/5 bg-white rounded shadow-sm p-4 h-fit"
+    >
+        <div class="mb-6">
+            <h2 class="text-lg font-semibold text-gray-900 mb-4">Filters</h2>
+            <!-- Audience Filter -->
+            <div class="mb-4">
+                <div
+                        class="flex justify-between items-center cursor-pointer mb-2"
+                        id="audience-toggle"
+                >
+                    <h3 class="text-md font-medium text-gray-800">Audience</h3>
+                    <div
+                            class="w-5 h-5 flex items-center justify-center text-gray-500"
+                    >
+                        <i class="ri-arrow-down-s-line"></i>
+                    </div>
+                </div>
+                <div id="audience-filters" class="pl-1">
+                    <div class="flex items-center mb-2">
+                        <input
+                                type="checkbox"
+                                id="kids"
+                                class="audience-checkbox"
+                                value="For Kids"
+                        />
+                        <label for="kids" class="text-sm text-gray-700 cursor-pointer"
+                        >For Kids</label
+                        >
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input
+                                type="checkbox"
+                                id="adults"
+                                class="audience-checkbox"
+                                value="For Adults"
+                        />
+                        <label for="adults" class="text-sm text-gray-700 cursor-pointer"
+                        >For Adults</label
+                        >
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input
+                                type="checkbox"
+                                id="families"
+                                class="audience-checkbox"
+                                value="For Families"
+                        />
+                        <label
+                                for="families"
+                                class="text-sm text-gray-700 cursor-pointer"
+                        >For Families</label
+                        >
+                    </div>
+                    <div class="flex items-center">
+                        <input
+                                type="checkbox"
+                                id="seniors"
+                                class="audience-checkbox"
+                                value="For Seniors"
+                        />
+                        <label
+                                for="seniors"
+                                class="text-sm text-gray-700 cursor-pointer"
+                        >For Seniors</label
+                        >
+                    </div>
+                </div>
+            </div>
+            <!-- Type Filter -->
+            <div class="mb-4">
+                <div
+                        class="flex justify-between items-center cursor-pointer mb-2"
+                        id="type-toggle"
+                >
+                    <h3 class="text-md font-medium text-gray-800">Type</h3>
+                    <div
+                            class="w-5 h-5 flex items-center justify-center text-gray-500"
+                    >
+                        <i class="ri-arrow-down-s-line"></i>
+                    </div>
+                </div>
+                <div id="type-filters" class="pl-1">
+                    <div class="flex items-center mb-2">
+                        <input
+                                type="checkbox"
+                                id="entertainment"
+                                class="type-checkbox"
+                                value="Entertainment"
+                        />
+                        <label
+                                for="entertainment"
+                                class="text-sm text-gray-700 cursor-pointer"
+                        >Entertainment</label
+                        >
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input
+                                type="checkbox"
+                                id="educational"
+                                class="type-checkbox"
+                                value="Educational"
+                        />
+                        <label
+                                for="educational"
+                                class="text-sm text-gray-700 cursor-pointer"
+                        >Educational</label
+                        >
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input
+                                type="checkbox"
+                                id="cultural"
+                                class="type-checkbox"
+                                value="Cultural"
+                        />
+                        <label
+                                for="cultural"
+                                class="text-sm text-gray-700 cursor-pointer"
+                        >Cultural</label
+                        >
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input
+                                type="checkbox"
+                                id="sports"
+                                class="type-checkbox"
+                                value="Sports"
+                        />
+                        <label for="sports" class="text-sm text-gray-700 cursor-pointer"
+                        >Sports</label
+                        >
+                    </div>
+                    <div class="flex items-center">
+                        <input
+                                type="checkbox"
+                                id="networking"
+                                class="type-checkbox"
+                                value="Networking"
+                        />
+                        <label
+                                for="networking"
+                                class="text-sm text-gray-700 cursor-pointer"
+                        >Networking</label
+                        >
+                    </div>
+                </div>
+            </div>
+            <!-- Time Filter -->
+            <div class="mb-4">
+                <div
+                        class="flex justify-between items-center cursor-pointer mb-2"
+                        id="time-toggle"
+                >
+                    <h3 class="text-md font-medium text-gray-800">Time</h3>
+                    <div
+                            class="w-5 h-5 flex items-center justify-center text-gray-500"
+                    >
+                        <i class="ri-arrow-down-s-line"></i>
+                    </div>
+                </div>
+                <div id="time-filters" class="pl-1">
+                    <div class="flex items-center mb-2">
+                        <input
+                                type="radio"
+                                name="time"
+                                id="today"
+                                class="time-radio"
+                                value="Today"
+                        />
+                        <label for="today" class="text-sm text-gray-700 cursor-pointer"
+                        >Today</label
+                        >
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input
+                                type="radio"
+                                name="time"
+                                id="this-week"
+                                class="time-radio"
+                                value="This Week"
+                        />
+                        <label
+                                for="this-week"
+                                class="text-sm text-gray-700 cursor-pointer"
+                        >This Week</label
+                        >
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input
+                                type="radio"
+                                name="time"
+                                id="this-month"
+                                class="time-radio"
+                                value="This Month"
+                        />
+                        <label
+                                for="this-month"
+                                class="text-sm text-gray-700 cursor-pointer"
+                        >This Month</label
+                        >
+                    </div>
+                    <div class="flex items-center">
+                        <input
+                                type="radio"
+                                name="time"
+                                id="custom"
+                                class="time-radio"
+                                value="Custom"
+                        />
+                        <label for="custom" class="text-sm text-gray-700 cursor-pointer"
+                        >Custom</label
+                        >
+                    </div>
+                </div>
+            </div>
+            <!-- Location Filter -->
+            <div class="mb-4">
+                <div
+                        class="flex justify-between items-center cursor-pointer mb-2"
+                        id="location-toggle"
+                >
+                    <h3 class="text-md font-medium text-gray-800">Location</h3>
+                    <div
+                            class="w-5 h-5 flex items-center justify-center text-gray-500"
+                    >
+                        <i class="ri-arrow-down-s-line"></i>
+                    </div>
+                </div>
+                <div id="location-filters" class="pl-1">
+                    <div class="relative mb-2">
+                        <div
+                                class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+                        >
+                            <div
+                                    class="w-4 h-4 flex items-center justify-center text-gray-500"
+                            >
+                                <i class="ri-search-line"></i>
+                            </div>
+                        </div>
+                        <input
+                                type="text"
+                                id="location-search"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md block w-full pl-10 p-2.5"
+                                placeholder="Search location"
+                        />
+                    </div>
+                    <div class="max-h-40 overflow-y-auto">
+                        <div class="flex items-center mb-2">
+                            <input
+                                    type="checkbox"
+                                    id="Hebron"
+                                    class="location-checkbox"
+                                    value="Hebron"
+                            />
+                            <label
+                                    for="Hebron"
+                                    class="text-sm text-gray-700 cursor-pointer"
+                            >Hebron</label
+                            >
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <input
+                                    type="checkbox"
+                                    id="Bethlehem"
+                                    class="location-checkbox"
+                                    value="Bethlehem"
+                            />
+                            <label
+                                    for="Bethlehem"
+                                    class="text-sm text-gray-700 cursor-pointer"
+                            >Bethlehem</label
+                            >
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <input
+                                    type="checkbox"
+                                    id="Jenin"
+                                    class="location-checkbox"
+                                    value="Jenin"
+                            />
+                            <label
+                                    for="Jenin"
+                                    class="text-sm text-gray-700 cursor-pointer"
+                            >Jenin</label
+                            >
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <input
+                                    type="checkbox"
+                                    id="Ramallah"
+                                    class="location-checkbox"
+                                    value="Ramallah"
+                            />
+                            <label
+                                    for="Ramallah"
+                                    class="text-sm text-gray-700 cursor-pointer"
+                            >Ramallah</label
+                            >
+                        </div>
+                        <div class="flex items-center">
+                            <input
+                                    type="checkbox"
+                                    id="nablus"
+                                    class="location-checkbox"
+                                    value="nablus"
+                            />
+                            <label
+                                    for="nablus"
+                                    class="text-sm text-gray-700 cursor-pointer"
+                            >nablus</label
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Price Filter -->
+            <div class="mb-4">
+                <div
+                        class="flex justify-between items-center cursor-pointer mb-2"
+                        id="price-toggle"
+                >
+                    <h3 class="text-md font-medium text-gray-800">Price</h3>
+                    <div
+                            class="w-5 h-5 flex items-center justify-center text-gray-500"
+                    >
+                        <i class="ri-arrow-down-s-line"></i>
+                    </div>
+                </div>
+                <div id="price-filters" class="pl-1">
+                    <div class="flex items-center mb-2">
+                        <input
+                                type="checkbox"
+                                id="free"
+                                class="price-checkbox"
+                                value="Free"
+                        />
+                        <label for="free" class="text-sm text-gray-700 cursor-pointer"
+                        >Free</label
+                        >
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input
+                                type="checkbox"
+                                id="paid"
+                                class="price-checkbox"
+                                value="Paid"
+                        />
+                        <label for="paid" class="text-sm text-gray-700 cursor-pointer"
+                        >Paid</label
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <!-- Main Content -->
+    <main class="w-full md:w-3/4 lg:w-4/5">
+        <!-- Active Filters -->
+        <div
+                id="active-filters-container"
+                class="bg-white rounded shadow-sm p-4 mb-4 hidden"
+        >
+            <div class="flex flex-wrap items-center gap-2">
+            <span class="text-sm font-medium text-gray-700 mr-1"
+            >Active Filters:</span
+            >
+                <div id="active-filters" class="flex flex-wrap gap-2"></div>
+                <button
+                        id="clear-all"
+                        class="text-sm text-primary font-medium ml-auto whitespace-nowrap"
+                >
+                    Clear All
+                </button>
+            </div>
+        </div>
+        <!-- Sort Controls -->
+        <div
+                class="bg-white rounded shadow-sm p-4 mb-4 flex justify-between items-center"
+        >
+            <p class="text-sm text-gray-600">
+                <span id="event-count">12</span> events found
+            </p>
+            <div class="flex items-center gap-4">
+                <div class="flex items-center">
+                    <label for="sort-by" class="text-sm text-gray-700 mr-2"
+                    >Sort by:</label
+                    >
+                    <div class="custom-select">
+                        <select
+                                id="sort-by"
+                                class="bg-white border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary focus:border-primary block w-full p-2.5 pr-8"
+                        >
+                            <option value="newest">Newest to Oldest</option>
+                            <option value="oldest">Oldest to Newest</option>
+                            <option value="popular">Most Popular</option>
+                            <option value="rating">Highest Rated</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                        </select>
+                    </div>
+                </div>
+                <button
+                        class="bg-primary text-white px-4 py-2 !rounded-button font-medium flex items-center whitespace-nowrap"
+                >
+                    <div class="w-5 h-5 flex items-center justify-center mr-2">
+                        <i class="ri-add-line"></i>
+                    </div>
+                    Create Event
+                </button>
+            </div>
+        </div>
+        <!-- Event List -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Event 1 -->
+            <div class="event-card bg-white rounded shadow-sm overflow-hidden">
+                <div class="relative h-48">
+                    <img
+                            src="IMAGE/arts.jpg"
+                            alt="Group drawing"
+                            class="w-full h-full object-cover object-top"
+                    />
+                    <div
+                            class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded-full"
+                    >
+                        Entertainment
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-1">
+                        Group drawing
+                    </h3>
+                    <div class="flex items-center mb-2">
+                        <div
+                                class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1"
+                        >
+                            <i class="ri-calendar-line"></i>
+                        </div>
+                        <span class="text-sm text-gray-600"
+                        >May 15, 2025 • 4:00 PM</span
+                        >
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <div
+                                class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1"
+                        >
+                            <i class="ri-map-pin-line"></i>
+                        </div>
+                        <span class="text-sm text-gray-600"
+                        >An-Najah National University - nablus </span
+                        >
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div
+                                    class="w-4 h-4 flex items-center justify-center text-yellow-500 mr-1"
+                            >
+                                <i class="ri-star-fill"></i>
+                            </div>
+                            <span class="text-sm text-gray-700">4.8 (40 reviews)</span>
+                        </div>
+                        <span class="text-sm font-medium text-gray-900">₪ 30 ILS</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Event 2 -->
+            <div class="event-card bg-white rounded shadow-sm overflow-hidden">
+                <div class="relative h-48">
+                    <img
+                            src="IMAGE/programming.jpg"
+                            alt="Java programming course"
+                            class="w-full h-full object-cover object-top"
+                    />
+                    <div
+                            class="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded-full"
+                    >
+                        Educational
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-1">
+                        Java programming course
+                    </h3>
+                    <div class="flex items-center mb-2">
+                        <div
+                                class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1"
+                        >
+                            <i class="ri-calendar-line"></i>
+                        </div>
+                        <span class="text-sm text-gray-600"
+                        >May 8, 2025 • 10:00 AM</span
+                        >
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <div
+                                class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1"
+                        >
+                            <i class="ri-map-pin-line"></i>
+                        </div>
+                        <span class="text-sm text-gray-600"
+                        >An-Najah National University - nablus</span
+                        >
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div
+                                    class="w-4 h-4 flex items-center justify-center text-yellow-500 mr-1"
+                            >
+                                <i class="ri-star-fill"></i>
+                            </div>
+                            <span class="text-sm text-gray-700">4.6 (20 reviews)</span>
+                        </div>
+                        <span class="text-sm font-medium text-gray-900">₪ 20 ILS</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Event 3 -->
+            <div class="event-card bg-white rounded shadow-sm overflow-hidden">
+                <div class="relative h-48">
+                    <img
+                            src="IMAGE/exhibition.jpg"
+                            alt="exhibition"
+                            class="w-full h-full object-cover object-top"
+                    />
+                    <div
+                            class="absolute top-2 right-2 bg-purple-600 text-white text-xs px-2 py-1 rounded-full"
+                    >
+                        Cultural
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-1">
+                        exhibition
+                    </h3>
+                    <div class="flex items-center mb-2">
+                        <div
+                                class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1"
+                        >
+                            <i class="ri-calendar-line"></i>
+                        </div>
+                        <span class="text-sm text-gray-600"
+                        >May 10-30, 2025 • 9:00 AM - 6:00 PM</span
+                        >
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <div
+                                class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1"
+                        >
+                            <i class="ri-map-pin-line"></i>
+                        </div>
+                        <span class="text-sm text-gray-600"
+                        >Birzeit University - Ramallah</span
+                        >
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div
+                                    class="w-4 h-4 flex items-center justify-center text-yellow-500 mr-1"
+                            >
+                                <i class="ri-star-fill"></i>
+                            </div>
+                            <span class="text-sm text-gray-700">4.9 (312 reviews)</span>
+                        </div>
+                        <span class="text-sm font-medium text-gray-900">₪ 50 ILS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Pagination -->
+        </main>
+</div>
+
+<footer class="bg-gray-900 text-white pt-16 pb-8">
+    <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <!-- Brand and Contact -->
+        <div>
+            <h3 class="text-xl font-semibold mb-4">Evento</h3>
+            <p class="text-gray-400 mb-4">
+                At Evento, we make booking events easy and stress-free. Your next adventure is just a click away!
+            </p>
+            <h5 class="text-white font-semibold mb-1">Get in touch</h5>
+            <a href="mailto:janaabuturabi4@gmail.com" class="text-primary text-sm hover:underline">janaabuturabi4@gmail.com</a>
+            <div class="flex gap-4 mt-4 text-xl">
+                <a href="#"><i class="ri-linkedin-box-fill hover:text-primary transition"></i></a>
+                <a href="#"><i class="ri-facebook-box-fill hover:text-primary transition"></i></a>
+                <a href="#"><i class="ri-twitter-fill hover:text-primary transition"></i></a>
+                <a href="#"><i class="ri-instagram-line hover:text-primary transition"></i></a>
+            </div>
+        </div>
+
+        <!-- About Us -->
+        <div>
+            <h4 class="text-lg font-semibold mb-4">About Us</h4>
+            <ul class="space-y-2 text-sm text-gray-400">
+                <li><a href="#" class="hover:text-white transition">About</a></li>
+            </ul>
+        </div>
+
+        <!-- Help -->
+        <div>
+            <h4 class="text-lg font-semibold mb-4">Help</h4>
+            <ul class="space-y-2 text-sm text-gray-400">
+                <li><a href="#" class="hover:text-white transition">FAQ</a></li>
+                <li><a href="#" class="hover:text-white transition">Site Map</a></li>
+            </ul>
+        </div>
+
+        <!-- Resources -->
+        <div>
+            <h4 class="text-lg font-semibold mb-4">Resources</h4>
+            <ul class="space-y-2 text-sm text-gray-400">
+                <li><a href="#" class="hover:text-white transition">Newsletter</a></li>
+                <li><a href="#" class="hover:text-white transition">Blog</a></li>
+                <li><a href="#" class="hover:text-white transition">Gallery</a></li>
+                <li><a href="#" class="hover:text-white transition">Offers</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="border-t border-gray-700 pt-6 text-sm text-gray-400 text-center md:flex md:justify-between md:text-left">
+        <p>&copy; 2024 Evento Inc. All rights reserved.</p>
+        <div class="space-x-4 mt-4 md:mt-0">
+            <a href="#" class="hover:text-white transition">Terms & Conditions</a>
+            <a href="#" class="hover:text-white transition">Privacy Policy</a>
+        </div>
+    </div>
+</footer>
+<script src="event.js"></script>
+
+</body>
+</html>
