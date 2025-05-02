@@ -15,7 +15,7 @@
 
 :root {
     --dark-green: #112a34;
-    --green-color: #004047;
+    --green-color: rgba(255, 255, 255, 0.42);
     --white-color: #fff;
 }
 
@@ -458,7 +458,7 @@ section.home {
 
 /* feedback section starts here  */
 .feedback {
-    background: url("IMAGE/section-background.jpg");
+    background: url("IMAGE/evento.jpg");
     background-position: center;
     background-size: cover;
     margin-top: 6rem;
