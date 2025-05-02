@@ -7,7 +7,22 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="IMAGE/favicon1.ico" type="image/x-icon">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#004047',secondary:'#ffffff'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <link rel="icon" href="IMAGE/favicon1.ico" type="image/x-icon">
+    <title>EVENTO</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#004047',secondary:'#ffffff'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
 
 
 </head>
@@ -29,7 +44,7 @@
                 <ul>
                     <li><a href="index.html">home</a></li>
                     <li><a href="about.html">about</a></li>
-                    <li><a href="ContactUs.html">Contact us</a></li>
+                    <a href="#contact" >Contact us</a>
                 </ul>
             </div>
             <div class="signup-login">
@@ -261,67 +276,89 @@
 </section>
 <!-- feedback section ends here  -->
 
-<!-- article section starts here  -->
-<!--<section class="article">-->
-<!--    <h4 class="label">resources</h4>-->
-<!--    <h2 class="heading">latest article</h2>-->
-<!--    <div class="container">-->
-<!--        <div class="latest-article">-->
-<!--            <img src="" alt="">-->
-<!--            <p>event discovery</p>-->
-<!--            <h3>10 Must-Attend Events in the nablus </h3>-->
-<!--            <div class="author">-->
-<!--                <img src="">-->
-<!--                <p> tala - 9 min read</p>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="more-article">-->
-<!--            <div class="box box1">-->
-<!--                <div class="image">-->
-<!--                    <img src="" alt="">-->
-<!--                </div>-->
-<!--                <div class="text">-->
-<!--                    <h3>Tips for Attending Group Events: How to Enjoy with Friends and Family-->
-<!--                    </h3>-->
-<!--                    <li>Group Events - 7 min read</li>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="box box2">-->
-<!--                <div class="image">-->
-<!--                    <img src="" alt="">-->
-<!--                </div>-->
-<!--                <div class="text">-->
-<!--                    <h3>Art Adventure: Exploring Cultural Shows During Your Travels-->
-<!--                    </h3>-->
-<!--                    <li>Culture & Arts - 5 min read-->
-<!--                    </li>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="box box3">-->
-<!--                <div class="image">-->
-<!--                    <img src="IMAGE/Money.jpg" alt="">-->
-<!--                </div>-->
-<!--                <div class="text">-->
-<!--                    <h3>Attending Events on a Budget: Tips for Enjoying Memorable Experiences Without Spending a Lot</h3>-->
-<!--                    <li>Budget Events - 7 min read-->
-<!--                    </li>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="box box4">-->
-<!--                <div class="image">-->
-<!--                    <img src="" alt="">-->
-<!--                </div>-->
-<!--                <div class="text">-->
-<!--                    <h3>Event Booking Tips: How to Choose the Best Event for You and Your Friends-->
-<!--                    </h3>-->
-<!--                    <li>Booking Tips - 7 min read-->
-<!--                    </li>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
-<!-- article section ends here  -->
+<section id="contact" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-6">Get in Touch</h2>
+                <p class="text-lg text-gray-600">Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 reveal">
+                <div>
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your name">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="your@email.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent h-32" placeholder="Your message"></textarea>
+                        </div>
+                        <button class="w-full py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary/90 transition !rounded-button whitespace-nowrap">Send Message</button>
+                    </form>
+                </div>
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Office Location</h3>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <div class="w-5 h-5 flex items-center justify-center text-primary">
+                                    <i class="ri-map-pin-line"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="text-gray-600">123 Innovation Drive</p>
+                                <p class="text-gray-600">San Francisco, CA 94107</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Contact Info</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <div class="w-5 h-5 flex items-center justify-center text-primary">
+                                        <i class="ri-phone-line"></i>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600">+1 (555) 123-4567</p>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <div class="w-5 h-5 flex items-center justify-center text-primary">
+                                        <i class="ri-mail-line"></i>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600">hello@eventhub.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition">
+                                <i class="ri-facebook-fill"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition">
+                                <i class="ri-twitter-fill"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition">
+                                <i class="ri-linkedin-fill"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition">
+                                <i class="ri-instagram-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- footer section starts here  -->
 <footer>
