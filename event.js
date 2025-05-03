@@ -72,99 +72,113 @@
     // Update visible events based on filters
     updateVisibleEvents();
 }
-    function updateVisibleEvents() {
-    const eventCards = document.querySelectorAll(".event-card");
-    let filteredEvents = [];
+        function updateVisibleEvents() {
+            const eventCards = document.querySelectorAll(".event-card");
+            let filteredEvents = [];
 
-    eventCards.forEach((card) => {
-    let shouldShow = true;
+            const now = new Date();
+            const thisWeek = new Date(now);
+            thisWeek.setDate(now.getDate() + 7);
 
-    const category = card.querySelector(".absolute.top-2.right-2")?.textContent?.trim();
-    const location = card.querySelector(".ri-map-pin-line")?.parentElement?.textContent?.trim();
-    const priceText = card.querySelector(".text-sm.font-medium.text-gray-900")?.textContent?.trim();
-    const isFree = priceText === "Free";
-    const audience = card.dataset.audience?.split(',') || [];
+            eventCards.forEach((card) => {
+                let shouldShow = true;
 
-    const dateText = card.querySelector(".ri-calendar-line")?.parentElement?.textContent?.trim();
-    const eventDate = new Date(dateText?.match(/\w+\s\d{1,2},\s\d{4}/)?.[0] || ""); // try parse date
+                const type = card.dataset.type?.trim();
+                const audience = card.dataset.audience?.split(',').map(a => a.trim()) || [];
+                const location = card.dataset.location?.trim();
+                const price = card.dataset.price?.trim();
+                const eventDate = card.dataset.date ? new Date(card.dataset.date) : null;
 
-    const today = new Date();
-    const timeFilter = selectedFilters.time;
+                // ✅ تحديث عرض التاريخ والساعة داخل البطاقة
+                const dateElement = card.querySelector(".event-date");
+                if (eventDate && dateElement) {
+                    const options = { dateStyle: "medium", timeStyle: "short" };
+                    dateElement.textContent = eventDate.toLocaleString("en-US", options);
+                }
 
-    // Type filter
-    if (selectedFilters.type.length > 0 && !selectedFilters.type.includes(category)) {
-    shouldShow = false;
-}
+                const { type: fType, audience: fAudience, location: fLocation, price: fPrice, time: fTime } = selectedFilters;
 
-    // Price filter
-    if (selectedFilters.price.length > 0) {
-    const matchFree = selectedFilters.price.includes("Free") && isFree;
-    const matchPaid = selectedFilters.price.includes("Paid") && !isFree;
-    if (!(matchFree || matchPaid)) shouldShow = false;
-}
+                // فلتر النوع
+                if (fType.length > 0 && !fType.includes(type)) shouldShow = false;
 
-    // Location filter
-    if (selectedFilters.location.length > 0) {
-    const matched = selectedFilters.location.some(loc => location?.includes(loc));
-    if (!matched) shouldShow = false;
-}
+                // فلتر الجمهور
+                if (fAudience.length > 0) {
+                    const match = fAudience.some(a => audience.includes(a));
+                    if (!match) shouldShow = false;
+                }
 
-    // Audience filter
-    if (selectedFilters.audience.length > 0) {
-    const hasAudience = selectedFilters.audience.some(a => audience.includes(a));
-    if (!hasAudience) shouldShow = false;
-}
+                // فلتر الموقع
+                if (fLocation.length > 0 && !fLocation.includes(location)) shouldShow = false;
 
-    // Time filter
-    if (timeFilter) {
-    const eventDay = eventDate.getDate(), eventMonth = eventDate.getMonth(), eventYear = eventDate.getFullYear();
-    const now = new Date();
-    const thisWeek = new Date(now);
-    thisWeek.setDate(now.getDate() + 7);
+                // فلتر السعر
+                if (fPrice.length > 0 && !fPrice.includes(price)) shouldShow = false;
 
-    if (timeFilter === "Today" && (
-    eventDay !== now.getDate() || eventMonth !== now.getMonth() || eventYear !== now.getFullYear()
-    )) shouldShow = false;
+                // فلتر الوقت
+                if (fTime && eventDate) {
+                    const sameDay = eventDate.getDate() === now.getDate()
+                        && eventDate.getMonth() === now.getMonth()
+                        && eventDate.getFullYear() === now.getFullYear();
 
-    if (timeFilter === "This Week" && eventDate > thisWeek) shouldShow = false;
+                    const sameMonth = eventDate.getMonth() === now.getMonth()
+                        && eventDate.getFullYear() === now.getFullYear();
 
-    if (timeFilter === "This Month" && eventMonth !== now.getMonth()) shouldShow = false;
-}
+                    if (fTime === "Today" && !sameDay) shouldShow = false;
+                    if (fTime === "This Week" && eventDate > thisWeek) shouldShow = false;
+                    if (fTime === "This Month" && !sameMonth) shouldShow = false;
+                }
 
-    if (shouldShow) filteredEvents.push(card);
-});
+                if (shouldShow) filteredEvents.push(card);
+            });
 
-    // Sort based on dropdown
-    const sortOption = document.getElementById("sort-by").value;
-    filteredEvents.sort((a, b) => {
-    const getDate = card => new Date(card.querySelector(".ri-calendar-line")?.parentElement?.textContent?.trim().match(/\w+\s\d{1,2},\s\d{4}/)?.[0] || "");
-    const getPrice = card => {
-    const price = card.querySelector(".text-sm.font-medium.text-gray-900")?.textContent?.trim();
-    return price === "Free" ? 0 : parseFloat(price.replace("$", ""));
-};
-    const getRating = card => parseFloat(card.querySelector(".ri-star-fill")?.parentElement?.textContent?.trim().split(" ")[0] || "0");
-    const getReviews = card => parseInt(card.querySelector(".ri-star-fill")?.parentElement?.textContent?.match(/\((\d+)/)?.[1] || "0");
+            // ✅ ترتيب الأحداث
+            const sortOption = document.getElementById("sort-by").value;
 
-    switch (sortOption) {
-    case "newest": return getDate(b) - getDate(a);
-    case "oldest": return getDate(a) - getDate(b);
-    case "price-low": return getPrice(a) - getPrice(b);
-    case "price-high": return getPrice(b) - getPrice(a);
-    case "rating": return getRating(b) - getRating(a);
-    case "popular": return getReviews(b) - getReviews(a);
-    default: return 0;
-}
-});
+            filteredEvents.sort((a, b) => {
+                const getDate = card => new Date(card.dataset.date);
+                const getPrice = card => {
+                    const priceText = card.querySelector(".text-sm.font-medium.text-gray-900")?.textContent?.trim().toLowerCase();
+                    return priceText === "free" ? 0 : parseFloat(priceText.replace(/[^\d.]/g, ""));
+                };
+                const getRating = card => parseFloat(card.querySelector(".ri-star-fill")?.parentElement?.textContent?.trim().split(" ")[0] || "0");
+                const getReviews = card => parseInt(card.querySelector(".ri-star-fill")?.parentElement?.textContent?.match(/\((\d+)/)?.[1] || "0");
 
-    // Apply display logic
-    eventCards.forEach(card => card.style.display = "none");
-    filteredEvents.forEach(card => card.style.display = "block");
+                switch (sortOption) {
+                    case "newest":
+                        console.log("Sorting: Newest");
+                        return getDate(b) - getDate(a);
+                    case "oldest":
+                        console.log("Sorting: Oldest");
+                        return getDate(a) - getDate(b);
+                    case "price-low":
+                        console.log("Sorting: Price Low");
+                        return getPrice(a) - getPrice(b);
+                    case "price-high":
+                        console.log("Sorting: Price High");
+                        return getPrice(b) - getPrice(a);
+                    case "rating":
+                        console.log("Sorting: Rating");
+                        return getRating(b) - getRating(a);
+                    case "popular":
+                        console.log("Sorting: Popular");
+                        return getReviews(b) - getReviews(a);
+                    default:
+                        return 0;
+                }
+            });
 
-    // Update counter
-    document.getElementById("event-count").textContent = filteredEvents.length;
-}
+            // ✅ إظهار النتائج
+            eventCards.forEach(card => card.style.display = "none");
+            filteredEvents.forEach(card => card.style.display = "block");
 
-    // Function to add a filter tag
+            // ✅ تحديث العداد
+            document.getElementById("event-count").textContent = filteredEvents.length;
+        }
+
+
+        document.getElementById("sort-by").addEventListener("change", updateVisibleEvents);
+
+
+        // Function to add a filter tag
     function addFilterTag(category, value) {
     const tag = document.createElement("div");
     tag.className =

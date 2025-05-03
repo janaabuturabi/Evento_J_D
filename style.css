@@ -196,6 +196,38 @@ section.home {
     align-items: center;
     padding: .3rem;
 }
+.search.full-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+    background: white;
+    border-radius: 50px;
+    overflow: hidden;
+    padding: 0;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.search.full-button a {
+    width: 100%;
+    height: 100%;
+    display: flex;                  /* لتوسيط النص */
+    align-items: center;            /* توسيط عمودي */
+    justify-content: center;        /* توسيط أفقي */
+    background: var(--green-color);
+    color: var(--white-color);
+    font-weight: 600;               /* وزن الخط أنسب */
+    font-size: 1rem;                /* حجم الخط مضبوط */
+    font-family: 'Segoe UI', sans-serif;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.search.full-button a:hover {
+    background: #02636e;
+}
 
 .home .home-box .content .search i {
     color: rgba(0,0,0,.5);
