@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#004047',secondary:'#2A9D8F'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+        }
+
+        input[type="checkbox"] {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            margin-right: 8px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        input[type="checkbox"]:checked {
+            background-color: #004047;
+            border-color: #004047;
+        }
+        input[type="checkbox"]:checked::after {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        input[type="radio"] {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 1px solid #d1d5db;
+            border-radius: 50%;
+            margin-right: 8px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        input[type="radio"]:checked {
+            border-color: #004047;
+        }
+        input[type="radio"]:checked::after {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: 4px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #004047;
+        }
+        .custom-select {
+            position: relative;
+            display: inline-block;
+        }
+        .custom-select select {
+            appearance: none;
+            padding-right: 2rem;
+        }
+        .custom-select::after {
+            content: "";
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #6b7280;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+<header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+        <a href="events.html" class="flex items-center text-gray-900">
+            <div class="w-5 h-5 flex items-center justify-center mr-2">
+                <i class="ri-arrow-left-line"></i>
+            </div>
+            <span>Back to Events</span>
+        </a>
+        <button class="bg-primary text-white px-4 py-2 !rounded-button font-medium flex items-center whitespace-nowrap">
+            <div class="w-5 h-5 flex items-center justify-center mr-2">
+                <i class="ri-share-line"></i>
+            </div>
+            Share Event
+        </button>
+    </div>
+</header>
+<div class="container mx-auto px-4 pt-24 pb-12">
+    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+        <div class="p-6">
+            <h1 class="text-2xl font-bold text-gray-900 mb-6">Create New Event</h1>
+            <form action="" method="POST" class="space-y-8">
+                <!-- Basic Information -->
+                <div class="space-y-6">
+                    <h2 class="text-xl font-semibold text-gray-900 pb-2 border-b">Basic Information</h2>
+                    <div class="grid grid-cols-1 gap-6">
+                        <div>
+                            <label for="event-name" class="block text-sm font-medium text-gray-700 mb-1">Event Name</label>
+                            <input type="text" id="event-name" name="event-name" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Enter a catchy name for your event" value="Asmaa's Workshop" required>
+                        </div>
+                        <!-- Capacity -->
+                        <div>
+                            <label for="capacity" class="block text-sm font-medium text-gray-700 mb-1">Maximum Capacity</label>
+                            <input type="number" id="capacity" name="capacity" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Enter maximum number of participants" min="1" value="50" required>
+                            <p class="mt-1 text-sm text-gray-500">Maximum number of participants allowed</p>
+                        </div>
+                        <div>
+                            <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                            <textarea id="description" name="description" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Provide detailed information about your event" required></textarea>
+                            <div class="mt-1 text-sm text-gray-500">Maximum 500 characters</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Date and Time -->
+                <div class="space-y-6">
+                    <h2 class="text-xl font-semibold text-gray-900 pb-2 border-b">Date and Time</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="start-date" class="block text-sm font-medium text-gray-700 mb-1">Start Date & Time</label>
+                            <input type="datetime-local" id="start-date" name="start-date" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" required>
+                        </div>
+                        <div>
+                            <label for="end-date" class="block text-sm font-medium text-gray-700 mb-1">End Date & Time</label>
+                            <input type="datetime-local" id="end-date" name="end-date" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" required>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Recurring Event</label>
+                            <div class="flex items-center space-x-4">
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="recurring" value="no" class="text-primary" checked>
+                                    <span class="ml-2">No</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="recurring" value="daily" class="text-primary">
+                                    <span class="ml-2">Daily</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="recurring" value="weekly" class="text-primary">
+                                    <span class="ml-2">Weekly</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="recurring" value="monthly" class="text-primary">
+                                    <span class="ml-2">Monthly</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Location -->
+                <div class="space-y-6">
+                    <h2 class="text-xl font-semibold text-gray-900 pb-2 border-b">Location</h2>
+                    <div class="grid grid-cols-1 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Event Type</label>
+                            <div class="flex items-center space-x-4">
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="location-type" value="venue" class="text-primary" checked>
+                                    <span class="ml-2">Physical Venue</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="location-type" value="online" class="text-primary">
+                                    <span class="ml-2">Online</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="location-type" value="hybrid" class="text-primary">
+                                    <span class="ml-2">Hybrid</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div id="venue-details">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="venue-name" class="block text-sm font-medium text-gray-700 mb-1">Venue Name</label>
+                                    <input type="text" id="venue-name" name="venue-name" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Enter venue name">
+                                </div>
+                                <div>
+                                    <label for="venue-address" class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                                    <input type="text" id="venue-address" name="venue-address" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Enter venue address">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="online-details" class="hidden">
+                            <div>
+                                <label for="platform" class="block text-sm font-medium text-gray-700 mb-1">Online Platform</label>
+                                <select id="platform" name="platform" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary">
+                                    <option value="">Select platform</option>
+                                    <option value="zoom">Zoom</option>
+                                    <option value="teams">Microsoft Teams</option>
+                                    <option value="meet">Google Meet</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Event Details -->
+                <div class="space-y-6">
+                    <h2 class="text-xl font-semibold text-gray-900 pb-2 border-b">Event Details</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="event-type" class="block text-sm font-medium text-gray-700 mb-1">Event Type</label>
+                            <select id="event-type" name="event-type" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" required>
+                                <option value="">Select type</option>
+                                <option value="conference">Conference</option>
+                                <option value="workshop">Workshop</option>
+                                <option value="seminar">Seminar</option>
+                                <option value="webinar">Webinar</option>
+                                <option value="training">Training</option>
+                                <option value="networking">Networking</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="target-audience" class="block text-sm font-medium text-gray-700 mb-1">Target Audience</label>
+                            <select id="target-audience" name="target-audience" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" required multiple>
+                                <option value="students">Students</option>
+                                <option value="professionals">Professionals</option>
+                                <option value="executives">Executives</option>
+                                <option value="entrepreneurs">Entrepreneurs</option>
+                                <option value="general">General Public</option>
+                            </select>
+                            <div class="mt-1 text-sm text-gray-500">Hold Ctrl/Cmd to select multiple</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pricing -->
+                <div class="space-y-6">
+                    <h2 class="text-xl font-semibold text-gray-900 pb-2 border-b">Pricing</h2>
+                    <div class="grid grid-cols-1 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Event Fee</label>
+                            <div class="flex items-center space-x-4">
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="price-type" value="free" class="text-primary" checked>
+                                    <span class="ml-2">Free</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="price-type" value="paid" class="text-primary">
+                                    <span class="ml-2">Paid</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div id="price-details" class="hidden">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div>
+                                    <label for="regular-price" class="block text-sm font-medium text-gray-700 mb-1">Regular Price</label>
+                                    <div class="relative">
+                                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">$</span>
+                                        <input type="number" id="regular-price" name="regular-price" class="w-full pl-8 pr-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" placeholder="0.00" min="0" step="0.01">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="early-bird" class="block text-sm font-medium text-gray-700 mb-1">Early Bird Price</label>
+                                    <div class="relative">
+                                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">$</span>
+                                        <input type="number" id="early-bird" name="early-bird" class="w-full pl-8 pr-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" placeholder="0.00" min="0" step="0.01">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="group-discount" class="block text-sm font-medium text-gray-700 mb-1">Group Discount (%)</label>
+                                    <input type="number" id="group-discount" name="group-discount" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" placeholder="0" min="0" max="100">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Speakers -->
+                <div class="space-y-6">
+                    <h2 class="text-xl font-semibold text-gray-900 pb-2 border-b">Speakers</h2>
+                    <div id="speakers-container">
+                        <div class="speaker-entry grid grid-cols-1 md:grid-cols-2 gap-6 pb-4 border-b border-gray-200">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Speaker Name</label>
+                                <input type="text" name="speaker-name[]" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Enter speaker name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Designation</label>
+                                <input type="text" name="speaker-designation[]" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Enter designation">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Bio</label>
+                                <textarea name="speaker-bio[]" rows="2" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Enter speaker bio"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" id="add-speaker" class="text-primary font-medium flex items-center">
+                        <div class="w-5 h-5 flex items-center justify-center mr-1">
+                            <i class="ri-add-line"></i>
+                        </div>
+                        Add Another Speaker
+                    </button>
+                </div>
+                <!-- Contact Information -->
+                <div class="space-y-6">
+                    <h2 class="text-xl font-semibold text-gray-900 pb-2 border-b">Contact Information</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="contact-name" class="block text-sm font-medium text-gray-700 mb-1">Contact Person</label>
+                            <input type="text" id="contact-name" name="contact-name" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Enter contact person name" required>
+                        </div>
+                        <div>
+                            <label for="contact-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="contact-email" name="contact-email" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Enter contact email" required>
+                        </div>
+                        <div>
+                            <label for="contact-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                            <input type="tel" id="contact-phone" name="contact-phone" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Enter contact phone number" required>
+                        </div>
+                        <div>
+                            <label for="website" class="block text-sm font-medium text-gray-700 mb-1">Website</label>
+                            <input type="url" id="website" name="website" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Enter event website">
+                        </div>
+                    </div>
+                </div>
+                <!-- Additional Services -->
+                <div class="space-y-6">
+                    <h2 class="text-xl font-semibold text-gray-900 pb-2 border-b">Additional Services</h2>
+                    <div class="grid grid-cols-1 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-3">Available Services</label>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <label class="flex items-center p-4 border border-gray-200 rounded">
+                                    <input type="checkbox" name="services[]" value="food" class="text-primary mr-3">
+                                    <div>
+                                        <span class="font-medium text-gray-900">Food & Beverages</span>
+                                        <p class="text-sm text-gray-500">Catering services available</p>
+                                    </div>
+                                </label>
+                                <label class="flex items-center p-4 border border-gray-200 rounded">
+                                    <input type="checkbox" name="services[]" value="transport" class="text-primary mr-3">
+                                    <div>
+                                        <span class="font-medium text-gray-900">Transportation</span>
+                                        <p class="text-sm text-gray-500">Shuttle service to venue</p>
+                                    </div>
+                                </label>
+                                <label class="flex items-center p-4 border border-gray-200 rounded">
+                                    <input type="checkbox" name="services[]" value="accommodation" class="text-primary mr-3">
+                                    <div>
+                                        <span class="font-medium text-gray-900">Accommodation</span>
+                                        <p class="text-sm text-gray-500">Hotel booking assistance</p>
+                                    </div>
+                                </label>
+                                <label class="flex items-center p-4 border border-gray-200 rounded">
+                                    <input type="checkbox" name="services[]" value="materials" class="text-primary mr-3">
+                                    <div>
+                                        <span class="font-medium text-gray-900">Event Materials</span>
+                                        <p class="text-sm text-gray-500">Handouts and supplies</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Submit Button -->
+                <div class="flex justify-end pt-6 border-t border-gray-200">
+                    <button type="submit" class="bg-primary text-white px-6 py-3 !rounded-button font-medium flex items-center whitespace-nowrap">
+                        <div class="w-5 h-5 flex items-center justify-center mr-2">
+                            <i class="ri-check-line"></i>
+                        </div>
+                        Create Event
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+// Handle image upload and preview
+        const mainImageInput = document.getElementById('main-event-image');
+        const mainImagePreview = document.getElementById('main-image-preview');
+        const removeMainImage = document.getElementById('remove-main-image');
+        mainImageInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    mainImagePreview.querySelector('img').src = e.target.result;
+                    mainImagePreview.classList.remove('hidden');
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+        removeMainImage.addEventListener('click', function() {
+            mainImageInput.value = '';
+            mainImagePreview.classList.add('hidden');
+            mainImagePreview.querySelector('img').src = '';
+        });
+// Handle additional images
+        const additionalImagesContainer = document.getElementById('additional-images-container');
+        const maxAdditionalImages = 4;
+        function createImagePreview(file, container) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                container.style.backgroundImage = `url(${e.target.result})`;
+                container.style.backgroundSize = 'cover';
+                container.style.backgroundPosition = 'center';
+                container.querySelector('.flex').classList.add('hidden');
+            }
+            reader.readAsDataURL(file);
+        }
+        additionalImagesContainer.addEventListener('change', function(e) {
+            if (e.target.type === 'file') {
+                const file = e.target.files[0];
+                if (file) {
+                    const container = e.target.closest('label');
+                    createImagePreview(file, container);
+                    if (additionalImagesContainer.querySelectorAll('input[type="file"]').length < maxAdditionalImages) {
+                        const newUploadLabel = document.createElement('label');
+                        newUploadLabel.className = 'flex flex-col items-center justify-center h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100';
+                        newUploadLabel.innerHTML = `
+<div class="flex flex-col items-center justify-center p-3">
+<div class="w-8 h-8 mb-2 flex items-center justify-center text-gray-400">
+<i class="ri-add-line text-xl"></i>
+</div>
+<p class="text-xs text-gray-500 text-center">Add Image</p>
+</div>
+<input type="file" class="hidden" accept="image/*" name="additional-images[]">
+`;
+                        additionalImagesContainer.appendChild(newUploadLabel);
+                    }
+                }
+            }
+        });
+// Handle ticket types
+        const ticketTypesContainer = document.getElementById('ticket-types-container');
+        const addTicketTypeBtn = document.getElementById('add-ticket-type');
+        addTicketTypeBtn.addEventListener('click', function() {
+            const newTicketType = document.createElement('div');
+            newTicketType.className = 'ticket-type p-4 border border-gray-200 rounded-lg';
+            newTicketType.innerHTML = `
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Ticket Name</label>
+<input type="text" name="ticket-name[]" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" placeholder="e.g., VIP Access">
+</div>
+<div class="relative">
+<label class="block text-sm font-medium text-gray-700 mb-1">Price ($)</label>
+<input type="number" name="ticket-price[]" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" placeholder="0.00" min="0" step="0.01">
+<button type="button" class="remove-ticket absolute -right-6 top-8 text-gray-400 hover:text-gray-600">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-close-line"></i>
+</div>
+</button>
+</div>
+<div class="md:col-span-2">
+<label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+<input type="text" name="ticket-description[]" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" placeholder="What's included with this ticket">
+</div>
+</div>
+`;
+            ticketTypesContainer.appendChild(newTicketType);
+// Add remove functionality
+            const removeBtn = newTicketType.querySelector('.remove-ticket');
+            removeBtn.addEventListener('click', function() {
+                newTicketType.remove();
+            });
+        });
+// Handle discount toggles
+        const earlyBirdCheckbox = document.getElementById('early-bird-discount');
+        const earlyBirdDetails = document.getElementById('early-bird-details');
+        const groupDiscountCheckbox = document.getElementById('group-discount');
+        const groupDiscountDetails = document.getElementById('group-discount-details');
+        earlyBirdCheckbox.addEventListener('change', function() {
+            earlyBirdDetails.classList.toggle('hidden', !this.checked);
+        });
+        groupDiscountCheckbox.addEventListener('change', function() {
+            groupDiscountDetails.classList.toggle('hidden', !this.checked);
+        });
+// Handle location type toggle
+        const locationTypeRadios = document.querySelectorAll('input[name="location-type"]');
+        const venueDetails = document.getElementById('venue-details');
+        const onlineDetails = document.getElementById('online-details');
+        locationTypeRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'venue') {
+                    venueDetails.classList.remove('hidden');
+                    onlineDetails.classList.add('hidden');
+                } else if (this.value === 'online') {
+                    venueDetails.classList.add('hidden');
+                    onlineDetails.classList.remove('hidden');
+                } else {
+                    venueDetails.classList.remove('hidden');
+                    onlineDetails.classList.remove('hidden');
+                }
+            });
+        });
+// Handle price type toggle
+        const priceTypeRadios = document.querySelectorAll('input[name="price-type"]');
+        const priceDetails = document.getElementById('price-details');
+        priceTypeRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'paid') {
+                    priceDetails.classList.remove('hidden');
+                } else {
+                    priceDetails.classList.add('hidden');
+                }
+            });
+        });
+// Add speaker functionality
+        const addSpeakerBtn = document.getElementById('add-speaker');
+        const speakersContainer = document.getElementById('speakers-container');
+        addSpeakerBtn.addEventListener('click', function() {
+            const speakerEntry = document.createElement('div');
+            speakerEntry.className = 'speaker-entry grid grid-cols-1 md:grid-cols-2 gap-6 pb-4 border-b border-gray-200 mt-4';
+            speakerEntry.innerHTML = `
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Speaker Name</label>
+<input type="text" name="speaker-name[]" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Enter speaker name">
+</div>
+<div class="relative">
+<label class="block text-sm font-medium text-gray-700 mb-1">Designation</label>
+<input type="text" name="speaker-designation[]" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Enter designation">
+<button type="button" class="remove-speaker absolute -right-6 top-8 text-gray-400 hover:text-gray-600">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-close-line"></i>
+</div>
+</button>
+</div>
+<div class="md:col-span-2">
+<label class="block text-sm font-medium text-gray-700 mb-1">Bio</label>
+<textarea name="speaker-bio[]" rows="2" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Enter speaker bio"></textarea>
+</div>
+`;
+            speakersContainer.appendChild(speakerEntry);
+// Add remove functionality to new speaker entry
+            const removeBtn = speakerEntry.querySelector('.remove-speaker');
+            removeBtn.addEventListener('click', function() {
+                speakerEntry.remove();
+            });
+        });
+// Form validation and submission
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+// Validate description length
+            const description = document.getElementById('description');
+            if (description.value.length > 500) {
+                const modal = document.createElement('div');
+                modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+                modal.innerHTML = `
+<div class="bg-white rounded-lg p-6 max-w-sm w-full mx-4">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-semibold text-gray-900">Character Limit Exceeded</h3>
+<button class="text-gray-500 hover:text-gray-700" id="closeModal">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-close-line"></i>
+</div>
+</button>
+</div>
+<p class="text-gray-600 mb-4">Description must not exceed 500 characters.</p>
+<button class="w-full bg-primary text-white py-2 !rounded-button">OK</button>
+</div>
+`;
+                document.body.appendChild(modal);
+                const closeModal = () => modal.remove();
+                modal.querySelector('#closeModal').addEventListener('click', closeModal);
+                modal.querySelector('button').addEventListener('click', closeModal);
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) closeModal();
+                });
+                return;
+            }
+// Show success message
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            modal.innerHTML = `
+<div class="bg-white rounded-lg p-6 max-w-sm w-full mx-4">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-semibold text-gray-900">Success!</h3>
+<button class="text-gray-500 hover:text-gray-700" id="closeModal">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-close-line"></i>
+</div>
+</button>
+</div>
+<p class="text-gray-600 mb-4">Your event has been created successfully.</p>
+<button class="w-full bg-primary text-white py-2 !rounded-button">OK</button>
+</div>
+`;
+            document.body.appendChild(modal);
+            const closeModal = () => {
+                modal.remove();
+                form.reset();
+            };
+            modal.querySelector('#closeModal').addEventListener('click', closeModal);
+            modal.querySelector('button').addEventListener('click', closeModal);
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModal();
+            });
+        });
+
+    const locationSearch = document.getElementById('location-search');
+    const locationCheckboxes = document.querySelectorAll('.location-checkbox');
+    locationSearch.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        locationCheckboxes.forEach(checkbox => {
+            const label = checkbox.nextElementSibling;
+            const locationName = label.textContent.toLowerCase();
+            if (locationName.includes(searchTerm)) {
+                checkbox.parentElement.style.display = 'flex';
+            } else {
+                checkbox.parentElement.style.display = 'none';
+            }
+        });
+    });
+    // Sort dropdown functionality
+    const sortDropdown = document.getElementById('sort-by');
+    sortDropdown.addEventListener('change', function() {
+// In a real application, this would trigger a re-fetch or re-sort of the events
+        console.log('Sort by:', this.value);
+
+    });
+    });
+</script>
+</body>
+
+
+</html>
