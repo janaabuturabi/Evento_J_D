@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVENTO</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#004047',secondary:'#F59E0B'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <link rel="icon" href="IMAGE/favicon1.ico" type="image/x-icon">\
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<header class="fixed top-0 left-0 w-full bg-white shadow-sm py-4 px-6 flex items-center justify-between z-50">
+    <a href="events.html">
+        <button class="flex items-center text-gray-700 hover:text-primary transition-colors !rounded-button">
+            <div class="w-10 h-10 flex items-center justify-center">
+                <i class="ri-arrow-left-line ri-lg"></i>
+            </div>
+            <span class="ml-1 font-medium whitespace-nowrap">Back</span>
+        </button>
+    </a>
+    <h1 class="text-xl font-semibold text-gray-800">Event management</h1>
+    <div class="w-10"></div>
+
+
+</header>
+<div class="min-h-screen flex flex-col">
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Page Title -->
+            <div class="mb-6">
+                <h1 class="text-2xl font-bold text-gray-900"></h1>
+                <p class="text-gray-600 mt-1"></p>
+            </div>
+            <!-- Filter Panel -->
+            <div class="bg-white rounded shadow-sm p-4 mb-6">
+                <div class="flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex flex-wrap items-center gap-4">
+                        <!-- Audience Filter -->
+                        <div class="custom-dropdown">
+                            <button id="audienceDropdown" class="flex items-center justify-between px-4 py-2 bg-gray-50 border border-gray-200 rounded text-sm text-gray-700 min-w-[140px] !rounded-button whitespace-nowrap">
+                                <span>Audience</span>
+                                <i class="ri-arrow-down-s-line ml-2"></i>
+                            </button>
+                            <div id="audienceDropdownContent" class="dropdown-content mt-1">
+                                <div class="py-2">
+                                    <label class="custom-checkbox dropdown-item">
+                                        <input type="checkbox" name="audience" value="kids">
+                                        <span class="checkmark mr-2"></span>
+                                        For Kids
+                                    </label>
+                                    <label class="custom-checkbox dropdown-item">
+                                        <input type="checkbox" name="audience" value="adults">
+                                        <span class="checkmark mr-2"></span>
+                                        For Adults
+                                    </label>
+                                    <label class="custom-checkbox dropdown-item">
+                                        <input type="checkbox" name="audience" value="families">
+                                        <span class="checkmark mr-2"></span>
+                                        For Families
+                                    </label>
+                                    <label class="custom-checkbox dropdown-item">
+                                        <input type="checkbox" name="audience" value="seniors">
+                                        <span class="checkmark mr-2"></span>
+                                        For Seniors
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Type Filter -->
+                        <div class="custom-dropdown">
+                            <button id="typeDropdown" class="flex items-center justify-between px-4 py-2 bg-gray-50 border border-gray-200 rounded text-sm text-gray-700 min-w-[140px] !rounded-button whitespace-nowrap">
+                                <span>Event Type</span>
+                                <i class="ri-arrow-down-s-line ml-2"></i>
+                            </button>
+                            <div id="typeDropdownContent" class="dropdown-content mt-1">
+                                <div class="py-2">
+                                    <label class="custom-checkbox dropdown-item">
+                                        <input type="checkbox" name="type" value="entertainment">
+                                        <span class="checkmark mr-2"></span>
+                                        Entertainment
+                                    </label>
+                                    <label class="custom-checkbox dropdown-item">
+                                        <input type="checkbox" name="type" value="educational">
+                                        <span class="checkmark mr-2"></span>
+                                        Educational
+                                    </label>
+                                    <label class="custom-checkbox dropdown-item">
+                                        <input type="checkbox" name="type" value="cultural">
+                                        <span class="checkmark mr-2"></span>
+                                        Cultural
+                                    </label>
+                                    <label class="custom-checkbox dropdown-item">
+                                        <input type="checkbox" name="type" value="sports">
+                                        <span class="checkmark mr-2"></span>
+                                        Sports
+                                    </label>
+                                    <label class="custom-checkbox dropdown-item">
+                                        <input type="checkbox" name="type" value="networking">
+                                        <span class="checkmark mr-2"></span>
+                                        Networking
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Time Filter -->
+                        <div class="custom-dropdown">
+                            <button id="timeDropdown" class="flex items-center justify-between px-4 py-2 bg-gray-50 border border-gray-200 rounded text-sm text-gray-700 min-w-[140px] !rounded-button whitespace-nowrap">
+                                <span>Time Period</span>
+                                <i class="ri-arrow-down-s-line ml-2"></i>
+                            </button>
+                            <div id="timeDropdownContent" class="dropdown-content mt-1">
+                                <div class="py-2">
+                                    <div class="dropdown-item">
+                                        <label class="custom-checkbox">
+                                            <input type="radio" name="time" value="today">
+                                            <span class="checkmark mr-2"></span>
+                                            Today
+                                        </label>
+                                    </div>
+                                    <div class="dropdown-item">
+                                        <label class="custom-checkbox">
+                                            <input type="radio" name="time" value="week">
+                                            <span class="checkmark mr-2"></span>
+                                            This Week
+                                        </label>
+                                    </div>
+                                    <div class="dropdown-item">
+                                        <label class="custom-checkbox">
+                                            <input type="radio" name="time" value="month">
+                                            <span class="checkmark mr-2"></span>
+                                            This Month
+                                        </label>
+                                    </div>
+                                    <div class="dropdown-item">
+                                        <label class="custom-checkbox">
+                                            <input type="radio" name="time" value="custom">
+                                            <span class="checkmark mr-2"></span>
+                                            Custom
+                                        </label>
+                                    </div>
+                                    <div id="customDateRange" class="px-4 py-2 hidden">
+                                        <div class="flex flex-col space-y-2">
+                                            <div>
+                                                <label class="block text-xs text-gray-600 mb-1">From</label>
+                                                <input type="date" class="w-full px-3 py-1 border border-gray-200 rounded text-sm">
+                                            </div>
+                                            <div>
+                                                <label class="block text-xs text-gray-600 mb-1">To</label>
+                                                <input type="date" class="w-full px-3 py-1 border border-gray-200 rounded text-sm">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Location Filter -->
+                        <div class="custom-dropdown">
+                            <button id="locationDropdown" class="flex items-center justify-between px-4 py-2 bg-gray-50 border border-gray-200 rounded text-sm text-gray-700 min-w-[140px] !rounded-button whitespace-nowrap">
+                                <span>Location</span>
+                                <i class="ri-arrow-down-s-line ml-2"></i>
+                            </button>
+                            <div id="locationDropdownContent" class="dropdown-content mt-1">
+                                <div class="p-3">
+                                    <div class="relative mb-3">
+                                        <input type="text" placeholder="Search location" class="w-full px-3 py-2 pl-8 border border-gray-200 rounded text-sm">
+                                        <div class="absolute left-2 top-1/2 transform -translate-y-1/2 w-4 h-4 flex items-center justify-center text-gray-400">
+                                            <i class="ri-search-line"></i>
+                                        </div>
+                                    </div>
+                                    <div class="py-1">
+                                        <label class="custom-checkbox dropdown-item">
+                                            <input type="checkbox" name="location" value="hebron">
+                                            <span class="checkmark mr-2"></span>
+                                            Hebron
+                                        </label>
+                                        <label class="custom-checkbox dropdown-item">
+                                            <input type="checkbox" name="location" value="bethlehem">
+                                            <span class="checkmark mr-2"></span>
+                                            Bethlehem
+                                        </label>
+                                        <label class="custom-checkbox dropdown-item">
+                                            <input type="checkbox" name="location" value="jenin">
+                                            <span class="checkmark mr-2"></span>
+                                            Jenin
+                                        </label>
+                                        <label class="custom-checkbox dropdown-item">
+                                            <input type="checkbox" name="location" value="ramallah">
+                                            <span class="checkmark mr-2"></span>
+                                            Ramallah
+                                        </label>
+                                        <label class="custom-checkbox dropdown-item">
+                                            <input type="checkbox" name="location" value="nablus">
+                                            <span class="checkmark mr-2"></span>
+                                            Nablus
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Price Filter -->
+                        <div class="custom-dropdown">
+                            <button id="priceDropdown" class="flex items-center justify-between px-4 py-2 bg-gray-50 border border-gray-200 rounded text-sm text-gray-700 min-w-[140px] !rounded-button whitespace-nowrap">
+                                <span>Price</span>
+                                <i class="ri-arrow-down-s-line ml-2"></i>
+                            </button>
+                            <div id="priceDropdownContent" class="dropdown-content mt-1 min-w-[240px]">
+                                <div class="p-4">
+                                    <label class="custom-checkbox mb-3 block">
+                                        <input type="checkbox" name="price" value="free">
+                                        <span class="checkmark mr-2"></span>
+                                        Free Events Only
+                                    </label>
+                                    <div>
+                                        <div class="flex justify-between mb-2">
+                                            <span class="text-xs text-gray-600">Price Range</span>
+                                            <span class="text-xs font-medium" id="priceRangeValue">$0 - $500</span>
+                                        </div>
+                                        <input type="range" min="0" max="500" value="500" class="custom-range" id="priceRangeSlider">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <!-- View Toggle -->
+                        <div class="flex items-center bg-gray-50 rounded p-1">
+                            <button id="gridViewBtn" class="px-3 py-1 text-sm font-medium text-white bg-primary rounded !rounded-button whitespace-nowrap">
+                                <i class="ri-layout-grid-line mr-1"></i> Grid
+                            </button>
+                            <button id="listViewBtn" class="px-3 py-1 text-sm font-medium text-gray-600 !rounded-button whitespace-nowrap">
+                                <i class="ri-list-check-2 mr-1"></i> List
+                            </button>
+                        </div>
+                        <!-- Sort Dropdown -->
+                        <div class="custom-dropdown">
+                            <button id="sortDropdown" class="flex items-center justify-between px-4 py-2 bg-gray-50 border border-gray-200 rounded text-sm text-gray-700 min-w-[180px] !rounded-button whitespace-nowrap">
+                                <span>Sort: Newest to Oldest</span>
+                                <i class="ri-arrow-down-s-line ml-2"></i>
+                            </button>
+                            <div id="sortDropdownContent" class="dropdown-content mt-1 right-0">
+                                <div class="py-2">
+                                    <div class="dropdown-item">Newest to Oldest</div>
+                                    <div class="dropdown-item">Oldest to Newest</div>
+                                    <div class="dropdown-item">Highest Rated</div>
+                                    <div class="dropdown-item">Price: Low to High</div>
+                                    <div class="dropdown-item">Price: High to Low</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Status Filter Tabs -->
+            <div class="flex border-b border-gray-200 mb-6">
+                <button class="px-4 py-2 text-sm font-medium text-primary border-b-2 border-primary">
+                    All Events (24)
+                </button>
+                <button class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700">
+                    Pending (8)
+                </button>
+                <button class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700">
+                    Approved (12)
+                </button>
+                <button class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700">
+                    Rejected (4)
+                </button>
+            </div>
+            <!-- Events Grid -->
+            <div id="gridView" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                <!-- Event Card 1 -->
+                <div class="bg-white rounded shadow-sm overflow-hidden">
+                    <div class="relative h-48">
+                        <img src="https://readdy.ai/api/search-image?query=cultural%20festival%20in%20palestine%20with%20traditional%20dance%20performances%2C%20colorful%20costumes%2C%20crowd%20of%20people%20watching%2C%20outdoor%20venue%20with%20decorations%2C%20high%20quality%20professional%20photograph&width=600&height=400&seq=event1&orientation=landscape" alt="Cultural Festival" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex space-x-2">
+                            <span class="px-2 py-1 bg-primary bg-opacity-90 text-white text-xs rounded-full">Cultural</span>
+                            <span class="px-2 py-1 bg-secondary bg-opacity-90 text-white text-xs rounded-full">For Families</span>
+                        </div>
+                        <div class="absolute top-3 right-3">
+                            <span class="px-2 py-1 bg-yellow-500 bg-opacity-90 text-white text-xs rounded-full status-pending">Pending</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-1">Palestinian Heritage Festival</h3>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                <i class="ri-calendar-line"></i>
+                            </div>
+                            <span>May 12, 2025 • 10:00 AM - 6:00 PM</span>
+                        </div>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                <i class="ri-map-pin-line"></i>
+                            </div>
+                            <span>Cultural Center, Ramallah</span>
+                        </div>
+                        <div class="flex items-center text-gray-500 text-sm mb-4">
+                            <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                <i class="ri-money-dollar-circle-line"></i>
+                            </div>
+                            <span>$15.00 per person</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <button class="px-3 py-1.5 bg-primary text-white text-sm font-medium rounded !rounded-button whitespace-nowrap">
+                                <i class="ri-check-line mr-1"></i> Approve
+                            </button>
+                            <button class="px-3 py-1.5 bg-red-50 text-red-600 text-sm font-medium rounded !rounded-button whitespace-nowrap">
+                                <i class="ri-close-line mr-1"></i> Reject
+                            </button>
+                            <button class="px-3 py-1.5 bg-gray-50 text-gray-700 text-sm font-medium rounded !rounded-button whitespace-nowrap" onclick="openModal('event1')">
+                                <i class="ri-eye-line mr-1"></i> Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Event Card 2 -->
+                <div class="bg-white rounded shadow-sm overflow-hidden">
+                    <div class="relative h-48">
+                        <img src="https://readdy.ai/api/search-image?query=tech%20conference%20with%20speakers%20on%20stage%2C%20audience%20in%20seats%2C%20professional%20lighting%2C%20projection%20screen%20showing%20presentation%2C%20modern%20venue%2C%20high%20quality%20professional%20photograph&width=600&height=400&seq=event2&orientation=landscape" alt="Tech Summit" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex space-x-2">
+                            <span class="px-2 py-1 bg-primary bg-opacity-90 text-white text-xs rounded-full">Educational</span>
+                            <span class="px-2 py-1 bg-secondary bg-opacity-90 text-white text-xs rounded-full">For Adults</span>
+                        </div>
+                        <div class="absolute top-3 right-3">
+                            <span class="px-2 py-1 bg-green-500 bg-opacity-90 text-white text-xs rounded-full status-approved">Approved</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-1">Palestine Tech Summit 2025</h3>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                <i class="ri-calendar-line"></i>
+                            </div>
+                            <span>May 15-16, 2025 • 9:00 AM - 5:00 PM</span>
+                        </div>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                <i class="ri-map-pin-line"></i>
+                            </div>
+                            <span>Convention Center, Bethlehem</span>
+                        </div>
+                        <div class="flex items-center text-gray-500 text-sm mb-4">
+                            <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                <i class="ri-money-dollar-circle-line"></i>
+                            </div>
+                            <span>$75.00 per person</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <button class="px-3 py-1.5 bg-gray-100 text-gray-400 text-sm font-medium rounded cursor-not-allowed !rounded-button whitespace-nowrap">
+                                <i class="ri-check-line mr-1"></i> Approve
+                            </button>
+                            <button class="px-3 py-1.5 bg-red-50 text-red-600 text-sm font-medium rounded !rounded-button whitespace-nowrap">
+                                <i class="ri-close-line mr-1"></i> Reject
+                            </button>
+                            <button class="px-3 py-1.5 bg-gray-50 text-gray-700 text-sm font-medium rounded !rounded-button whitespace-nowrap" onclick="openModal('event2')">
+                                <i class="ri-eye-line mr-1"></i> Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Event Card 3 -->
+                <div class="bg-white rounded shadow-sm overflow-hidden">
+                    <div class="relative h-48">
+                        <img src="https://readdy.ai/api/search-image?query=childrens%20art%20workshop%20with%20kids%20painting%20and%20creating%20crafts%2C%20colorful%20art%20supplies%2C%20bright%20classroom%20setting%2C%20instructors%20helping%2C%20happy%20children%2C%20high%20quality%20professional%20photograph&width=600&height=400&seq=event3&orientation=landscape" alt="Kids Art Workshop" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex space-x-2">
+                            <span class="px-2 py-1 bg-primary bg-opacity-90 text-white text-xs rounded-full">Educational</span>
+                            <span class="px-2 py-1 bg-secondary bg-opacity-90 text-white text-xs rounded-full">For Kids</span>
+                        </div>
+                        <div class="absolute top-3 right-3">
+                            <span class="px-2 py-1 bg-yellow-500 bg-opacity-90 text-white text-xs rounded-full status-pending">Pending</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-1">Creative Kids Art Workshop</h3>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                <i class="ri-calendar-line"></i>
+                            </div>
+                            <span>May 10, 2025 • 2:00 PM - 4:00 PM</span>
+                        </div>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                <i class="ri-map-pin-line"></i>
+                            </div>
+                            <span>Community Center, Hebron</span>
+                        </div>
+                        <div class="flex items-center text-gray-500 text-sm mb-4">
+                            <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                <i class="ri-money-dollar-circle-line"></i>
+                            </div>
+                            <span>Free</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <button class="px-3 py-1.5 bg-primary text-white text-sm font-medium rounded !rounded-button whitespace-nowrap">
+                                <i class="ri-check-line mr-1"></i> Approve
+                            </button>
+                            <button class="px-3 py-1.5 bg-red-50 text-red-600 text-sm font-medium rounded !rounded-button whitespace-nowrap">
+                                <i class="ri-close-line mr-1"></i> Reject
+                            </button>
+                            <button class="px-3 py-1.5 bg-gray-50 text-gray-700 text-sm font-medium rounded !rounded-button whitespace-nowrap" onclick="openModal('event3')">
+                                <i class="ri-eye-line mr-1"></i> Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Event Card 4 -->
+                <div class="bg-white rounded shadow-sm overflow-hidden">
+                    <div class="relative h-48">
+                        <img src="https://readdy.ai/api/search-image?query=soccer%20match%20in%20stadium%20with%20players%20on%20field%2C%20crowd%20of%20spectators%2C%20sports%20field%20with%20goals%2C%20evening%20lighting%2C%20professional%20sports%20event%2C%20high%20quality%20professional%20photograph&width=600&height=400&seq=event4&orientation=landscape" alt="Soccer Tournament" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex space-x-2">
+                            <span class="px-2 py-1 bg-primary bg-opacity-90 text-white text-xs rounded-full">Sports</span>
+                            <span class="px-2 py-1 bg-secondary bg-opacity-90 text-white text-xs rounded-full">For Families</span>
+                        </div>
+                        <div class="absolute top-3 right-3">
+                            <span class="px-2 py-1 bg-green-500 bg-opacity-90 text-white text-xs rounded-full status-approved">Approved</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-1">Palestine Youth Soccer Tournament</h3>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                <i class="ri-calendar-line"></i>
+                            </div>
+                            <span>May 20-22, 2025 • 10:00 AM - 6:00 PM</span>
+                        </div>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                <i class="ri-map-pin-line"></i>
+                            </div>
+                            <span>Sports Stadium, Nablus</span>
+                        </div>
+                        <div class="flex items-center text-gray-500 text-sm mb-4">
+                            <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                <i class="ri-money-dollar-circle-line"></i>
+                            </div>
+                            <span>$10.00 per person</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <button class="px-3 py-1.5 bg-gray-100 text-gray-400 text-sm font-medium rounded cursor-not-allowed !rounded-button whitespace-nowrap">
+                                <i class="ri-check-line mr-1"></i> Approve
+                            </button>
+                            <button class="px-3 py-1.5 bg-red-50 text-red-600 text-sm font-medium rounded !rounded-button whitespace-nowrap">
+                                <i class="ri-close-line mr-1"></i> Reject
+                            </button>
+                            <button class="px-3 py-1.5 bg-gray-50 text-gray-700 text-sm font-medium rounded !rounded-button whitespace-nowrap" onclick="openModal('event4')">
+                                <i class="ri-eye-line mr-1"></i> Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Event Card 5 -->
+                <div class="bg-white rounded shadow-sm overflow-hidden">
+                    <div class="relative h-48">
+                        <img src="https://readdy.ai/api/search-image?query=business%20networking%20event%20with%20professionals%20mingling%2C%20conference%20room%20setting%2C%20people%20exchanging%20business%20cards%2C%20refreshment%20table%2C%20professional%20attire%2C%20high%20quality%20professional%20photograph&width=600&height=400&seq=event5&orientation=landscape" alt="Networking Event" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex space-x-2">
+                            <span class="px-2 py-1 bg-primary bg-opacity-90 text-white text-xs rounded-full">Networking</span>
+                            <span class="px-2 py-1 bg-secondary bg-opacity-90 text-white text-xs rounded-full">For Adults</span>
+                        </div>
+                        <div class="absolute top-3 right-3">
+                            <span class="px-2 py-1 bg-red-500 bg-opacity-90 text-white text-xs rounded-full status-rejected">Rejected</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-1">Business Networking Mixer</h3>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                <i class="ri-calendar-line"></i>
+                            </div>
+                            <span>May 18, 2025 • 6:00 PM - 9:00 PM</span>
+                        </div>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                <i class="ri-map-pin-line"></i>
+                            </div>
+                            <span>Grand Hotel, Ramallah</span>
+                        </div>
+                        <div class="flex items-center text-gray-500 text-sm mb-4">
+                            <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                <i class="ri-money-dollar-circle-line"></i>
+                            </div>
+                            <span>$25.00 per person</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <button class="px-3 py-1.5 bg-primary text-white text-sm font-medium rounded !rounded-button whitespace-nowrap">
+                                <i class="ri-check-line mr-1"></i> Approve
+                            </button>
+                            <button class="px-3 py-1.5 bg-gray-100 text-gray-400 text-sm font-medium rounded cursor-not-allowed !rounded-button whitespace-nowrap">
+                                <i class="ri-close-line mr-1"></i> Reject
+                            </button>
+                            <button class="px-3 py-1.5 bg-gray-50 text-gray-700 text-sm font-medium rounded !rounded-button whitespace-nowrap" onclick="openModal('event5')">
+                                <i class="ri-eye-line mr-1"></i> Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Event Card 6 -->
+                <div class="bg-white rounded shadow-sm overflow-hidden">
+                    <div class="relative h-48">
+                        <img src="https://readdy.ai/api/search-image?query=outdoor%20music%20concert%20with%20band%20performing%20on%20stage%2C%20crowd%20of%20people%2C%20evening%20lighting%2C%20sound%20equipment%2C%20outdoor%20venue%20with%20decorations%2C%20high%20quality%20professional%20photograph&width=600&height=400&seq=event6&orientation=landscape" alt="Music Concert" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex space-x-2">
+                            <span class="px-2 py-1 bg-primary bg-opacity-90 text-white text-xs rounded-full">Entertainment</span>
+                            <span class="px-2 py-1 bg-secondary bg-opacity-90 text-white text-xs rounded-full">For Adults</span>
+                        </div>
+                        <div class="absolute top-3 right-3">
+                            <span class="px-2 py-1 bg-yellow-500 bg-opacity-90 text-white text-xs rounded-full status-pending">Pending</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-1">Summer Music Festival</h3>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                <i class="ri-calendar-line"></i>
+                            </div>
+                            <span>May 25, 2025 • 7:00 PM - 11:00 PM</span>
+                        </div>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                <i class="ri-map-pin-line"></i>
+                            </div>
+                            <span>City Park, Jenin</span>
+                        </div>
+                        <div class="flex items-center text-gray-500 text-sm mb-4">
+                            <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                <i class="ri-money-dollar-circle-line"></i>
+                            </div>
+                            <span>$30.00 per person</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <button class="px-3 py-1.5 bg-primary text-white text-sm font-medium rounded !rounded-button whitespace-nowrap">
+                                <i class="ri-check-line mr-1"></i> Approve
+                            </button>
+                            <button class="px-3 py-1.5 bg-red-50 text-red-600 text-sm font-medium rounded !rounded-button whitespace-nowrap">
+                                <i class="ri-close-line mr-1"></i> Reject
+                            </button>
+                            <button class="px-3 py-1.5 bg-gray-50 text-gray-700 text-sm font-medium rounded !rounded-button whitespace-nowrap" onclick="openModal('event6')">
+                                <i class="ri-eye-line mr-1"></i> Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="listView" class="hidden mb-8">
+                <div class="bg-white rounded shadow-sm overflow-hidden">
+                    <table class="w-full">
+                        <thead>
+                        <tr class="bg-gray-50 border-b border-gray-200">
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-48">Event</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Details</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-28">Price</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-28">Status</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-48">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200" id="listViewBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>  <!-- Pagination -->
+
+    </main>
+</div>
+<!-- Event Details Modal -->
+<div id="eventModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-lg shadow-lg w-full max-w-3xl max-h-[90vh] overflow-y-auto">
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold text-gray-900" id="modalTitle">Event Details</h2>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
+                    <div class="w-8 h-8 flex items-center justify-center">
+                        <i class="ri-close-line text-xl"></i>
+                    </div>
+                </button>
+            </div>
+            <div id="modalContent">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-200">
+                <h3 class="font-medium text-gray-900 mb-3">Admin Notes</h3>
+                <textarea class="w-full px-4 py-3 border border-gray-200 rounded resize-none h-24 text-sm" placeholder="Add notes about this event..."></textarea>
+            </div>
+            <div class="mt-6 flex items-center justify-end space-x-3">
+                <button onclick="closeModal()" class="px-4 py-2 bg-gray-100 text-gray-700 font-medium rounded !rounded-button whitespace-nowrap">
+                    Cancel
+                </button>
+                <button class="px-4 py-2 bg-red-50 text-red-600 font-medium rounded !rounded-button whitespace-nowrap">
+                    <i class="ri-close-line mr-1"></i> Reject Event
+                </button>
+                <button class="px-4 py-2 bg-primary text-white font-medium rounded !rounded-button whitespace-nowrap">
+                    <i class="ri-check-line mr-1"></i> Approve Event
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="admin.js"></script>
+
+</body>
+</html>
