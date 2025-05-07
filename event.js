@@ -251,12 +251,6 @@
     updateActiveFilters();
 });
 
-        // Sort dropdown functionality
-        const sortDropdown = document.getElementById("sort-by");
-        sortDropdown.addEventListener("change", function () {
-            updateActiveFilters(); // يعيد تصفية وترتيب الأحداث حسب الخيار المحدد
-        });
-
 
     });
     // Handle location filter checkboxes
@@ -439,25 +433,3 @@
             });
         });
     }
-
-
-
-
-    animateContent([".home .content h5, .home .content h1, .home .content p, .home .content .search"]);
-
-    scrollTirggerAnimation(".travel", [".travel .box1", ".travel .box2", ".travel .box3"]);
-
-    scrollTirggerAnimation(".feedback .container", [".feedback .label", ".feedback .heading", ".feedback .paragraph"]);
-
-    scrollTirggerAnimation(".article", [".article .label", ".article .heading"]);
-
-    swipeAnimation(".destinations", [".destinations .heading", ".destinations .content"])
-
-    swipeAnimation(".article", [".article .latest-article", ".article .box1", ".article .box2", ".article .box3", ".article .box4"])
-
-    galleryAnimation(".destinations .gallery", [".destinations .gallery .box1",".destinations .gallery .box2",".destinations .gallery .box3",".destinations .gallery .box4",".destinations .gallery .box5"])
-
-    galleryAnimation(".featured .gallery", [".featured .gallery .box1",".featured .gallery .box2",".featured .gallery .box3",".featured .gallery .box4"])
-
-    galleryAnimation(".feedback .voices", [".feedback .voices .box1",".feedback .voices .box2",".feedback .voices .box3",".feedback .voices .box4",".feedback .voices .box5",".feedback .voices .box6"])
-
