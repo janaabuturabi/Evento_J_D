@@ -1,0 +1,219 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #004047;
+    min-height: 100vh;
+    overflow: hidden;
+}
+.circle-box{
+    position: relative;
+    width: 450px;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle-box i{
+    position: absolute;
+    inset: 0;
+    border: 2px solid #FFFFFF ;
+    border-radius: 50%;
+    transition: 0.5s;
+}
+
+.circle-box i:nth-child(1){
+    border-radius: 40% 60% 65% / 42% 58% 62% 38%;
+    animation: spin1 7s linear infinite;
+}
+
+.circle-box i:nth-child(2){
+    border-radius: 45% 55% 50% / 38% 62% 65% 35%;
+    animation: spin1 5s linear infinite;
+}
+
+.circle-box i:nth-child(3){
+    border-radius: 42% 58% 55% 45% / 39% 61% 60% 40%;
+    animation: spin1 9s linear infinite;
+}
+
+.circle-box:hover i{
+    border : 4px solid var(--clr);
+    filter: drop-shadow(0 0 15px var(--clr));
+}
+
+.form-wrapper{
+    position: absolute;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+.form-wrapper h2{
+    color: #FFFFFF;
+    font-size: 1.8rem;
+}
+
+.field{
+    width: 100%;
+}
+
+.field input[type="submit"]{
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #FFFFFF;
+    background: transparent;
+    color: #FFFFFF;
+    font-size: 1em;
+    border-radius: 30px;
+    outline: none;
+}
+
+
+
+.field input[type="text"],
+.field input[type="password"]{
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #FFFFFF;
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #FFFFFF;
+    font-size: 1em;
+    border-radius: 30px;
+    outline: none;
+
+    /* لمنع تغيّر الخلفية عند الكتابة أو التركيز */
+    -webkit-box-shadow: 0 0 0px 1000px #004047 inset;
+    box-shadow: 0 0 0px 1000px #004047 inset;
+
+    /* تعطيل الإكمال التلقائي */
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 1000px #004047 inset !important;
+    box-shadow: 0 0 0 1000px #004047 inset !important;
+    -webkit-text-fill-color: white !important;
+    caret-color: white;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+
+
+
+
+.field input::placeholder{
+    color: rgba(255, 255, 255, 0.7);
+}
+
+
+.field {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+
+
+.field label {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.6);
+    pointer-events: none;
+    transition: 0.3s ease;
+    background-color: #004047;
+    padding: 0 6px;
+}
+
+.field input:focus + label,
+.field input:valid + label {
+    top: 0;
+    left: 16px;
+    font-size: 0.75em;
+    color: #33d2a4;
+}
+
+
+
+
+.form-wrapper .field input[type=submit] {
+    background: linear-gradient(45deg, #bdc3c7, #33d2a4); /* تدرج من أزرق إلى وردي */
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.form-wrapper .field input[type=submit]:hover {
+    filter: brightness(1.1);
+}
+
+
+.nav-links{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.nav-links a{
+    color: white;
+    font-size: 0.9em;
+    text-decoration: none;
+}
+
+@keyframes spin1 {
+    0%{ transform: rotate(0deg); }
+    100%{ transform: rotate(360deg); }
+}
+
+@keyframes spin2 {
+    0%{ transform: rotate(360deg); }
+    100%{ transform: rotate(0deg); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .circle-box{
+        width: 350px;
+        height: 350px;
+    }
+
+    .form-wrapper{
+        width: 70%;
+    }
+
+    .form-wrapper h2{
+        font-size: 1.3rem;
+    }
+
+    .field {
+        margin-bottom: 2px; /* التحكم بالمسافة بين الحقول فقط */
+    }
+
+
+    .nav-links{
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+    }
+}
+
+
