@@ -556,7 +556,6 @@
                         >
                             <option value="newest">Newest to Oldest</option>
                             <option value="oldest">Oldest to Newest</option>
-                            <option value="popular">Most Popular</option>
                             <option value="rating">Highest Rated</option>
                             <option value="price-low">Price: Low to High</option>
                             <option value="price-high">Price: High to Low</option>
@@ -578,9 +577,7 @@
         <!-- Event List -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
-
-
-            <div class="event-card bg-white rounded shadow-sm overflow-hidden" data-audience="For Adults" data-type="Educational" data-location="nablus" data-price="Paid" data-date="2025-05-24T15:30">
+            <div class="event-card bg-white rounded shadow-sm overflow-hidden" data-audience="For Adults" data-type="Educational" data-location="nablus" data-price="20" data-date="2025-05-24T15:30" data-rating="4.6">
                 <div class="relative h-48">
                     <img src="IMAGE/programming.jpg" alt="Java programming course" class="w-full h-full object-cover object-top" />
                     <div class="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded-full">Educational</div>
@@ -611,7 +608,7 @@
                 </div>
             </div>
 
-            <div class="event-card bg-white rounded shadow-sm overflow-hidden" data-audience="For Kids,For Families" data-type="Entertainment" data-location="nablus" data-price="Paid" data-date="2025-05-08T15:30">
+            <div class="event-card bg-white rounded shadow-sm overflow-hidden" data-audience="For Kids,For Families" data-type="Entertainment" data-location="nablus" data-price="30" data-date="2025-05-08T15:30" data-rating="4.8">
                 <div class="relative h-48">
                     <img src="IMAGE/arts.jpg" alt="Group drawing" class="w-full h-full object-cover object-top" />
                     <div class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded-full">Entertainment</div>
@@ -642,7 +639,7 @@
                 </div>
             </div>
 
-            <div class="event-card bg-white rounded shadow-sm overflow-hidden" data-audience="For Kids,For Families , For Adults,For Seniors" data-type="Entertainment" data-location="Jenin" data-price="Paid" data-date="2025-05-07T15:30">
+            <div class="event-card bg-white rounded shadow-sm overflow-hidden" data-audience="For Kids,For Families , For Adults,For Seniors" data-type="Entertainment" data-location="Jenin" data-price="40" data-date="2025-05-07T15:30" data-rating="4.3">
                 <div class="relative h-48">
                     <img src="IMAGE/Plant Caree.jpg" alt="Plant Care" class="w-full h-full object-cover object-top" />
                     <div class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded-full">Entertainment</div>
@@ -668,12 +665,12 @@
                             </div>
                             <span class="text-sm text-gray-700">4.3 (40 reviews)</span>
                         </div>
-                        <span class="text-sm font-medium text-gray-900">₪ 30 ILS</span>
+                        <span class="text-sm font-medium text-gray-900">₪ 40 ILS</span>
                     </div>
                 </div>
             </div>
 
-            <div class="event-card bg-white rounded shadow-sm overflow-hidden" data-audience="For Adults,For Seniors" data-type="Cultural" data-location="Ramallah" data-price="Paid" data-date="2025-05-14T15:30">
+            <div class="event-card bg-white rounded shadow-sm overflow-hidden" data-audience="For Adults,For Seniors" data-type="Cultural" data-location="Ramallah" data-price="50" data-date="2025-05-14T15:30" data-rating="4.9">
                 <div class="relative h-48">
                     <img src="IMAGE/exhibition.jpg" alt="exhibition" class="w-full h-full object-cover object-top" />
                     <div class="absolute top-2 right-2 bg-purple-600 text-white text-xs px-2 py-1 rounded-full">Cultural</div>
@@ -704,7 +701,7 @@
                 </div>
             </div>
 
-            <div class="event-card bg-white rounded shadow-sm overflow-hidden" data-audience="For Kids,For Families" data-type="Entertainment" data-location="nablus" data-price="Free" data-date="2025-05-30T15:30">
+            <div class="event-card bg-white rounded shadow-sm overflow-hidden" data-audience="For Kids,For Families" data-type="Entertainment" data-location="nablus" data-price="0" data-date="2025-05-30T15:30" data-rating="3.9">
                 <div class="relative h-48">
                     <img src="IMAGE/Group drawing.jpg" alt="Group drawing" class="w-full h-full object-cover object-top" />
                     <div class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded-full">Entertainment</div>
@@ -728,7 +725,7 @@
                             <div class="w-4 h-4 flex items-center justify-center text-yellow-500 mr-1">
                                 <i class="ri-star-fill"></i>
                             </div>
-                            <span class="text-sm text-gray-700">4.8 (40 reviews)</span>
+                            <span class="text-sm text-gray-700">3.9 (40 reviews)</span>
                         </div>
                         <span class="text-sm font-medium text-gray-900">Free</span>
                     </div>
@@ -783,6 +780,44 @@
     </section>
 </footer>
 <script src="event.js"></script>
+
+<script>
+    document.getElementById('sort-by').addEventListener('change', function () {
+        const sortBy = this.value;
+        const container = document.querySelector('.grid');
+        const cards = Array.from(container.querySelectorAll('.event-card'));
+
+        cards.sort((a, b) => {
+            const dateA = new Date(a.dataset.date);
+            const dateB = new Date(b.dataset.date);
+            const priceA = parseFloat(a.dataset.price);
+            const priceB = parseFloat(b.dataset.price);
+            const ratingA = parseFloat(a.dataset.rating);
+            const ratingB = parseFloat(b.dataset.rating);
+
+            switch (sortBy) {
+                case 'newest':  // الأحدث إلى الأقدم
+                    return dateB - dateA;
+                case 'oldest':  // الأقدم إلى الأحدث
+                    return dateA - dateB;
+                case 'price-low':  // السعر من الأقل إلى الأعلى
+                    return priceA - priceB;
+                case 'price-high':  // السعر من الأعلى إلى الأقل
+                    return priceB - priceA;
+                case 'rating':  // التقييم من الأعلى إلى الأقل
+                    return ratingB - ratingA;
+                default:
+                    return 0;
+            }
+        });
+
+        // إعادة ترتيب العناصر في الـ DOM
+        cards.forEach(card => {
+            container.appendChild(card);  // إعادة إضافة الكروت بالترتيب الجديد
+        });
+    });
+</script>
+
 
 </body>
 </html>

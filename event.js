@@ -130,41 +130,6 @@
                 if (shouldShow) filteredEvents.push(card);
             });
 
-            // ✅ ترتيب الأحداث
-            const sortOption = document.getElementById("sort-by").value;
-
-            filteredEvents.sort((a, b) => {
-                const getDate = card => new Date(card.dataset.date);
-                const getPrice = card => {
-                    const priceText = card.querySelector(".text-sm.font-medium.text-gray-900")?.textContent?.trim().toLowerCase();
-                    return priceText === "free" ? 0 : parseFloat(priceText.replace(/[^\d.]/g, ""));
-                };
-                const getRating = card => parseFloat(card.querySelector(".ri-star-fill")?.parentElement?.textContent?.trim().split(" ")[0] || "0");
-                const getReviews = card => parseInt(card.querySelector(".ri-star-fill")?.parentElement?.textContent?.match(/\((\d+)/)?.[1] || "0");
-
-                switch (sortOption) {
-                    case "newest":
-                        console.log("Sorting: Newest");
-                        return getDate(b) - getDate(a);
-                    case "oldest":
-                        console.log("Sorting: Oldest");
-                        return getDate(a) - getDate(b);
-                    case "price-low":
-                        console.log("Sorting: Price Low");
-                        return getPrice(a) - getPrice(b);
-                    case "price-high":
-                        console.log("Sorting: Price High");
-                        return getPrice(b) - getPrice(a);
-                    case "rating":
-                        console.log("Sorting: Rating");
-                        return getRating(b) - getRating(a);
-                    case "popular":
-                        console.log("Sorting: Popular");
-                        return getReviews(b) - getReviews(a);
-                    default:
-                        return 0;
-                }
-            });
 
             // ✅ إظهار النتائج
             eventCards.forEach(card => card.style.display = "none");
