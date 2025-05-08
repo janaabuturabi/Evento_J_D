@@ -587,7 +587,15 @@
         <!-- Event List -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
-            <div class="event-card bg-white rounded shadow-sm overflow-hidden" data-audience="For Adults" data-type="Educational" data-location="nablus" data-price="20" data-date="2025-05-24T15:30" data-rating="4.6">
+            <div onclick="openModal(
+  'IMAGE/programming.jpg',
+  'Java Programming Course',
+  'May 24, 2025, 3:30 PM',
+  'An-Najah National University - Nablus',
+  'A hands-on course covering Java basics, OOP, GUI, and networking.',
+  ['IMAGE/programming.jpg']
+)"
+                 class="event-card cursor-pointer bg-white rounded shadow-sm overflow-hidden transition-transform hover:scale-105">
                 <div class="relative h-48">
                     <img src="IMAGE/programming.jpg" alt="Java programming course" class="w-full h-full object-cover object-top" />
                     <div class="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded-full">Educational</div>
@@ -742,9 +750,37 @@
                 </div>
             </div>
         </div>
+
+        <!-- ✅ Modal Structure -->
+        <div id="eventModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 hidden">
+            <div class="bg-white rounded-lg w-full max-w-4xl p-6 relative overflow-y-auto max-h-[90vh]">
+                <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-600 hover:text-red-500 text-xl font-bold">&times;</button>
+
+                <!-- Image Slider -->
+                <div class="relative w-full h-64 overflow-hidden rounded shadow mb-6" id="sliderContainer">
+                    <div id="sliderTrack" class="flex transition-transform duration-500 ease-in-out w-full h-full">
+                        <!-- Images inserted dynamically -->
+                    </div>
+                    <!-- Navigation -->
+                    <button onclick="prevSlide()" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/80 p-2 rounded-full shadow hover:bg-white">&#10094;</button>
+                    <button onclick="nextSlide()" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/80 p-2 rounded-full shadow hover:bg-white">&#10095;</button>
+                </div>
+
+                <!-- Event Info -->
+                <div>
+                    <h2 id="modalTitle" class="text-2xl font-bold text-gray-800 mb-2">Event Title</h2>
+                    <p id="modalDate" class="text-gray-600 text-sm mb-1"></p>
+                    <p id="modalLocation" class="text-gray-600 text-sm mb-4"></p>
+                    <p id="modalDescription" class="text-gray-700 text-base mb-4">Event description...</p>
+                    <a href="registration.html" class="bg-[#004047] text-white px-4 py-2 rounded hover:bg-[#006060]">Get Tickets</a>
+                </div>
+            </div>
+        </div>
+
         <!-- Pagination -->
         </main>
 </div>
+
 
 <footer>
     <section class="footer">
