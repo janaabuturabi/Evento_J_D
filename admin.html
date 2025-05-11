@@ -261,79 +261,101 @@
             <!-- Status Filter Tabs -->
             <div class="flex border-b border-gray-200 mb-6">
                 <button class="px-4 py-2 text-sm font-medium text-primary border-b-2 border-primary">
-                    All Events (24)
+                    All Events
                 </button>
                 <button class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700">
-                    Pending (8)
+                    Pending
                 </button>
                 <button class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700">
-                    Approved (12)
+                    Approved
                 </button>
                 <button class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700">
-                    Rejected (4)
+                    Rejected
                 </button>
             </div>
+
+
             <!-- Events Grid -->
             <div id="gridView" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                <!-- Event Card 1 -->
-                <div class="bg-white rounded shadow-sm overflow-hidden">
-                    <div class="relative h-48">
-                        <img src="https://readdy.ai/api/search-image?query=cultural%20festival%20in%20palestine%20with%20traditional%20dance%20performances%2C%20colorful%20costumes%2C%20crowd%20of%20people%20watching%2C%20outdoor%20venue%20with%20decorations%2C%20high%20quality%20professional%20photograph&width=600&height=400&seq=event1&orientation=landscape" alt="Cultural Festival" class="w-full h-full object-cover">
-                        <div class="absolute top-3 left-3 flex space-x-2">
-                            <span class="px-2 py-1 bg-primary bg-opacity-90 text-white text-xs rounded-full">Cultural</span>
-                            <span class="px-2 py-1 bg-secondary bg-opacity-90 text-white text-xs rounded-full">For Families</span>
+                    <!-- Event Card 1 -->
+                    <div class="event-card bg-white rounded shadow-sm overflow-hidden"
+                         data-audience="For Families"
+                         data-type="Entertainment"
+                         data-location="Nablus"
+                         data-price="30"
+                         data-date="2025-05-18T15:30"
+                         data-rating="4.8">
+                        <div class="relative h-48">
+                            <img src="IMAGE/Clay hand-making course.jpg" class="w-full h-full object-cover">
+                            <div class="absolute top-3 left-3 flex space-x-2">
+                                <span class="px-2 py-1 bg-primary bg-opacity-90 text-white text-xs rounded-full">Entertainment</span>
+                                <span class="px-2 py-1 bg-secondary bg-opacity-90 text-white text-xs rounded-full">For Families</span>
+                            </div>
+                            <div class="absolute top-3 right-3">
+                                <span class="px-2 py-1 bg-yellow-500 bg-opacity-90 text-white text-xs rounded-full status-pending">Pending</span>
+                            </div>
                         </div>
-                        <div class="absolute top-3 right-3">
-                            <span class="px-2 py-1 bg-yellow-500 bg-opacity-90 text-white text-xs rounded-full status-pending">Pending</span>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800 mb-1">Clay hand-making course</h3>
+                            <div class="flex items-center text-gray-500 text-sm mb-2">
+                                <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                    <i class="ri-calendar-line"></i>
+                                </div>
+                                <span>May 12, 2025 • 10:00 AM - 6:00 PM</span>
+                            </div>
+                            <div class="flex items-center text-gray-500 text-sm mb-2">
+                                <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                    <i class="ri-map-pin-line"></i>
+                                </div>
+                                <span>Nablus</span>
+                            </div>
+                            <div class="flex items-center text-gray-500 text-sm mb-2">
+                                <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                    <i class="ri-money-dollar-circle-line"></i>
+                                </div>
+                                <span>₪ 30 ILS</span>
+                            </div>
+                            <div class="flex items-center text-gray-500 text-sm mb-4">
+                                <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                    <i class="ri-star-line"></i>
+                                </div>
+                                <span>Rating: 4.8</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <button class="px-3 py-1.5 bg-primary text-white text-sm font-medium rounded !rounded-button whitespace-nowrap">
+                                    <i class="ri-check-line mr-1"></i> Approve
+                                </button>
+                                <button class="px-3 py-1.5 bg-red-50 text-red-600 text-sm font-medium rounded !rounded-button whitespace-nowrap">
+                                    <i class="ri-close-line mr-1"></i> Reject
+                                </button>
+                                <button class="px-3 py-1.5 bg-gray-50 text-gray-700 text-sm font-medium rounded !rounded-button whitespace-nowrap" onclick="openModal('event1')">
+                                    <i class="ri-eye-line mr-1"></i> Details
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-gray-800 mb-1">Palestinian Heritage Festival</h3>
-                        <div class="flex items-center text-gray-500 text-sm mb-2">
-                            <div class="w-4 h-4 flex items-center justify-center mr-1">
-                                <i class="ri-calendar-line"></i>
-                            </div>
-                            <span>May 12, 2025 • 10:00 AM - 6:00 PM</span>
-                        </div>
-                        <div class="flex items-center text-gray-500 text-sm mb-2">
-                            <div class="w-4 h-4 flex items-center justify-center mr-1">
-                                <i class="ri-map-pin-line"></i>
-                            </div>
-                            <span>Cultural Center, Ramallah</span>
-                        </div>
-                        <div class="flex items-center text-gray-500 text-sm mb-4">
-                            <div class="w-4 h-4 flex items-center justify-center mr-1">
-                                <i class="ri-money-dollar-circle-line"></i>
-                            </div>
-                            <span>$15.00 per person</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <button class="px-3 py-1.5 bg-primary text-white text-sm font-medium rounded !rounded-button whitespace-nowrap">
-                                <i class="ri-check-line mr-1"></i> Approve
-                            </button>
-                            <button class="px-3 py-1.5 bg-red-50 text-red-600 text-sm font-medium rounded !rounded-button whitespace-nowrap">
-                                <i class="ri-close-line mr-1"></i> Reject
-                            </button>
-                            <button class="px-3 py-1.5 bg-gray-50 text-gray-700 text-sm font-medium rounded !rounded-button whitespace-nowrap" onclick="openModal('event1')">
-                                <i class="ri-eye-line mr-1"></i> Details
-                            </button>
-                        </div>
-                    </div>
-                </div>
+
+
                 <!-- Event Card 2 -->
-                <div class="bg-white rounded shadow-sm overflow-hidden">
+                <div class="event-card bg-white rounded shadow-sm overflow-hidden"
+                     data-audience="For Kids"
+                     data-type="Entertainment"
+                     data-location="Bethlehem"
+                     data-price="40"
+                     data-date="2025-05-15T09:00"
+                     data-rating="4.5">
                     <div class="relative h-48">
-                        <img src="https://readdy.ai/api/search-image?query=tech%20conference%20with%20speakers%20on%20stage%2C%20audience%20in%20seats%2C%20professional%20lighting%2C%20projection%20screen%20showing%20presentation%2C%20modern%20venue%2C%20high%20quality%20professional%20photograph&width=600&height=400&seq=event2&orientation=landscape" alt="Tech Summit" class="w-full h-full object-cover">
+                        <img src="IMAGE/Horse course.jpg" class="w-full h-full object-cover">
                         <div class="absolute top-3 left-3 flex space-x-2">
-                            <span class="px-2 py-1 bg-primary bg-opacity-90 text-white text-xs rounded-full">Educational</span>
-                            <span class="px-2 py-1 bg-secondary bg-opacity-90 text-white text-xs rounded-full">For Adults</span>
+                            <span class="px-2 py-1 bg-primary bg-opacity-90 text-white text-xs rounded-full">Entertainment</span>
+                            <span class="px-2 py-1 bg-secondary bg-opacity-90 text-white text-xs rounded-full">For Kids</span>
                         </div>
                         <div class="absolute top-3 right-3">
                             <span class="px-2 py-1 bg-green-500 bg-opacity-90 text-white text-xs rounded-full status-approved">Approved</span>
                         </div>
                     </div>
                     <div class="p-4">
-                        <h3 class="font-semibold text-gray-800 mb-1">Palestine Tech Summit 2025</h3>
+                        <h3 class="font-semibold text-gray-800 mb-1">Horse course</h3>
                         <div class="flex items-center text-gray-500 text-sm mb-2">
                             <div class="w-4 h-4 flex items-center justify-center mr-1">
                                 <i class="ri-calendar-line"></i>
@@ -346,11 +368,17 @@
                             </div>
                             <span>Convention Center, Bethlehem</span>
                         </div>
-                        <div class="flex items-center text-gray-500 text-sm mb-4">
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
                             <div class="w-4 h-4 flex items-center justify-center mr-1">
                                 <i class="ri-money-dollar-circle-line"></i>
                             </div>
-                            <span>$75.00 per person</span>
+                            <span>₪ 40 ILS</span>
+                        </div>
+                        <div class="flex items-center text-gray-500 text-sm mb-4">
+                            <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                <i class="ri-star-line"></i>
+                            </div>
+                            <span>Rating: 4.5</span>
                         </div>
                         <div class="flex items-center justify-between">
                             <button class="px-3 py-1.5 bg-gray-100 text-gray-400 text-sm font-medium rounded cursor-not-allowed !rounded-button whitespace-nowrap">
@@ -365,20 +393,27 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- Event Card 3 -->
-                <div class="bg-white rounded shadow-sm overflow-hidden">
+                <div class="event-card bg-white rounded shadow-sm overflow-hidden"
+                     data-audience="For Adults"
+                     data-type="Educational"
+                     data-location="Hebron"
+                     data-price="Free"
+                     data-date="2025-05-10T14:00"
+                     data-rating="4.7">
                     <div class="relative h-48">
-                        <img src="https://readdy.ai/api/search-image?query=childrens%20art%20workshop%20with%20kids%20painting%20and%20creating%20crafts%2C%20colorful%20art%20supplies%2C%20bright%20classroom%20setting%2C%20instructors%20helping%2C%20happy%20children%2C%20high%20quality%20professional%20photograph&width=600&height=400&seq=event3&orientation=landscape" alt="Kids Art Workshop" class="w-full h-full object-cover">
+                        <img src="IMAGE/Cooking course.jpg" class="w-full h-full object-cover">
                         <div class="absolute top-3 left-3 flex space-x-2">
                             <span class="px-2 py-1 bg-primary bg-opacity-90 text-white text-xs rounded-full">Educational</span>
-                            <span class="px-2 py-1 bg-secondary bg-opacity-90 text-white text-xs rounded-full">For Kids</span>
+                            <span class="px-2 py-1 bg-secondary bg-opacity-90 text-white text-xs rounded-full">For Adults</span>
                         </div>
                         <div class="absolute top-3 right-3">
                             <span class="px-2 py-1 bg-yellow-500 bg-opacity-90 text-white text-xs rounded-full status-pending">Pending</span>
                         </div>
                     </div>
                     <div class="p-4">
-                        <h3 class="font-semibold text-gray-800 mb-1">Creative Kids Art Workshop</h3>
+                        <h3 class="font-semibold text-gray-800 mb-1">Cooking course</h3>
                         <div class="flex items-center text-gray-500 text-sm mb-2">
                             <div class="w-4 h-4 flex items-center justify-center mr-1">
                                 <i class="ri-calendar-line"></i>
@@ -410,141 +445,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- Event Card 4 -->
-                <div class="bg-white rounded shadow-sm overflow-hidden">
-                    <div class="relative h-48">
-                        <img src="https://readdy.ai/api/search-image?query=soccer%20match%20in%20stadium%20with%20players%20on%20field%2C%20crowd%20of%20spectators%2C%20sports%20field%20with%20goals%2C%20evening%20lighting%2C%20professional%20sports%20event%2C%20high%20quality%20professional%20photograph&width=600&height=400&seq=event4&orientation=landscape" alt="Soccer Tournament" class="w-full h-full object-cover">
-                        <div class="absolute top-3 left-3 flex space-x-2">
-                            <span class="px-2 py-1 bg-primary bg-opacity-90 text-white text-xs rounded-full">Sports</span>
-                            <span class="px-2 py-1 bg-secondary bg-opacity-90 text-white text-xs rounded-full">For Families</span>
-                        </div>
-                        <div class="absolute top-3 right-3">
-                            <span class="px-2 py-1 bg-green-500 bg-opacity-90 text-white text-xs rounded-full status-approved">Approved</span>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-gray-800 mb-1">Palestine Youth Soccer Tournament</h3>
-                        <div class="flex items-center text-gray-500 text-sm mb-2">
-                            <div class="w-4 h-4 flex items-center justify-center mr-1">
-                                <i class="ri-calendar-line"></i>
-                            </div>
-                            <span>May 20-22, 2025 • 10:00 AM - 6:00 PM</span>
-                        </div>
-                        <div class="flex items-center text-gray-500 text-sm mb-2">
-                            <div class="w-4 h-4 flex items-center justify-center mr-1">
-                                <i class="ri-map-pin-line"></i>
-                            </div>
-                            <span>Sports Stadium, Nablus</span>
-                        </div>
-                        <div class="flex items-center text-gray-500 text-sm mb-4">
-                            <div class="w-4 h-4 flex items-center justify-center mr-1">
-                                <i class="ri-money-dollar-circle-line"></i>
-                            </div>
-                            <span>$10.00 per person</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <button class="px-3 py-1.5 bg-gray-100 text-gray-400 text-sm font-medium rounded cursor-not-allowed !rounded-button whitespace-nowrap">
-                                <i class="ri-check-line mr-1"></i> Approve
-                            </button>
-                            <button class="px-3 py-1.5 bg-red-50 text-red-600 text-sm font-medium rounded !rounded-button whitespace-nowrap">
-                                <i class="ri-close-line mr-1"></i> Reject
-                            </button>
-                            <button class="px-3 py-1.5 bg-gray-50 text-gray-700 text-sm font-medium rounded !rounded-button whitespace-nowrap" onclick="openModal('event4')">
-                                <i class="ri-eye-line mr-1"></i> Details
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Event Card 5 -->
-                <div class="bg-white rounded shadow-sm overflow-hidden">
-                    <div class="relative h-48">
-                        <img src="https://readdy.ai/api/search-image?query=business%20networking%20event%20with%20professionals%20mingling%2C%20conference%20room%20setting%2C%20people%20exchanging%20business%20cards%2C%20refreshment%20table%2C%20professional%20attire%2C%20high%20quality%20professional%20photograph&width=600&height=400&seq=event5&orientation=landscape" alt="Networking Event" class="w-full h-full object-cover">
-                        <div class="absolute top-3 left-3 flex space-x-2">
-                            <span class="px-2 py-1 bg-primary bg-opacity-90 text-white text-xs rounded-full">Networking</span>
-                            <span class="px-2 py-1 bg-secondary bg-opacity-90 text-white text-xs rounded-full">For Adults</span>
-                        </div>
-                        <div class="absolute top-3 right-3">
-                            <span class="px-2 py-1 bg-red-500 bg-opacity-90 text-white text-xs rounded-full status-rejected">Rejected</span>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-gray-800 mb-1">Business Networking Mixer</h3>
-                        <div class="flex items-center text-gray-500 text-sm mb-2">
-                            <div class="w-4 h-4 flex items-center justify-center mr-1">
-                                <i class="ri-calendar-line"></i>
-                            </div>
-                            <span>May 18, 2025 • 6:00 PM - 9:00 PM</span>
-                        </div>
-                        <div class="flex items-center text-gray-500 text-sm mb-2">
-                            <div class="w-4 h-4 flex items-center justify-center mr-1">
-                                <i class="ri-map-pin-line"></i>
-                            </div>
-                            <span>Grand Hotel, Ramallah</span>
-                        </div>
-                        <div class="flex items-center text-gray-500 text-sm mb-4">
-                            <div class="w-4 h-4 flex items-center justify-center mr-1">
-                                <i class="ri-money-dollar-circle-line"></i>
-                            </div>
-                            <span>$25.00 per person</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <button class="px-3 py-1.5 bg-primary text-white text-sm font-medium rounded !rounded-button whitespace-nowrap">
-                                <i class="ri-check-line mr-1"></i> Approve
-                            </button>
-                            <button class="px-3 py-1.5 bg-gray-100 text-gray-400 text-sm font-medium rounded cursor-not-allowed !rounded-button whitespace-nowrap">
-                                <i class="ri-close-line mr-1"></i> Reject
-                            </button>
-                            <button class="px-3 py-1.5 bg-gray-50 text-gray-700 text-sm font-medium rounded !rounded-button whitespace-nowrap" onclick="openModal('event5')">
-                                <i class="ri-eye-line mr-1"></i> Details
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Event Card 6 -->
-                <div class="bg-white rounded shadow-sm overflow-hidden">
-                    <div class="relative h-48">
-                        <img src="https://readdy.ai/api/search-image?query=outdoor%20music%20concert%20with%20band%20performing%20on%20stage%2C%20crowd%20of%20people%2C%20evening%20lighting%2C%20sound%20equipment%2C%20outdoor%20venue%20with%20decorations%2C%20high%20quality%20professional%20photograph&width=600&height=400&seq=event6&orientation=landscape" alt="Music Concert" class="w-full h-full object-cover">
-                        <div class="absolute top-3 left-3 flex space-x-2">
-                            <span class="px-2 py-1 bg-primary bg-opacity-90 text-white text-xs rounded-full">Entertainment</span>
-                            <span class="px-2 py-1 bg-secondary bg-opacity-90 text-white text-xs rounded-full">For Adults</span>
-                        </div>
-                        <div class="absolute top-3 right-3">
-                            <span class="px-2 py-1 bg-yellow-500 bg-opacity-90 text-white text-xs rounded-full status-pending">Pending</span>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-gray-800 mb-1">Summer Music Festival</h3>
-                        <div class="flex items-center text-gray-500 text-sm mb-2">
-                            <div class="w-4 h-4 flex items-center justify-center mr-1">
-                                <i class="ri-calendar-line"></i>
-                            </div>
-                            <span>May 25, 2025 • 7:00 PM - 11:00 PM</span>
-                        </div>
-                        <div class="flex items-center text-gray-500 text-sm mb-2">
-                            <div class="w-4 h-4 flex items-center justify-center mr-1">
-                                <i class="ri-map-pin-line"></i>
-                            </div>
-                            <span>City Park, Jenin</span>
-                        </div>
-                        <div class="flex items-center text-gray-500 text-sm mb-4">
-                            <div class="w-4 h-4 flex items-center justify-center mr-1">
-                                <i class="ri-money-dollar-circle-line"></i>
-                            </div>
-                            <span>$30.00 per person</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <button class="px-3 py-1.5 bg-primary text-white text-sm font-medium rounded !rounded-button whitespace-nowrap">
-                                <i class="ri-check-line mr-1"></i> Approve
-                            </button>
-                            <button class="px-3 py-1.5 bg-red-50 text-red-600 text-sm font-medium rounded !rounded-button whitespace-nowrap">
-                                <i class="ri-close-line mr-1"></i> Reject
-                            </button>
-                            <button class="px-3 py-1.5 bg-gray-50 text-gray-700 text-sm font-medium rounded !rounded-button whitespace-nowrap" onclick="openModal('event6')">
-                                <i class="ri-eye-line mr-1"></i> Details
-                            </button>
-                        </div>
-                    </div>
-                </div>
+
+
             </div>
             <div id="listView" class="hidden mb-8">
                 <div class="bg-white rounded shadow-sm overflow-hidden">
@@ -600,6 +502,80 @@
         </div>
     </div>
 </div>
+
+<script>
+    // الحصول على العناصر الخاصة بالفلاتر
+    const audienceFilter = document.querySelectorAll('input[name="audience"]');
+    const typeFilter = document.querySelectorAll('input[name="type"]');
+    const locationFilter = document.querySelectorAll('input[name="location"]');
+    const priceFilter = document.querySelectorAll('input[name="price"]');
+
+    const eventCards = document.querySelectorAll('.event-card');
+
+    // دالة لتصفية البطاقات بناءً على الفلاتر
+    function filterCards() {
+        eventCards.forEach(card => {
+            let matches = true;
+
+            // فحص فلاتر الجمهور
+            const selectedAudiences = Array.from(audienceFilter)
+                .filter(input => input.checked)
+                .map(input => input.value);
+            const cardAudience = card.getAttribute('data-audience');
+            if (selectedAudiences.length > 0 && !selectedAudiences.includes(cardAudience)) {
+                matches = false;
+            }
+
+            // فحص فلاتر النوع
+            const selectedTypes = Array.from(typeFilter)
+                .filter(input => input.checked)
+                .map(input => input.value);
+            const cardType = card.getAttribute('data-type');
+            if (selectedTypes.length > 0 && !selectedTypes.includes(cardType)) {
+                matches = false;
+            }
+
+            // فحص فلاتر الموقع
+            const selectedLocations = Array.from(locationFilter)
+                .filter(input => input.checked)
+                .map(input => input.value);
+            const cardLocation = card.getAttribute('data-location');
+            if (selectedLocations.length > 0 && !selectedLocations.includes(cardLocation)) {
+                matches = false;
+            }
+
+            // فحص فلاتر السعر
+            const selectedPrices = Array.from(priceFilter)
+                .filter(input => input.checked)
+                .map(input => input.value);
+            const cardPrice = card.getAttribute('data-price');
+            if (selectedPrices.length > 0 && !selectedPrices.includes(cardPrice)) {
+                matches = false;
+            }
+
+            // إظهار أو إخفاء البطاقة بناءً على الفلاتر
+            if (matches) {
+                card.style.display = 'block';  // إظهار البطاقة
+            } else {
+                card.style.display = 'none';   // إخفاء البطاقة
+            }
+        });
+    }
+
+    // إضافة مستمعي الأحداث لجميع الفلاتر
+    audienceFilter.forEach(input => {
+        input.addEventListener('change', filterCards);
+    });
+    typeFilter.forEach(input => {
+        input.addEventListener('change', filterCards);
+    });
+    locationFilter.forEach(input => {
+        input.addEventListener('change', filterCards);
+    });
+    priceFilter.forEach(input => {
+        input.addEventListener('change', filterCards);
+    });
+</script>
 
 <script src="admin.js"></script>
 

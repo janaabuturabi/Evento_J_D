@@ -112,52 +112,13 @@
                         </div>
                     </div>
 
-<!--                    <script>-->
-<!--                        document.addEventListener("DOMContentLoaded", () => {-->
-<!--                            const map = L.map('map').setView([32.2211, 35.2544], 10); // تحديد الموقع على الخريطة-->
-
-<!--                            // إضافة طبقة القمر الصناعي-->
-<!--                            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {-->
-<!--                                attribution: '&copy; <a href="https://www.esri.com/en-us/arcgis/about-arcgis/what-is-arcgis">Esri</a>',-->
-<!--                            }).addTo(map);-->
-
-<!--                            let marker;-->
-
-<!--                            function goToAddress(address) {-->
-<!--                                fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`)-->
-<!--                                    .then(res => res.json())-->
-<!--                                    .then(data => {-->
-<!--                                        if (data.length === 0) {-->
-<!--                                            alert("No location found.");-->
-<!--                                            return;-->
-<!--                                        }-->
-
-<!--                                        const { lat, lon, display_name } = data[0];-->
-<!--                                        if (marker) map.removeLayer(marker);-->
-<!--                                        marker = L.marker([lat, lon]).addTo(map).bindPopup(display_name).openPopup();-->
-<!--                                        map.setView([lat, lon], 13);-->
-<!--                                    })-->
-<!--                                    .catch(() => alert("Error during search."));-->
-<!--                            }-->
-
-<!--                            document.getElementById('event-address').addEventListener('keydown', function (e) {-->
-<!--                                if (e.key === 'Enter') {-->
-<!--                                    e.preventDefault();-->
-<!--                                    const query = this.value.trim();-->
-<!--                                    if (query) goToAddress(query);-->
-<!--                                }-->
-<!--                            });-->
-<!--                        });-->
-<!--                    </script>-->
-
-
-
                     <script>
                         document.addEventListener("DOMContentLoaded", () => {
-                            const map = L.map('map').setView([32.2211, 35.2544], 10);
+                            const map = L.map('map').setView([32.2211, 35.2544], 10); // تحديد الموقع على الخريطة
 
-                            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                                attribution: '&copy; OpenStreetMap contributors'
+                            // إضافة طبقة القمر الصناعي
+                            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                                attribution: '&copy; <a href="https://www.esri.com/en-us/arcgis/about-arcgis/what-is-arcgis">Esri</a>',
                             }).addTo(map);
 
                             let marker;
@@ -188,6 +149,45 @@
                             });
                         });
                     </script>
+
+
+
+<!--                    <script>-->
+<!--                        document.addEventListener("DOMContentLoaded", () => {-->
+<!--                            const map = L.map('map').setView([32.2211, 35.2544], 10);-->
+
+<!--                            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {-->
+<!--                                attribution: '&copy; OpenStreetMap contributors'-->
+<!--                            }).addTo(map);-->
+
+<!--                            let marker;-->
+
+<!--                            function goToAddress(address) {-->
+<!--                                fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`)-->
+<!--                                    .then(res => res.json())-->
+<!--                                    .then(data => {-->
+<!--                                        if (data.length === 0) {-->
+<!--                                            alert("No location found.");-->
+<!--                                            return;-->
+<!--                                        }-->
+
+<!--                                        const { lat, lon, display_name } = data[0];-->
+<!--                                        if (marker) map.removeLayer(marker);-->
+<!--                                        marker = L.marker([lat, lon]).addTo(map).bindPopup(display_name).openPopup();-->
+<!--                                        map.setView([lat, lon], 13);-->
+<!--                                    })-->
+<!--                                    .catch(() => alert("Error during search."));-->
+<!--                            }-->
+
+<!--                            document.getElementById('event-address').addEventListener('keydown', function (e) {-->
+<!--                                if (e.key === 'Enter') {-->
+<!--                                    e.preventDefault();-->
+<!--                                    const query = this.value.trim();-->
+<!--                                    if (query) goToAddress(query);-->
+<!--                                }-->
+<!--                            });-->
+<!--                        });-->
+<!--                    </script>-->
 
 
 

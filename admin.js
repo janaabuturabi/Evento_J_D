@@ -132,90 +132,52 @@
 });
     // Modal functionality
     const eventData = {
-    event1: {
-    title: "Palestinian Heritage Festival",
-    date: "May 12, 2025",
-    time: "10:00 AM - 6:00 PM",
-    location: "Cultural Center, Ramallah",
-    price: "$15.00 per person",
-    organizer: "Palestinian Cultural Association",
-    contact: "info@pca.org | +970 59 123 4567",
-    type: "Cultural",
-    audience: "Families",
-    status: "Pending",
-    description: "Join us for a day-long celebration of Palestinian heritage and culture. The festival will feature traditional dance performances, music, art exhibitions, food stalls with authentic Palestinian cuisine, and workshops where visitors can learn traditional crafts. This family-friendly event aims to preserve and showcase the rich cultural heritage of Palestine.",
-    image: "https://readdy.ai/api/search-image?query=cultural%20festival%20in%20palestine%20with%20traditional%20dance%20performances%2C%20colorful%20costumes%2C%20crowd%20of%20people%20watching%2C%20outdoor%20venue%20with%20decorations%2C%20high%20quality%20professional%20photograph&width=800&height=400&seq=event1detail&orientation=landscape"
-},
-    event2: {
-    title: "Palestine Tech Summit 2025",
-    date: "May 15-16, 2025",
-    time: "9:00 AM - 5:00 PM",
-    location: "Convention Center, Bethlehem",
-    price: "$75.00 per person",
-    organizer: "Palestine Tech Hub",
-    contact: "events@palestinetechhub.org | +970 59 987 6543",
-    type: "Educational",
-    audience: "Adults",
-    status: "Approved",
-    description: "Palestine Tech Summit brings together tech professionals, entrepreneurs, investors, and enthusiasts for two days of networking, learning, and collaboration. The event features keynote speeches from industry leaders, panel discussions on emerging technologies, workshops, and a startup showcase. This year's focus is on digital transformation and sustainable tech solutions for local challenges.",
-    image: "https://readdy.ai/api/search-image?query=tech%20conference%20with%20speakers%20on%20stage%2C%20audience%20in%20seats%2C%20professional%20lighting%2C%20projection%20screen%20showing%20presentation%2C%20modern%20venue%2C%20high%20quality%20professional%20photograph&width=800&height=400&seq=event2detail&orientation=landscape"
-},
-    event3: {
-    title: "Creative Kids Art Workshop",
-    date: "May 10, 2025",
-    time: "2:00 PM - 4:00 PM",
-    location: "Community Center, Hebron",
-    price: "Free",
-    organizer: "Hebron Youth Initiative",
-    contact: "youth@hebroninitiative.org | +970 59 456 7890",
-    type: "Educational",
-    audience: "Kids",
-    status: "Pending",
-    description: "This free workshop offers children aged 6-12 a chance to explore their creativity through various art forms. Professional art instructors will guide participants through painting, drawing, and craft activities. All materials will be provided. The workshop aims to encourage self-expression and develop fine motor skills in a supportive environment. Space is limited to 20 children, so early registration is recommended.",
-    image: "https://readdy.ai/api/search-image?query=childrens%20art%20workshop%20with%20kids%20painting%20and%20creating%20crafts%2C%20colorful%20art%20supplies%2C%20bright%20classroom%20setting%2C%20instructors%20helping%2C%20happy%20children%2C%20high%20quality%20professional%20photograph&width=800&height=400&seq=event3detail&orientation=landscape"
-},
-    event4: {
-    title: "Palestine Youth Soccer Tournament",
-    date: "May 20-22, 2025",
-    time: "10:00 AM - 6:00 PM",
-    location: "Sports Stadium, Nablus",
-    price: "$10.00 per person",
-    organizer: "Palestine Sports Association",
-    contact: "tournaments@psa.org | +970 59 234 5678",
-    type: "Sports",
-    audience: "Families",
-    status: "Approved",
-    description: "The annual Youth Soccer Tournament brings together young athletes from across Palestine to compete in a three-day event. Teams in different age categories (8-10, 11-13, 14-16) will play in a round-robin format followed by knockout stages. Spectators can enjoy watching the matches, food vendors, and other entertainment. All proceeds will support youth sports programs in underserved communities.",
-    image: "https://readdy.ai/api/search-image?query=soccer%20match%20in%20stadium%20with%20players%20on%20field%2C%20crowd%20of%20spectators%2C%20sports%20field%20with%20goals%2C%20evening%20lighting%2C%20professional%20sports%20event%2C%20high%20quality%20professional%20photograph&width=800&height=400&seq=event4detail&orientation=landscape"
-},
-    event5: {
-    title: "Business Networking Mixer",
-    date: "May 18, 2025",
-    time: "6:00 PM - 9:00 PM",
-    location: "Grand Hotel, Ramallah",
-    price: "$25.00 per person",
-    organizer: "Palestine Business Network",
-    contact: "events@pbn.org | +970 59 345 6789",
-    type: "Networking",
-    audience: "Adults",
-    status: "Rejected",
-    description: "This evening networking event brings together professionals from various industries for meaningful connections and potential collaborations. The ticket includes appetizers, one complimentary drink, and access to speed networking sessions. There will also be a short presentation on current business trends in Palestine by a guest speaker. Business casual attire is recommended.",
-    image: "https://readdy.ai/api/search-image?query=business%20networking%20event%20with%20professionals%20mingling%2C%20conference%20room%20setting%2C%20people%20exchanging%20business%20cards%2C%20refreshment%20table%2C%20professional%20attire%2C%20high%20quality%20professional%20photograph&width=800&height=400&seq=event5detail&orientation=landscape"
-},
-    event6: {
-    title: "Summer Music Festival",
-    date: "May 25, 2025",
-    time: "7:00 PM - 11:00 PM",
-    location: "City Park, Jenin",
-    price: "$30.00 per person",
-    organizer: "Jenin Arts Collective",
-    contact: "festival@jeninarts.org | +970 59 567 8901",
-    type: "Entertainment",
-    audience: "Adults",
-    status: "Pending",
-    description: "Enjoy a summer evening of live music under the stars at Jenin's City Park. The festival will feature performances by local and regional bands spanning various genres including traditional Palestinian music, indie rock, and jazz fusion. Food and beverage vendors will be available throughout the event. Bring your own blanket or chair for seating. In case of rain, the event will be moved to the Jenin Cultural Center.",
-    image: "https://readdy.ai/api/search-image?query=outdoor%20music%20concert%20with%20band%20performing%20on%20stage%2C%20crowd%20of%20people%2C%20evening%20lighting%2C%20sound%20equipment%2C%20outdoor%20venue%20with%20decorations%2C%20high%20quality%20professional%20photograph&width=800&height=400&seq=event6detail&orientation=landscape"
-}
+        event1: {
+            title: "Clay hand-making course",
+            date: "May 15-16, 2025",
+            time: "9:00 AM - 5:00 PM",
+            location: "Nablus",
+            price: "₪ 20 ILS",
+            organizer: "Clay hand-making course",
+            contact: "Clay hand-making course@gmail.com | +970 59 987 6543",
+            type: "Entertainment",
+            audience: "Adults",
+            status: "20",
+            description: "Dive into the world of creativity with our handmade crafts course, designed to be educational, entertaining, and culturally enriching. This hands-on workshop invites participants of all ages to explore various crafting techniques such as clay modeling, paper art, jewelry making, and more. Learn the stories and traditions behind handmade arts while developing your skills in a relaxed, family-friendly environment. Whether you're crafting for fun or discovering a new passion, this course offers a unique and memorable creative experience."
+                ,
+            image: "IMAGE/Handmade Projects.jpg"
+        },
+        event2: {
+            title: "Horse course",
+            date: "May 15-16, 2025",
+            time: "9:00 AM - 5:00 PM",
+            location: "Convention Center, Bethlehem",
+            price: "₪ 40 ILS",
+            organizer: "Horse course",
+            contact: "events@gmail.com | +970 59 987 6543",
+            type: "Entertainment",
+            audience: "Adults",
+            status: "40",
+            description: "Palestine Tech Summit brings together tech professionals, entrepreneurs, investors, and enthusiasts for two days of networking, learning, and collaboration. The event features keynote speeches from industry leaders, panel discussions on emerging technologies, workshops, and a startup showcase. This year's focus is on digital transformation and sustainable tech solutions for local challenges.",
+            image: "IMAGE/Horse course.jpg"
+        },
+        event3: {
+            title: "Cooking course",
+            date: "May 10, 2025",
+            time: "2:00 PM - 4:00 PM",
+            location: "Community Center, Hebron",
+            price: "Free",
+            organizer: "Cooking course",
+            contact: "Cooking course@org | +970 59 456 7890",
+            type: "Educational",
+            audience: "Adults",
+            status: "Pending",
+            description: "Embark on a culinary journey with our interactive cooking course, designed to be both educational and entertaining! Whether you’re a novice or a seasoned cook, this course will equip you with essential cooking skills, from basic techniques to advanced recipes. Explore diverse cuisines and cultural dishes, and learn the secrets behind creating flavorful meals. Enjoy hands-on cooking experiences, tips from expert chefs, and a fun atmosphere that makes learning enjoyable. By the end of the course, you’ll be confident in your cooking abilities and ready to impress with your culinary creations!"
+                ,
+            image:      "IMAGE/Cooking course2.jpg"
+
+
+        },
 };
     function openModal(eventId) {
     const modal = document.getElementById('eventModal');
