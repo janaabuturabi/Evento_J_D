@@ -86,7 +86,7 @@
                 const type = card.dataset.type?.trim();
                 const audience = card.dataset.audience?.split(',').map(a => a.trim()) || [];
                 const location = card.dataset.location?.trim();
-                const price = card.dataset.price?.trim();
+                const price = parseFloat(card.dataset.price?.trim()) || 0;  // تحويل السعر إلى قيمة رقمية
                 const eventDate = card.dataset.date ? new Date(card.dataset.date) : null;
 
                 // ✅ تحديث عرض التاريخ والساعة داخل البطاقة
@@ -111,8 +111,10 @@
                 if (fLocation.length > 0 && !fLocation.includes(location)) shouldShow = false;
 
                 // فلتر السعر
-                if (fPrice.length > 0 && !fPrice.includes(price)) shouldShow = false;
-
+                if (fPrice.length > 0) {
+                    if (fPrice.includes("Free") && price > 0) shouldShow = false;  // فلتر للأحداث المجانية فقط
+                    if (fPrice.includes("Paid") && price === 0) shouldShow = false;  // فلتر للأحداث المدفوعة فقط
+                }
                 // فلتر الوقت
                 if (fTime && eventDate) {
                     const sameDay = eventDate.getDate() === now.getDate()
@@ -232,17 +234,18 @@
 });
 });
     // Handle price filter checkboxes
-    document.querySelectorAll(".price-checkbox").forEach((checkbox) => {
-    checkbox.addEventListener("change", function () {
-    if (this.checked) {
-    selectedFilters.price.push(this.value);
-} else {
-    selectedFilters.price = selectedFilters.price.filter(
-    (item) => item !== this.value,
-    );
-}
-    updateActiveFilters();
-});
+        document.querySelectorAll(".price-checkbox").forEach((checkbox) => {
+            checkbox.addEventListener("change", function () {
+                const value = this.value;
+                if (this.checked) {
+                    selectedFilters.price.push(value);
+                } else {
+                    selectedFilters.price = selectedFilters.price.filter(
+                        (item) => item !== value,
+                    );
+                }
+                updateActiveFilters();
+            });
 });
     // Handle clear all button
     clearAllBtn.addEventListener("click", function () {
@@ -399,20 +402,12 @@
         });
     }
 
-
-
-
-
-
-
-
-
     const eventData = {
         event1: {
             title: "Java programming course",
             date: "May 24, 2025",
             time: "3:30 PM",
-            location: "An-Najah National University, Nablus",
+            location: "Bethlehem",
             price: "₪ 20 ILS",
             organizer: "An-Najah University",
             contact: "info@najah.edu | +970 59 987 6543",
@@ -420,7 +415,7 @@
             audience: "For Adults",
             status: "20",
             description: "Learn Java programming, covering the basics of object-oriented programming and more.",
-            images: ["IMAGE/programming1.jpg", "IMAGE/programming2.jpg", "IMAGE/programming3.jpg"] // Multiple images
+            images: ["IMAGE/programming3.jpg", "IMAGE/programming2.jpg", "IMAGE/programming1.jpg"] // Multiple images
         },
         event2: {
             title: "Group drawing",
@@ -434,7 +429,7 @@
             audience: "For Kids, For Families",
             status: "40",
             description: "An interactive art workshop for kids and families to explore creativity.",
-            images: ["IMAGE/Group drawing1.jpg", "IMAGE/Group drawing2.jpg", "IMAGE/Group drawing3.jpg"] // Multiple images
+            images: ["IMAGE/arts.jpg", "IMAGE/Group drawing2.jpg"] // Multiple images
         },
         event3: {
             title: "Plant Care",
@@ -448,21 +443,21 @@
             audience: "For Kids, For Families, For Adults, For Seniors",
             status: "40",
             description: "A workshop focused on taking care of plants and understanding their growth.",
-            images: ["IMAGE/Plant Care1.jpg", "IMAGE/Plant Care1.jpg", "IMAGE/Plant Care1.jpg"] // Multiple images
+            images: ["IMAGE/Plant Care2.jpg", "IMAGE/Plant Care1.jpg", "IMAGE/Plant Care3.jpg"] // Multiple images
         },
         event4: {
-            title: "Group drawing",
+            title: "exhibition",
             date: "May 30, 2025",
             time: "3:30 PM",
-            location: "An-Najah National University, Nablus",
+            location: "Ramallah",
             price: "Free",
-            organizer: "An-Najah University",
-            contact: "info@najah.edu | +970 59 987 6543",
-            type: "Entertainment",
-            audience: "For Kids, For Families",
-            status: "40",
-            description: "A group activity where participants will enjoy a creative drawing experience.",
-            images: ["IMAGE/Group drawing1.jpg", "IMAGE/Group drawing2.jpg", "IMAGE/Group drawing3.jpg"] // Multiple images
+            organizer: "exhibition",
+            contact: "Cultural@com | +970 59 987 6543",
+            type: "Cultural",
+            audience: "For Adults",
+            status: "",
+            description: "An exhibition is a public display of art, products, or information, aimed at educating, entertaining, or promoting engagement.",
+            images: ["IMAGE/exhibition1.jpg"] // Multiple images
         }
     };
 

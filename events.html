@@ -66,360 +66,152 @@
     >
         <div class="mb-6">
             <h2 class="text-lg font-semibold text-gray-900 mb-4">Filters</h2>
+
             <!-- Audience Filter -->
-            <div class="mb-4">
-                <div
-                        class="flex justify-between items-center cursor-pointer mb-2"
-                        id="audience-toggle"
-                >
-                    <h3 class="text-md font-medium text-gray-800">Audience</h3>
-                    <div
-                            class="w-5 h-5 flex items-center justify-center text-gray-500"
-                    >
-                        <i class="ri-arrow-down-s-line"></i>
-                    </div>
+            <div class="mb-4 border-b pb-4">
+                <div class="flex justify-between items-center cursor-pointer mb-2" id="audience-toggle">
+                    <h3 class="text-base font-semibold text-gray-800">Audience</h3>
+                    <i class="ri-arrow-down-s-line text-xl text-gray-500"></i>
                 </div>
-                <div id="audience-filters" class="pl-1">
-                    <div class="flex items-center mb-2">
-                        <input
-                                type="checkbox"
-                                id="kids"
-                                class="audience-checkbox"
-                                value="For Kids"
-                        />
-                        <label for="kids" class="text-sm text-gray-700 cursor-pointer"
-                        >For Kids</label
-                        >
-                    </div>
-                    <div class="flex items-center mb-2">
-                        <input
-                                type="checkbox"
-                                id="adults"
-                                class="audience-checkbox"
-                                value="For Adults"
-                        />
-                        <label for="adults" class="text-sm text-gray-700 cursor-pointer"
-                        >For Adults</label
-                        >
-                    </div>
-                    <div class="flex items-center mb-2">
-                        <input
-                                type="checkbox"
-                                id="families"
-                                class="audience-checkbox"
-                                value="For Families"
-                        />
-                        <label
-                                for="families"
-                                class="text-sm text-gray-700 cursor-pointer"
-                        >For Families</label
-                        >
-                    </div>
-                    <div class="flex items-center">
-                        <input
-                                type="checkbox"
-                                id="seniors"
-                                class="audience-checkbox"
-                                value="For Seniors"
-                        />
-                        <label
-                                for="seniors"
-                                class="text-sm text-gray-700 cursor-pointer"
-                        >For Seniors</label
-                        >
-                    </div>
+                <div id="audience-filters" class="space-y-2 pl-1">
+                    <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                        <input type="checkbox" id="kids" class="audience-checkbox" value="For Kids" />
+                        For Kids
+                    </label>
+                    <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                        <input type="checkbox" id="adults" class="audience-checkbox" value="For Adults" />
+                        For Adults
+                    </label>
+                    <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                        <input type="checkbox" id="families" class="audience-checkbox" value="For Families" />
+                        For Families
+                    </label>
+                    <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                        <input type="checkbox" id="seniors" class="audience-checkbox" value="For Seniors" />
+                        For Seniors
+                    </label>
                 </div>
             </div>
+
             <!-- Type Filter -->
-            <div class="mb-4">
-                <div
-                        class="flex justify-between items-center cursor-pointer mb-2"
-                        id="type-toggle"
-                >
-                    <h3 class="text-md font-medium text-gray-800">Type</h3>
-                    <div
-                            class="w-5 h-5 flex items-center justify-center text-gray-500"
-                    >
-                        <i class="ri-arrow-down-s-line"></i>
-                    </div>
+            <div class="mb-4 border-b pb-4">
+                <div class="flex justify-between items-center cursor-pointer mb-2" id="type-toggle">
+                    <h3 class="text-base font-semibold text-gray-800">Type</h3>
+                    <i class="ri-arrow-down-s-line text-xl text-gray-500"></i>
                 </div>
-                <div id="type-filters" class="pl-1">
-                    <div class="flex items-center mb-2">
-                        <input
-                                type="checkbox"
-                                id="entertainment"
-                                class="type-checkbox"
-                                value="Entertainment"
-                        />
-                        <label
-                                for="entertainment"
-                                class="text-sm text-gray-700 cursor-pointer"
-                        >Entertainment</label
-                        >
-                    </div>
-                    <div class="flex items-center mb-2">
-                        <input
-                                type="checkbox"
-                                id="educational"
-                                class="type-checkbox"
-                                value="Educational"
-                        />
-                        <label
-                                for="educational"
-                                class="text-sm text-gray-700 cursor-pointer"
-                        >Educational</label
-                        >
-                    </div>
-                    <div class="flex items-center mb-2">
-                        <input
-                                type="checkbox"
-                                id="cultural"
-                                class="type-checkbox"
-                                value="Cultural"
-                        />
-                        <label
-                                for="cultural"
-                                class="text-sm text-gray-700 cursor-pointer"
-                        >Cultural</label
-                        >
-                    </div>
-                    <div class="flex items-center mb-2">
-                        <input
-                                type="checkbox"
-                                id="sports"
-                                class="type-checkbox"
-                                value="Sports"
-                        />
-                        <label for="sports" class="text-sm text-gray-700 cursor-pointer"
-                        >Sports</label
-                        >
-                    </div>
-                    <div class="flex items-center">
-                        <input
-                                type="checkbox"
-                                id="networking"
-                                class="type-checkbox"
-                                value="Networking"
-                        />
-                        <label
-                                for="networking"
-                                class="text-sm text-gray-700 cursor-pointer"
-                        >Networking</label
-                        >
-                    </div>
+                <div id="type-filters" class="space-y-2 pl-1">
+                    <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                        <input type="checkbox" id="entertainment" class="type-checkbox" value="Entertainment" />
+                        Entertainment
+                    </label>
+                    <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                        <input type="checkbox" id="educational" class="type-checkbox" value="Educational" />
+                        Educational
+                    </label>
+                    <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                        <input type="checkbox" id="cultural" class="type-checkbox" value="Cultural" />
+                        Cultural
+                    </label>
+                    <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                        <input type="checkbox" id="sports" class="type-checkbox" value="Sports" />
+                        Sports
+                    </label>
+                    <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                        <input type="checkbox" id="networking" class="type-checkbox" value="Networking" />
+                        Networking
+                    </label>
                 </div>
             </div>
+
             <!-- Time Filter -->
-            <div class="mb-4">
-                <div
-                        class="flex justify-between items-center cursor-pointer mb-2"
-                        id="time-toggle"
-                >
-                    <h3 class="text-md font-medium text-gray-800">Time</h3>
-                    <div
-                            class="w-5 h-5 flex items-center justify-center text-gray-500"
-                    >
-                        <i class="ri-arrow-down-s-line"></i>
-                    </div>
+            <div class="mb-4 border-b pb-4">
+                <div class="flex justify-between items-center cursor-pointer mb-2" id="time-toggle">
+                    <h3 class="text-base font-semibold text-gray-800">Time</h3>
+                    <i class="ri-arrow-down-s-line text-xl text-gray-500"></i>
                 </div>
-                <div id="time-filters" class="pl-1">
-                    <div class="flex items-center mb-2">
-                        <input
-                                type="radio"
-                                name="time"
-                                id="today"
-                                class="time-radio"
-                                value="Today"
-                        />
-                        <label for="today" class="text-sm text-gray-700 cursor-pointer"
-                        >Today</label
-                        >
-                    </div>
-                    <div class="flex items-center mb-2">
-                        <input
-                                type="radio"
-                                name="time"
-                                id="this-week"
-                                class="time-radio"
-                                value="This Week"
-                        />
-                        <label
-                                for="this-week"
-                                class="text-sm text-gray-700 cursor-pointer"
-                        >This Week</label
-                        >
-                    </div>
-                    <div class="flex items-center mb-2">
-                        <input
-                                type="radio"
-                                name="time"
-                                id="this-month"
-                                class="time-radio"
-                                value="This Month"
-                        />
-                        <label
-                                for="this-month"
-                                class="text-sm text-gray-700 cursor-pointer"
-                        >This Month</label
-                        >
-                    </div>
-                    <div class="flex items-center">
-                        <input
-                                type="radio"
-                                name="time"
-                                id="custom"
-                                class="time-radio"
-                                value="Custom"
-                        />
-                        <label for="custom" class="text-sm text-gray-700 cursor-pointer"
-                        >Custom</label
-                        >
-                    </div>
+                <div id="time-filters" class="space-y-2 pl-1">
+                    <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                        <input type="radio" name="time" id="today" class="time-radio" value="Today" />
+                        Today
+                    </label>
+                    <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                        <input type="radio" name="time" id="this-week" class="time-radio" value="This Week" />
+                        This Week
+                    </label>
+                    <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                        <input type="radio" name="time" id="this-month" class="time-radio" value="This Month" />
+                        This Month
+                    </label>
+                    <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                        <input type="radio" name="time" id="custom" class="time-radio" value="Custom" />
+                        Custom
+                    </label>
                 </div>
             </div>
+
             <!-- Location Filter -->
-            <div class="mb-4">
-                <div
-                        class="flex justify-between items-center cursor-pointer mb-2"
-                        id="location-toggle"
-                >
-                    <h3 class="text-md font-medium text-gray-800">Location</h3>
-                    <div
-                            class="w-5 h-5 flex items-center justify-center text-gray-500"
-                    >
-                        <i class="ri-arrow-down-s-line"></i>
-                    </div>
+            <div class="mb-4 border-b pb-4">
+                <div class="flex justify-between items-center cursor-pointer mb-2" id="location-toggle">
+                    <h3 class="text-base font-semibold text-gray-800">Location</h3>
+                    <i class="ri-arrow-down-s-line text-xl text-gray-500"></i>
                 </div>
-                <div id="location-filters" class="pl-1">
-                    <div class="relative mb-2">
-                        <div
-                                class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
-                        >
-                            <div
-                                    class="w-4 h-4 flex items-center justify-center text-gray-500"
-                            >
-                                <i class="ri-search-line"></i>
-                            </div>
+                <div id="location-filters" class="pl-1 space-y-2">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <i class="ri-search-line text-gray-500 text-base"></i>
                         </div>
                         <input
                                 type="text"
                                 id="location-search"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md block w-full pl-10 p-2.5"
                                 placeholder="Search location"
+                                class="w-full pl-10 p-2.5 text-sm text-gray-900 border border-gray-300 rounded-md bg-gray-50"
                         />
                     </div>
-                    <div class="max-h-40 overflow-y-auto">
-                        <div class="flex items-center mb-2">
-                            <input
-                                    type="checkbox"
-                                    id="Hebron"
-                                    class="location-checkbox"
-                                    value="Hebron"
-                            />
-                            <label
-                                    for="Hebron"
-                                    class="text-sm text-gray-700 cursor-pointer"
-                            >Hebron</label
-                            >
-                        </div>
-                        <div class="flex items-center mb-2">
-                            <input
-                                    type="checkbox"
-                                    id="Bethlehem"
-                                    class="location-checkbox"
-                                    value="Bethlehem"
-                            />
-                            <label
-                                    for="Bethlehem"
-                                    class="text-sm text-gray-700 cursor-pointer"
-                            >Bethlehem</label
-                            >
-                        </div>
-                        <div class="flex items-center mb-2">
-                            <input
-                                    type="checkbox"
-                                    id="Jenin"
-                                    class="location-checkbox"
-                                    value="Jenin"
-                            />
-                            <label
-                                    for="Jenin"
-                                    class="text-sm text-gray-700 cursor-pointer"
-                            >Jenin</label
-                            >
-                        </div>
-                        <div class="flex items-center mb-2">
-                            <input
-                                    type="checkbox"
-                                    id="Ramallah"
-                                    class="location-checkbox"
-                                    value="Ramallah"
-                            />
-                            <label
-                                    for="Ramallah"
-                                    class="text-sm text-gray-700 cursor-pointer"
-                            >Ramallah</label
-                            >
-                        </div>
-                        <div class="flex items-center">
-                            <input
-                                    type="checkbox"
-                                    id="nablus"
-                                    class="location-checkbox"
-                                    value="nablus"
-                            />
-                            <label
-                                    for="nablus"
-                                    class="text-sm text-gray-700 cursor-pointer"
-                            >nablus</label
-                            >
-                        </div>
-
-
+                    <div class="max-h-40 overflow-y-auto space-y-2">
+                        <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                            <input type="checkbox" id="Hebron" class="location-checkbox" value="Hebron" />
+                            Hebron
+                        </label>
+                        <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                            <input type="checkbox" id="Bethlehem" class="location-checkbox" value="Bethlehem" />
+                            Bethlehem
+                        </label>
+                        <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                            <input type="checkbox" id="Jenin" class="location-checkbox" value="Jenin" />
+                            Jenin
+                        </label>
+                        <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                            <input type="checkbox" id="Ramallah" class="location-checkbox" value="Ramallah" />
+                            Ramallah
+                        </label>
+                        <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                            <input type="checkbox" id="Nablus" class="location-checkbox" value="Nablus" />
+                            Nablus
+                        </label>
                     </div>
                 </div>
             </div>
+
             <!-- Price Filter -->
             <div class="mb-4">
-                <div
-                        class="flex justify-between items-center cursor-pointer mb-2"
-                        id="price-toggle"
-                >
-                    <h3 class="text-md font-medium text-gray-800">Price</h3>
-                    <div
-                            class="w-5 h-5 flex items-center justify-center text-gray-500"
-                    >
-                        <i class="ri-arrow-down-s-line"></i>
-                    </div>
+                <div class="flex justify-between items-center cursor-pointer mb-2" id="price-toggle">
+                    <h3 class="text-base font-semibold text-gray-800">Price</h3>
+                    <i class="ri-arrow-down-s-line text-xl text-gray-500"></i>
                 </div>
-                <div id="price-filters" class="pl-1">
-
-                    <div class="flex items-center mb-2">
-                        <input
-                                type="checkbox"
-                                id="free"
-                                class="price-checkbox"
-                                value="Free"
-                        />
-                        <label for="free" class="text-sm text-gray-700 cursor-pointer"
-                        >Free</label
-                        >
-                    </div>
-                    <div class="flex items-center mb-2">
-                        <input
-                                type="checkbox"
-                                id="paid"
-                                class="price-checkbox"
-                                value="Paid"
-                        />
-                        <label for="paid" class="text-sm text-gray-700 cursor-pointer"
-                        >Paid</label
-                        >
-                    </div>
-
+                <div id="price-filters" class="space-y-2 pl-1">
+                    <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                        <input type="checkbox" id="free" class="price-checkbox" value="Free" />
+                        Free
+                    </label>
+                    <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                        <input type="checkbox" id="paid" class="price-checkbox" value="Paid" />
+                        Paid
+                    </label>
                 </div>
             </div>
         </div>
+
+
     </aside>
     <!-- Main Content -->
     <main class="w-full md:w-3/4 lg:w-4/5">
@@ -495,7 +287,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
             <!-- Event Cards -->
-            <div class="event-card bg-white rounded shadow-sm overflow-hidden cursor-pointer" data-id="event1" data-audience="For Adults" data-type="Educational" data-location="nablus" data-price="20" data-date="2025-05-24T15:30" data-rating="4.6" onclick="openModal('event1')">
+            <div class="event-card bg-white rounded shadow-sm overflow-hidden cursor-pointer" data-id="event1" data-audience="For Adults" data-type="Educational" data-location="Bethlehem" data-price="20" data-date="2025-05-24T15:30" data-rating="4.6" onclick="openModal('event1')">
                 <div class="relative h-48">
                     <img src="IMAGE/programming.jpg" alt="Java programming course" class="w-full h-full object-cover object-top" />
                     <div class="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded-full">Educational</div>
@@ -512,14 +304,14 @@
                         <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
                             <i class="ri-map-pin-line"></i>
                         </div>
-                        <span class="text-sm text-gray-600">An-Najah National University - nablus</span>
+                        <span class="text-sm text-gray-600">Bethlehem</span>
                     </div>
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
                             <div class="w-4 h-4 flex items-center justify-center text-yellow-500 mr-1">
                                 <i class="ri-star-fill"></i>
                             </div>
-                            <span class="text-sm text-gray-700">4.6 (20 reviews)</span>
+                            <span class="text-sm text-gray-700">4.6 </span>
                         </div>
                         <span class="text-sm font-medium text-gray-900">₪ 20 ILS</span>
                     </div>
@@ -546,11 +338,11 @@
             <!-- Event 2 -->
             <div class="event-card bg-white rounded shadow-sm overflow-hidden cursor-pointer" data-id="event2" data-audience="For Kids,For Families" data-type="Entertainment" data-location="nablus" data-price="30" data-date="2025-05-08T15:30" data-rating="4.8" onclick="openModal('event2')">
                 <div class="relative h-48">
-                    <img src="IMAGE/event2.jpg" alt="Entertainment show" class="w-full h-full object-cover object-top" />
+                    <img src="IMAGE/Group drawing3.jpg" alt="Group drawing" class="w-full h-full object-cover object-top" />
                     <div class="absolute top-2 right-2 bg-blue-600 text-white text-xs px-2 py-1 rounded-full">Entertainment</div>
                 </div>
                 <div class="p-4">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Entertainment show</h3>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Group drawing </h3>
                     <div class="flex items-center mb-2">
                         <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
                             <i class="ri-calendar-line"></i>
@@ -568,7 +360,7 @@
                             <div class="w-4 h-4 flex items-center justify-center text-yellow-500 mr-1">
                                 <i class="ri-star-fill"></i>
                             </div>
-                            <span class="text-sm text-gray-700">4.8 (30 reviews)</span>
+                            <span class="text-sm text-gray-700">4.8 </span>
                         </div>
                         <span class="text-sm font-medium text-gray-900">₪ 30 ILS</span>
                     </div>
@@ -578,11 +370,11 @@
             <!-- Event 3 -->
             <div class="event-card bg-white rounded shadow-sm overflow-hidden cursor-pointer" data-id="event3" data-audience="For Kids,For Families,For Adults,For Seniors" data-type="Entertainment" data-location="Jenin" data-price="40" data-date="2025-05-07T15:30" data-rating="4.3" onclick="openModal('event3')">
                 <div class="relative h-48">
-                    <img src="IMAGE/Plant Caree.jpg" alt="Music concert" class="w-full h-full object-cover object-top" />
+                    <img src="IMAGE/Plant Caree.jpg" alt="Plant Care" class="w-full h-full object-cover object-top" />
                     <div class="absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded-full">Entertainment</div>
                 </div>
                 <div class="p-4">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Music concert</h3>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Plant Care</h3>
                     <div class="flex items-center mb-2">
                         <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
                             <i class="ri-calendar-line"></i>
@@ -600,7 +392,7 @@
                             <div class="w-4 h-4 flex items-center justify-center text-yellow-500 mr-1">
                                 <i class="ri-star-fill"></i>
                             </div>
-                            <span class="text-sm text-gray-700">4.3 (15 reviews)</span>
+                            <span class="text-sm text-gray-700">4.3 </span>
                         </div>
                         <span class="text-sm font-medium text-gray-900">₪ 40 ILS</span>
                     </div>
@@ -608,13 +400,13 @@
             </div>
 
             <!-- Event 4 -->
-            <div class="event-card bg-white rounded shadow-sm overflow-hidden cursor-pointer" data-id="event4" data-audience="For Kids,For Families" data-type="Entertainment" data-location="nablus" data-price="0" data-date="2025-05-30T15:30" data-rating="3.9" onclick="openModal('event4')">
+            <div class="event-card bg-white rounded shadow-sm overflow-hidden cursor-pointer" data-id="event4" data-audience="For Adults" data-type="Cultural" data-location="Nablus" data-price="0" data-date="2025-05-30T15:30" data-rating="3.9" onclick="openModal('event4')">
                 <div class="relative h-48">
-                    <img src="IMAGE/Group drawing1.jpg" alt="Outdoor game" class="w-full h-full object-cover object-top" />
-                    <div class="absolute top-2 right-2 bg-yellow-600 text-white text-xs px-2 py-1 rounded-full">Entertainment</div>
+                    <img src="IMAGE/exhibition.jpg" alt="Outdoor game" class="w-full h-full object-cover object-top" />
+                    <div class="absolute top-2 right-2 bg-yellow-600 text-white text-xs px-2 py-1 rounded-full">Cultural</div>
                 </div>
                 <div class="p-4">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Outdoor game</h3>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-1">exhibition</h3>
                     <div class="flex items-center mb-2">
                         <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
                             <i class="ri-calendar-line"></i>
@@ -625,14 +417,14 @@
                         <div class="w-4 h-4 flex items-center justify-center text-gray-500 mr-1">
                             <i class="ri-map-pin-line"></i>
                         </div>
-                        <span class="text-sm text-gray-600">An-Najah National University - nablus</span>
+                        <span class="text-sm text-gray-600"> Ramallah </span>
                     </div>
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
                             <div class="w-4 h-4 flex items-center justify-center text-yellow-500 mr-1">
                                 <i class="ri-star-fill"></i>
                             </div>
-                            <span class="text-sm text-gray-700">3.9 (10 reviews)</span>
+                            <span class="text-sm text-gray-700">3.9 </span>
                         </div>
                         <span class="text-sm font-medium text-gray-900">Free</span>
                     </div>

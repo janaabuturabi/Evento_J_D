@@ -36,16 +36,16 @@
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition, showError);
         } else {
-            alert("المتصفح لا يدعم تحديد الموقع.");
+            alert("Your browser does not support geolocation.");
         }
     }
 
     function showPosition(position) {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
-        console.log("تم تحديد الموقع:", lat, lon);
+        console.log("Location determined:", lat, lon);
 
-        // إنشاء الخريطة
+        // Create the map
         if (!map) {
             map = L.map('map').setView([lat, lon], 13);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -55,36 +55,37 @@
             map.setView([lat, lon], 13);
         }
 
-        // إضافة علامة للموقع
+        // Add a marker for the location
         L.marker([lat, lon]).addTo(map)
-            .bindPopup("موقعي الحالي")
+            .bindPopup("My current location")
             .openPopup();
 
-        // إرسال الإحداثيات إلى خادم (كمثال نطبعها فقط)
+        // Send coordinates to server (for example, we just log them)
         sendLocationToServer(lat, lon);
     }
 
     function sendLocationToServer(lat, lon) {
-        // يمكن هنا إرسال البيانات إلى API
-        console.log("إرسال الموقع إلى الخادم: ", lat, lon);
+        // You can send the data to an API here
+        console.log("Sending location to server:", lat, lon);
     }
 
     function showError(error) {
         switch(error.code) {
             case error.PERMISSION_DENIED:
-                alert("تم رفض طلب تحديد الموقع.");
+                alert("Location request was denied.");
                 break;
             case error.POSITION_UNAVAILABLE:
-                alert("معلومات الموقع غير متوفرة.");
+                alert("Location information is unavailable.");
                 break;
             case error.TIMEOUT:
-                alert("انتهت مهلة الطلب.");
+                alert("The request to get location timed out.");
                 break;
             default:
-                alert("حدث خطأ غير معروف.");
+                alert("An unknown error occurred.");
                 break;
         }
     }
 </script>
+
 </body>
 </html>
