@@ -100,6 +100,9 @@ try {
         setTimeout(function() {
             window.location.href = "index.html";
         });
+
+
+
     </script>
 <?php endif; ?>
 </body>
