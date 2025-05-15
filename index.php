@@ -1,32 +1,51 @@
+<?php
+session_start();
+$username = isset($_SESSION['user']) ? $_SESSION['user'] : null;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>
+        <?php echo $username ? "Evento - " . htmlspecialchars($username) . "!" : "Evento - Home"; ?>
+    </title>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evento</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="IMAGE/favicon1.ico" type="image/x-icon">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-    <script>tailwind.config={theme:{extend:{colors:{primary:'#004047',secondary:'#ffffff'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#004047',
+                        secondary: '#ffffff'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        };
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
-    <link rel="icon" href="IMAGE/favicon1.ico" type="image/x-icon">
-    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-    <script>tailwind.config={theme:{extend:{colors:{primary:'#004047',secondary:'#ffffff'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-
-
 </head>
 <body>
-<!-- home section starts here  -->
+<!-- home section starts here -->
 <section class="home">
     <div class="home-box">
         <nav>
@@ -34,7 +53,17 @@
                 <div class="bar">
                     <i class="fa fa-bars"></i>
                 </div>
-                <h3>EVENTO</h3>
+                <?php if ($username): ?>
+                    <span class="text-white text-sm md:text-base">
+            <strong><?php echo htmlspecialchars($username); ?></strong>
+        </span>
+                    <h3>EVENTO</h3>
+                    </a>
+                <?php else: ?>
+                    <h3>EVENTO</h3>
+                <?php endif; ?>
+
+
             </div>
             <div class="menu">
                 <div class="close">
@@ -43,21 +72,28 @@
                 <ul>
                     <li><a href="index.php">home</a></li>
                     <li><a href="about.html">about</a></li>
-                    <a href="#contact" class="text-white">Contact us</a>
-
+                    <li><a href="#contact" class="text-white">Contact us</a></li>
                 </ul>
             </div>
-            <div class="signup-login">
-                <a href="signup_extra.php">sign in</a>
-                <a href="signup_extra.php">login</a>
+
+            <!-- تعديل زر الدخول والخروج -->
+            <div class="signup-login flex items-center gap-4">
+                <?php if ($username): ?>
+                     <a href="logout.php" class="text-white flex items-center gap-1 hover:text-red-400 transition">
+                        <i class="ri-logout-box-r-line text-xl"></i> Logout
+                    </a>
+                <?php else: ?>
+                    <a href="signup_extra.php">Sign in</a>
+                    <a href="signup_extra.php">Login</a>
+                <?php endif; ?>
+
             </div>
         </nav>
 
         <div class="content">
             <h5>Evento</h5>
             <h1>Catch the moment before it’s gone.</h1>
-            <p>Explore top events, feel the energy, and be part of something amazing — your next experience starts here
-            </p>
+            <p>Explore top events, feel the energy, and be part of something amazing — your next experience starts here</p>
 
             <div class="search">
                 <i class="fa fa-search"></i>
@@ -65,16 +101,15 @@
                 <button>search</button>
             </div>
 
-            <!-- الشريط الأبيض الكبير -->
+            <!-- الزر الأبيض الكبير -->
             <div class="search full-button">
                 <a href="events.html">Book or Create</a>
             </div>
-
-
-
-
         </div>
     </div>
+
+
+
 </section>
 <!-- home section ends here  -->
 
@@ -175,10 +210,10 @@
                     From here you can book or create events
                 </p>
                 <p>entertainment , cultural , group or official events
-            </p>
+                </p>
                 <a href="events.html">show more</a>
                 <div class="image">
-<!--                    <img src="IMAGE/events icon.png" alt="">-->
+                    <!--                    <img src="IMAGE/events icon.png" alt="">-->
                 </div>
             </div>
         </div>

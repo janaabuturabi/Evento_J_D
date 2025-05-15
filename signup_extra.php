@@ -102,7 +102,7 @@ try {
 
         // إعادة التوجيه إلى index.html بعد 3 ثواني
         setTimeout(function() {
-            window.location.href = "index.html";
+            window.location.href = "index.php";
         });
 
 

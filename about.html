@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EVENTO</title>
+    <title>Evento - About</title>
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
     <script>tailwind.config={theme:{extend:{colors:{primary:'#004047',secondary:'#ffffff'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,21 +55,40 @@
                 <div class="bar">
                     <i class="fa fa-bars"></i>
                 </div>
+                <?php if ($username): ?>
+                <span class="text-white text-sm md:text-base">
+            <strong><?php echo htmlspecialchars($username); ?></strong>
+        </span>
                 <h3>EVENTO</h3>
+                </a>
+                <?php else: ?>
+                <h3>EVENTO</h3>
+                <?php endif; ?>
+
+
             </div>
             <div class="menu">
                 <div class="close">
                     <i class="fa fa-close"></i>
                 </div>
                 <ul>
-                    <li><a href="index.html">home</a></li>
+                    <li><a href="index.php">home</a></li>
                     <li><a href="about.html">about</a></li>
-                    <li><a href="index.html">Contact us</a></li>
+                    <li><a href="index.php" class="text-white">Contact us</a></li>
                 </ul>
             </div>
-            <div class="signup-login">
-                <a href="#">sign up</a>
-                <a href="#">login</a>
+
+            <!-- تعديل زر الدخول والخروج -->
+            <div class="signup-login flex items-center gap-4">
+                <?php if ($username): ?>
+                <a href="logout.php" class="text-white flex items-center gap-1 hover:text-red-400 transition">
+                    <i class="ri-logout-box-r-line text-xl"></i> Logout
+                </a>
+                <?php else: ?>
+                <a href="signup_extra.php">Sign in</a>
+                <a href="signup_extra.php">Login</a>
+                <?php endif; ?>
+
             </div>
         </nav>
 
@@ -109,7 +128,7 @@
                 </h1>
                 <p class="text-xl text-gray-600 mb-8">We're on a mission to transform how people discover, book, and experience events. Join us in creating memories that last a lifetime.</p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="events.html">
+                    <a href="create-event.html">
                         <button class="px-8 py-3 bg-primary text-white font-medium rounded-full hover:bg-primary/90 transition !rounded-button whitespace-nowrap">
                             Explore Events
                         </button>

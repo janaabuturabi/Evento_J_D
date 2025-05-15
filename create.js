@@ -280,6 +280,8 @@ publishButton.addEventListener('click', function () {
     localStorage.setItem('newEvent', JSON.stringify(eventData));
 
     window.location.href = 'events.html'; // Or you can reload the page and update it dynamically
+
+
 });
 
 

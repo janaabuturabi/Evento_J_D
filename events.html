@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>EVENTO</title>
+    <title>Evento</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css">
@@ -32,21 +32,40 @@
                 <div class="bar">
                     <i class="fa fa-bars"></i>
                 </div>
+                <?php if ($username): ?>
+                <span class="text-white text-sm md:text-base">
+            <strong><?php echo htmlspecialchars($username); ?></strong>
+        </span>
                 <h3>EVENTO</h3>
+                </a>
+                <?php else: ?>
+                <h3>EVENTO</h3>
+                <?php endif; ?>
+
+
             </div>
             <div class="menu">
                 <div class="close">
                     <i class="fa fa-close"></i>
                 </div>
                 <ul>
-                    <li><a href="index.html">home</a></li>
+                    <li><a href="index.php">home</a></li>
                     <li><a href="about.html">about</a></li>
-                    <li><a href="index.html">Contact us</a></li>
+                    <li><a href="index.php" class="text-white">Contact us</a></li>
                 </ul>
             </div>
-            <div class="signup-login">
-                <a href="#">sign up</a>
-                <a href="#">login</a>
+
+            <!-- تعديل زر الدخول والخروج -->
+            <div class="signup-login flex items-center gap-4">
+                <?php if ($username): ?>
+                <a href="logout.php" class="text-white flex items-center gap-1 hover:text-red-400 transition">
+                    <i class="ri-logout-box-r-line text-xl"></i> Logout
+                </a>
+                <?php else: ?>
+                <a href="signup_extra.php">Sign in</a>
+                <a href="signup_extra.php">Login</a>
+                <?php endif; ?>
+
             </div>
         </nav>
 
@@ -267,7 +286,7 @@
                     </button>
                 </a>
 
-                <a href="create.html">
+                <a href="create-event.html">
                 <button
                         class="bg-primary text-white px-4 py-2 !rounded-button font-medium flex items-center whitespace-nowrap"
                 >
