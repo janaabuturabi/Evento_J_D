@@ -37,6 +37,10 @@ try {
                 $success = "Account created successfully!";
                 $show_success_script = true;
             }
+
+
+
+
         }
     }
 } catch (PDOException $e) {
