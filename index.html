@@ -22,10 +22,146 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="../Login/HOME.css">
 
 </head>
 <body>
+
+<header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+    <div class="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center" style="height: 75px;">
+        <!-- Logo with Pacifico font and gradient text -->
+        <div class="text-indigo-600" style="
+      font-family: 'Pacifico', cursive;
+      font-size: 2.1rem;
+      background: linear-gradient(to right,#5A31F4,#62bff6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      padding: 6px 12px;
+      border-radius: 30px;
+      display: inline-block;
+      line-height: 1;
+    ">
+            Evento
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="hidden md:flex space-x-10 font-medium text-gray-700" style="font-size: 1.1rem;">
+            <a href="#" class="border-b-2 border-indigo-600 text-indigo-600 pb-1">Home</a>
+            <a href="#" class="hover:text-indigo-600 pb-1 border-b-2 border-transparent hover:border-indigo-600 transition">Events</a>
+            <a href="#" class="hover:text-indigo-600 pb-1 border-b-2 border-transparent hover:border-indigo-600 transition">About</a>
+            <a href="#" class="hover:text-indigo-600 pb-1 border-b-2 border-transparent hover:border-indigo-600 transition">Contact</a>
+        </nav>
+
+        <!-- Search input and Icons -->
+        <div class="flex items-center space-x-4">
+            <!-- Search input -->
+            <!-- Search input with smaller Heroicons-style icon -->
+            <div class="relative hidden sm:block">
+                <input type="text" placeholder="Search events..."
+                       class="pl-9 pr-3 py-2.5 border border-gray-300 rounded-full text-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 w-60 text-sm" />
+                <svg class="w-4 h-4 text-gray-400 absolute left-3 top-3 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2.5"
+                     viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+            </div>
+
+
+            <!-- Sign In Button with icon -->
+            <a href="../Evento_J_D/Login/Login.html">
+                <button
+                        class="bg-indigo-600 text-white px-4 py-2.5 rounded-full
+           hover:bg-indigo-200 hover:text-indigo-600
+           focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1
+           flex items-center space-x-2 text-sm transition-all duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         class="h-5 w-5 transition-colors duration-300"
+                         fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="7" r="4"
+                                stroke="currentColor" stroke-width="2" fill="none" />
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M5.5 21a6.5 6.5 0 0113 0" />
+                    </svg>
+                    <span>Sign In</span>
+                </button>
+            </a>
+            <!--            &lt;!&ndash; Sign Up Button without icon &ndash;&gt;-->
+            <!--            <button-->
+            <!--                    class="bg-indigo-600 text-white px-4 py-2.5 rounded-full-->
+            <!--           hover:bg-indigo-200 hover:text-indigo-600-->
+            <!--           focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1-->
+            <!--           flex items-center space-x-2 text-sm transition-all duration-300">-->
+            <!--                <span>Sign Up</span>-->
+            <!--            </button>-->
+
+
+        </div>
+    </div>
+</header>
+
+
+<!-- 🔁 Image Slider -->
+<div class="slider mt-32 relative h-[550px]">
+
+    <!-- Slider Text Overlay - aligned to the left -->
+    <div class="absolute z-20 inset-0 flex flex-col items-start justify-center text-black px-10 md:px-24">
+        <h1 class="text-4xl md:text-5xl font-bold drop-shadow-lg mb-4 opacity-0 animate-fadeInUp animation-delay-0">
+            Discover & Book Amazing Events
+        </h1>
+
+        <p class="text-lg md:text-xl max-w-xl drop-shadow-md mb-6 opacity-0 animate-fadeInUp animation-delay-1">
+            Find and book the perfect events for your interests. From academic conferences to outdoor adventures, we've got you covered.
+        </p>
+
+        <button
+                class="opacity-0 animate-fadeInUp animation-delay-2 flex items-center justify-center gap-2 bg-indigo-600 text-white px-6 h-[50px] rounded-full text-base font-medium shadow transition-all duration-300 hover:bg-indigo-400 hover:shadow-lg hover:-translate-y-1 hover:scale-200">
+            Browse Events
+        </button>
+    </div>
+
+
+    <!--  Image Slider -->
+    <div class="absolute inset-0 bg-white opacity-50 z-10"></div>
+
+    <img src="IMAGE/Clay%20hand-making%20course.jpg" class="slide active z-0 w-full h-full object-cover" alt="Handmade Pottery" />
+    <img src="IMAGE/Horse%20course2.jpg" class="slide z-0 w-full h-full object-cover" alt="Horse Riding" />
+    <img src="IMAGE/event1.jpg" class="slide z-0 w-full h-full object-cover" alt="Piano Music" />
+    <img src="IMAGE/Plant%20Care2.jpg" class="slide z-0 w-full h-full object-cover" alt="Plant Care with Kids" />
+    <img src="IMAGE/Plant%20Caree.jpg" class="slide z-0 w-full h-full object-cover" alt="Seedlings Growing" />
+    <img src="IMAGE/Robotics%20course.jpg" class="slide z-0 w-full h-full object-cover" alt="Robotics Workshop" />
+    <img src="IMAGE/Money.jpg" class="slide z-0 w-full h-full object-cover" alt="Business Networking" />
+    <img src="IMAGE/Cooking%20course.jpg" class="slide z-0 w-full h-full object-cover" alt="Cooking Workshop" />
+    <img src="IMAGE/arts.jpg" class="slide z-0 w-full h-full object-cover" alt="Art Exhibition" />
+    <img src="IMAGE/Group%20drawing.jpg" class="slide z-0 w-full h-full object-cover" alt="Group Drawing Activity" />
+
+
+</div>
+
+<!-- 🔁 Infinite Slider -->
+<div class="wrapper">
+    <button class="item item1"><i class="fa-solid fa-graduation-cap"></i> Academic</button>
+    <button class="item item2"><i class="fa-solid fa-basketball"></i> Sports</button>
+    <button class="item item3"><i class="fa-solid fa-code"></i> Coding</button>
+    <button class="item item4"><i class="fa-solid fa-map"></i> Trips</button>
+    <button class="item item5"><i class="fa-solid fa-music"></i> Music</button>
+    <button class="item item6"><i class="fa-solid fa-paintbrush"></i> Art</button>
+    <button class="item item7"><i class="fa-solid fa-heart"></i> Health</button>
+    <button class="item item8"><i class="fa-solid fa-globe"></i> Travel</button>
+    <button class="item item9"><i class="fa-solid fa-briefcase"></i> Business</button>
+    <button class="item item10"><i class="fa-solid fa-microphone"></i> Talks</button>
+    <button class="item item11"><i class="fa-solid fa-tree"></i> Nature</button>
+
+
+</div>
+
+
 <!-- home section starts here  -->
 <section class="home">
     <div class="home-box">
@@ -34,46 +170,43 @@
                 <div class="bar">
                     <i class="fa fa-bars"></i>
                 </div>
-                <h3>EVENTO</h3>
+<!--                <h3>EVENTO</h3>-->
             </div>
             <div class="menu">
                 <div class="close">
                     <i class="fa fa-close"></i>
                 </div>
-                <ul>
-                    <li><a href="index.php">home</a></li>
-                    <li><a href="about.html">about</a></li>
+<!--                <ul>-->
+<!--                    <li><a href="index.php">home</a></li>-->
+<!--                    <li><a href="about.html">about</a></li>-->
                     <a href="#contact" class="text-white">Contact us</a>
 
-                </ul>
+<!--                </ul>-->
             </div>
             <div class="signup-login">
-                <a href="signup_extra.php">sign in</a>
-                <a href="signup_extra.php">login</a>
+<!--                <a href="signup_extra.php">sign in</a>-->
+<!--                <a href="signup_extra.php">login</a>-->
             </div>
         </nav>
 
-        <div class="content">
-            <h5>Evento</h5>
-            <h1>Catch the moment before it’s gone.</h1>
-            <p>Explore top events, feel the energy, and be part of something amazing — your next experience starts here
-            </p>
+<!--        <div class="content">-->
+<!--            <h5>Evento</h5>-->
+<!--            <h1>Catch the moment before it’s gone.</h1>-->
+<!--            <p>Explore top events, feel the energy, and be part of something amazing — your next experience starts here-->
+<!--            </p>-->
 
-            <div class="search">
-                <i class="fa fa-search"></i>
-                <input type="text" placeholder="Your perfect event is just one search ...">
-                <button>search</button>
-            </div>
+<!--            <div class="search">-->
+<!--                <i class="fa fa-search"></i>-->
+<!--                <input type="text" placeholder="Your perfect event is just one search ...">-->
+<!--                <button>search</button>-->
+<!--            </div>-->
 
-            <!-- الشريط الأبيض الكبير -->
-            <div class="search full-button">
-                <a href="events.html">Book or Create</a>
-            </div>
+<!--            &lt;!&ndash; الشريط الأبيض الكبير &ndash;&gt;-->
+<!--            <div class="search full-button">-->
+<!--                <a href="events.html">Book or Create</a>-->
+<!--            </div>-->
 
-
-
-
-        </div>
+<!--        </div>-->
     </div>
 </section>
 <!-- home section ends here  -->
@@ -164,57 +297,57 @@
 </section>
 <!-- destinatons section ends here  -->
 
-<!-- featured section starts here  -->
-<section class="featured">
-    <div class="gallery">
-        <div class="box box1">
-            <div class="first-box">
-                <h4 class="label">featured offers</h4>
-                <h2 class="heading">Book or create special events</h2>
-                <p>
-                    From here you can book or create events
-                </p>
-                <p>entertainment , cultural , group or official events
-            </p>
-                <a href="events.html">show more</a>
-                <div class="image">
-<!--                    <img src="IMAGE/events icon.png" alt="">-->
-                </div>
-            </div>
-        </div>
-        <div class="box box2">
-            <img src="IMAGE/Plant Caree.jpg" alt="">
-            <div class="content">
-                <h2>Plant Care</h2>
-                <div class="review-and-idr">
-                    <div class="review"><i class="fa fa-star"></i> 4.9 | 853 review</div>
-                    <p>ILS 30.00</p>
-                </div>
-            </div>
-        </div>
-        <div class="box box3">
-            <img src="IMAGE/Music.jpg" alt="">
-            <div class="content">
-                <h2>Music Jam Session</h2>
-                <div class="review-and-idr">
-                    <div class="review"><i class="fa fa-star"></i> 4.9 | 853 review</div>
-                    <p>ILS 50.00</p>
-                </div>
-            </div>
-        </div>
-        <div class="box box4">
-            <img src="IMAGE/Group drawing.jpg" alt="">
-            <div class="content">
-                <h2>Group Pain</h2>
-                <div class="review-and-idr">
-                    <div class="review"><i class="fa fa-star"></i> 4.9 | 853 review</div>
-                    <p>ILS 50.00</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- featured section ends here  -->
+<!--&lt;!&ndash; featured section starts here  &ndash;&gt;-->
+<!--<section class="featured">-->
+<!--    <div class="gallery">-->
+<!--        <div class="box box1">-->
+<!--            <div class="first-box">-->
+<!--                <h4 class="label">featured offers</h4>-->
+<!--                <h2 class="heading">Book or create special events</h2>-->
+<!--                <p>-->
+<!--                    From here you can book or create events-->
+<!--                </p>-->
+<!--                <p>entertainment , cultural , group or official events-->
+<!--            </p>-->
+<!--                <a href="events.html">show more</a>-->
+<!--                <div class="image">-->
+<!--&lt;!&ndash;                    <img src="IMAGE/events icon.png" alt="">&ndash;&gt;-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="box box2">-->
+<!--            <img src="IMAGE/Plant Caree.jpg" alt="">-->
+<!--            <div class="content">-->
+<!--                <h2>Plant Care</h2>-->
+<!--                <div class="review-and-idr">-->
+<!--                    <div class="review"><i class="fa fa-star"></i> 4.9 | 853 review</div>-->
+<!--                    <p>ILS 30.00</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="box box3">-->
+<!--            <img src="IMAGE/Music.jpg" alt="">-->
+<!--            <div class="content">-->
+<!--                <h2>Music Jam Session</h2>-->
+<!--                <div class="review-and-idr">-->
+<!--                    <div class="review"><i class="fa fa-star"></i> 4.9 | 853 review</div>-->
+<!--                    <p>ILS 50.00</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="box box4">-->
+<!--            <img src="IMAGE/Group drawing.jpg" alt="">-->
+<!--            <div class="content">-->
+<!--                <h2>Group Pain</h2>-->
+<!--                <div class="review-and-idr">-->
+<!--                    <div class="review"><i class="fa fa-star"></i> 4.9 | 853 review</div>-->
+<!--                    <p>ILS 50.00</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+<!--&lt;!&ndash; featured section ends here  &ndash;&gt;-->
 
 <!-- feedback section starts here  -->
 <section class="feedback">
@@ -424,5 +557,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js" integrity="sha512-EZI2cBcGPnmR89wTgVnN3602Yyi7muWo8y1B3a8WmIv1J9tYG+udH4LvmYjLiGp37yHB7FfaPBo8ly178m9g4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js" integrity="sha512-OzC82YiH3UmMMs6Ydd9f2i7mS+UFL5f977iIoJ6oy07AJT+ePds9QOEtqXztSH29Nzua59fYS36knmMcv79GOg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="script.js"></script>
+<!-- 🔃 Slider Script -->
+<script>
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    setInterval(() => {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }, 2000);
+</script>
 </body>
 </html>

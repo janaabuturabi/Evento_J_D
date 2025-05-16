@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sing in & Sign up</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <!-- Logo Evento font-->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+
+    <style>
+
+        body {
+            font-family: 'Poppins', sans-serif;
+
+        }
+
+        /* إخفاء الشريط بالكامل مع الإبقاء على إمكانية التمرير */
+        html, body {
+            overflow: auto;
+            -ms-overflow-style: none;  /* لـ IE و Edge */
+            scrollbar-width: none;     /* لـ Firefox */
+        }
+
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;             /* لـ Chrome و Safari و Opera */
+        }
+
+
+    </style>
+
+
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+<!-- 🔷 Fixed Navbar -->
+<header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+    <div class="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center" style="height: 75px;">
+        <!-- Logo with Pacifico font and gradient text -->
+        <div class="text-indigo-600" style="
+      font-family: 'Pacifico', cursive;
+      font-size: 2.1rem;
+      background: linear-gradient(to right,#5A31F4,#62bff6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      padding: 6px 12px;
+      border-radius: 30px;
+      display: inline-block;
+      line-height: 1;
+    ">
+            Evento
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="hidden md:flex space-x-10 font-medium text-gray-700" style="font-size: 1.1rem;">
+            <a href="../HOME/HOME.html" class="hover:text-indigo-600 pb-1 border-b-2 border-transparent hover:border-indigo-600 transition">Home</a>
+            <a href="#" class="hover:text-indigo-600 pb-1 border-b-2 border-transparent hover:border-indigo-600 transition">Events</a>
+            <a href="#" class="hover:text-indigo-600 pb-1 border-b-2 border-transparent hover:border-indigo-600 transition">About</a>
+            <a href="#" class="hover:text-indigo-600 pb-1 border-b-2 border-transparent hover:border-indigo-600 transition">Contact</a>
+        </nav>
+
+        <!-- Search input and Icons -->
+        <div class="flex items-center space-x-4">
+            <!-- Search input -->
+            <!-- Search input with smaller Heroicons-style icon -->
+            <div class="relative hidden sm:block">
+                <input type="text" placeholder="Search events..."
+                       class="pl-9 pr-3 py-2.5 border border-gray-300 rounded-full text-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 w-60 text-sm" />
+                <svg class="w-4 h-4 text-gray-400 absolute left-3 top-3 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2.5"
+                     viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+            </div>
+
+
+            <!-- Sign In Button with icon -->
+            <button
+                    class="bg-indigo-200 text-indigo-600 px-4 py-2.5 rounded-full
+           ring-2 ring-indigo-500 ring-offset-1
+           hover:bg-indigo-200 hover:text-indigo-700
+           flex items-center space-x-2 text-sm transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     class="h-5 w-5 transition-colors duration-300"
+                     fill="none" viewBox="0 0 24 24"
+                     stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="7" r="4"
+                            stroke="currentColor" stroke-width="2" fill="none" />
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M5.5 21a6.5 6.5 0 0113 0" />
+                </svg>
+                <span>Sign In</span>
+            </button>
+
+
+
+            <!-- Sign Up Button without icon -->
+
+
+
+        </div>
+    </div>
+</header>
+
+<script>
+    // الحصول على جميع العناصر من القائمة
+    const menuItems = document.querySelectorAll('.nav-btns');
+
+    // إضافة حدث عند الضغط على رابط
+    menuItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // إزالة الفئة النشطة من جميع العناصر
+            menuItems.forEach(i => i.classList.remove('activeb'));
+
+            // إضافة الفئة النشطة على العنصر الذي تم الضغط عليه
+            this.classList.add('activeb');
+        });
+    });
+</script>
+
+
+<main>
+    <div class="box animate-fadeInBox">
+       <div class="inner-box">
+           <div class="forms-wrap">
+             <form action="signIn.php" autocomplete="off" class="sign-in-form" method="post">
+                 <div class="logo">
+
+                     <h4>Evento</h4>
+                 </div>
+                 <div class="heading">
+                     <h2>
+<!--                             style="-->
+<!--                    font-family: 'Pacifico', cursive;-->
+<!--                    background: linear-gradient(to right, #5A31F4, #62bff6);-->
+<!--                    -webkit-background-clip: text;-->
+<!--                    -webkit-text-fill-color: transparent;"-->
+                     Welcome Back</h2>
+                     <h6>Not registred yet?</h6>
+                     <a href="#" class="toggle"> Sign up </a>
+                 </div>
+                 <div class="actual-form">
+                     <div class="input-wrap">
+                       <input type="email" name="email" minlength="4"  class="input-field" autocomplete="off"  required />
+                       <label >Email</label>
+                     </div>
+                     <div class="input-wrap">
+                         <input type="password" name="password" minlength="4"  class="input-field" autocomplete="off"  required />
+                         <label >Password</label>
+                     </div>
+                     <input type="submit" value="Sign In" class="sign-btn" />
+                     <p class="text">
+                         Forgotten your password or your login datails?
+                         <a href="#">Get help </a> signing in
+                     </p>
+                 </div>
+             </form>
+               <form action="signUp.php" method="post" autocomplete="off" class="sign-up-form">
+                   <div class="logo">
+
+                       <h4>Evento</h4>
+                   </div>
+                   <div class="heading">
+                       <h2> Get Started</h2>
+                       <h6>Already have an account?</h6>
+                       <a href="#" class="toggle"> Sign in </a>
+                   </div>
+                   <div class="actual-form">
+                       <div class="input-wrap">
+                           <input type="text" name="name" minlength="4"  class="input-field" autocomplete="off"  required />
+                           <label >Name</label>
+                       </div>
+                       <div class="input-wrap">
+                           <input type="email" name="email"  class="input-field" autocomplete="off"  required />
+                           <label >Email</label>
+                       </div>
+                       <div class="input-wrap">
+                           <input type="password" name="password" minlength="4"  class="input-field" autocomplete="off"  required />
+                           <label >Password</label>
+                       </div>
+                       <input type="submit" value="Sign Up" class="sign-btn" />
+                       <p class="text">
+                         By signing up, I agree to the <a href="#">Terms of Services
+                       </a> and <a href="#">Privacy Policy</a>
+                       </p>
+                   </div>
+               </form>
+
+           </div>
+           <div class="carousel">
+               <div class="images-wrapper">
+                   <img src="imgs/1.jpg" class="image img-1 show" alt=""/>
+                   <img src="imgs/Horse%20course.jpg" class="image img-2" alt=""/>
+                   <img src="imgs/robot%20build.jpg" class="image img-3" alt=""/>
+               </div>
+
+
+<!--               <div class="text-slider">-->
+<!--                   <div class ="text-wrap">-->
+<!--                       <div class ="text-group">-->
+<!--                           <h2>Horse Riding</h2>-->
+<!--                           <h2>Robot course</h2>-->
+<!--                           <h2>Meetings</h2>-->
+<!--                       </div>-->
+<!--                   </div>-->
+<!--                   <div class ="bullets">-->
+<!--                       <span class="active" data-value="1"></span>-->
+<!--                       <span data-value="2"></span>-->
+<!--                       <span data-value="3"></span>-->
+<!--                   </div>-->
+<!--               </div>-->
+           </div>
+           </div>
+    </div>
+</main>
+<!-- Javascript file-->
+<script src="app.js"></script>
+
+<!--<footer>-->
+<!--    <div class="footer-container">-->
+
+<!--        &lt;!&ndash; About Section &ndash;&gt;-->
+<!--        <div class="footer-section about">-->
+<!--            <h3>About PureGlow Store</h3>-->
+<!--            <p>Discover premium skincare, haircare, and makeup products designed to enhance your natural beauty. We care for you!</p>-->
+<!--            <h3>Our Location:</h3>-->
+<!--            <p>Palestine - Qalqilya - Nablus Street</p>-->
+<!--            <h3>Contact Numbers:</h3>-->
+<!--            <p>📞 +970-594-061749</p>-->
+<!--            <p>📞 +972-595-508176</p>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Contact Us Section &ndash;&gt;-->
+<!--        <div class="footer-section contact">-->
+<!--            <h3>Contact Us</h3>-->
+<!--            <form id="notification-form" method="POST" action="mail.php">-->
+<!--                <label for="name">Your Name:</label>-->
+<!--                <input type="text" id="name" name="name" placeholder="Enter your name" required>-->
+
+<!--                <label for="email">Your Email:</label>-->
+<!--                <input type="email" id="email" name="email" placeholder="Enter your email" required>-->
+
+<!--                <label for="message">Message:</label>-->
+<!--                <textarea id="message" name="message" placeholder="Write your message" required></textarea>-->
+
+<!--                <button type="submit" >Send Message</button>-->
+<!--            </form>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Social Media Section &ndash;&gt;-->
+<!--        <div class="footer-section social">-->
+<!--            <h3>Follow Us</h3>-->
+<!--            <p>Stay connected with us:</p>-->
+<!--            <div class="social-icons">-->
+<!--                <a href="#"><i class="fab fa-facebook"></i></a>-->
+<!--                <a href="#"><i class="fab fa-instagram"></i></a>-->
+<!--                <a href="#"><i class="fab fa-twitter"></i></a>-->
+<!--            </div>-->
+
+<!--            <h3>Responsibles:</h3>-->
+<!--            <p>Marah Zaid: <a href="mailto:mmzaid000@gmail.com">mmzaid000@gmail.com</a></p>-->
+<!--            <p>Shahd Samaneh: <a href="mailto:tahershahd999@gmail.com">tahershahd999@gmail.com</a></p>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Bottom Section &ndash;&gt;-->
+<!--    <div class="footer-bottom">-->
+<!--        &copy; 2025 Evento. All rights reserved.-->
+<!--    </div>-->
+<!--</footer>-->
+
+<script>
+    function sendNotification() {
+        const name =document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        if (!email) {
+            alert('Please write your Email.');
+            return;
+        }
+
+        if (message.trim() === '') {
+            alert('Please write a message before sending.');
+            return;
+        }
+
+
+        // إعادة تعيين الحقول بعد الإرسال
+        document.getElementById('name').value ='';
+        document.getElementById('email').value = '';
+        document.getElementById('message').value = '';
+    }
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const images = document.querySelectorAll(".carousel .image");
+        let current = 0;
+
+        setInterval(() => {
+            images[current].classList.remove("show");
+            current = (current + 1) % images.length;
+            images[current].classList.add("show");
+        }, 1500);
+    });
+
+
+
+</script>
+
+
+
+</body>
+</html>
