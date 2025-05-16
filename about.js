@@ -172,3 +172,19 @@
 
     galleryAnimation(".feedback .voices", [".feedback .voices .box1",".feedback .voices .box2",".feedback .voices .box3",".feedback .voices .box4",".feedback .voices .box5",".feedback .voices .box6"])
 
+    function updateStatus(id, status) {
+        fetch('update_status.php', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: `id=${id}&status=${status}`
+        })
+            .then(resp => resp.json())
+            .then(json => {
+                if (json.success) {
+                    alert(`Event ${status}`);
+                    loadEvents();
+                } else {
+                    alert('Error: ' + json.error);
+                }
+            });
+    }
