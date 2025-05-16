@@ -217,8 +217,6 @@
                 <button class="status-tab px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700" data-status="rejected">Rejected</button>
             </div>
 
-
-
             <div id="gridView" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                 <!-- Event Card 1 -->
                 <div class="event-card bg-white rounded shadow-sm overflow-hidden cursor-pointer"
@@ -229,16 +227,23 @@
                      data-price="30"
                      data-date="2025-05-12T15:30"
                      data-rating="4.8"
-                     data-status="Pending"
-                     onclick="openModal('event5')">
-                    <div class="relative h-48">
-                        <img src="IMAGE/Clay hand-making course.jpg" class="w-full h-full object-cover">
+                     data-status="Pending">
+
+                    <div class="relative">
+                        <div class="image-slider">
+                            <div class="image-slide">
+                                <img src="IMAGE/Handmade Projects.jpg" alt="Event 1">
+                            </div>
+                            <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+                            <button class="next" onclick="moveSlide(1)">&#10095;</button>
+                        </div>
+
                         <div class="absolute top-3 left-3 flex space-x-2">
                             <span class="px-2 py-1 bg-primary bg-opacity-90 text-white text-xs rounded-full">Entertainment</span>
                             <span class="px-2 py-1 bg-secondary bg-opacity-90 text-white text-xs rounded-full">For Families</span>
                         </div>
-
                     </div>
+
                     <div class="p-4">
                         <h3 class="font-semibold text-gray-800 mb-1">Clay hand-making course</h3>
                         <div class="flex items-center text-gray-500 text-sm mb-2">
@@ -271,7 +276,8 @@
                     </div>
                 </div>
 
-                <!-- Event Card 2 -->
+
+            <!-- Event Card 2 -->
                 <div class="event-card bg-white rounded shadow-sm overflow-hidden cursor-pointer"
                      data-id="event6"
                      data-audience="For Kids"
@@ -281,7 +287,7 @@
                      data-date="2025-05-15T09:00"
                      data-rating="4.5"
                      data-status="Approved"
-                     onclick="openModal('event6')">
+                     >
                     <div class="relative h-48">
                         <img src="IMAGE/Horse course.jpg" class="w-full h-full object-cover">
                         <div class="absolute top-3 left-3 flex space-x-2">
@@ -332,7 +338,6 @@
                      data-date="2025-05-10T14:00"
                      data-rating="4.7"
                      data-status="pending"
-                     onclick="openModal('event7')"
                      >
                     <div class="relative h-48">
                         <img src="IMAGE/Cooking course.jpg" class="w-full h-full object-cover">

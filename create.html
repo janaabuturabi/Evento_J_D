@@ -442,6 +442,31 @@
       }
     });
   }
+
+  document.getElementById('event-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // منع الإرسال العادي للنموذج
+
+    const formData = new FormData(this); // الحصول على البيانات من النموذج
+
+    fetch('/process_event.php', {
+      method: 'POST',
+      body: formData
+    })
+            .then(response => response.json())
+            .then(data => {
+              if (data.success) {
+                alert('Event created successfully!');
+                window.location.href = 'admin_events.html'; // إعادة توجيه إلى صفحة الإدارة
+              } else {
+                alert('Error creating event: ' + data.error);
+              }
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              alert('An error occurred.');
+            });
+  });
+
 </script>
 
 

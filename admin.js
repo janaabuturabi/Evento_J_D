@@ -174,7 +174,7 @@
             status: "Pending",
             description: "Embark on a culinary journey with our interactive cooking course, designed to be both educational and entertaining! Whether you’re a novice or a seasoned cook, this course will equip you with essential cooking skills, from basic techniques to advanced recipes. Explore diverse cuisines and cultural dishes, and learn the secrets behind creating flavorful meals. Enjoy hands-on cooking experiences, tips from expert chefs, and a fun atmosphere that makes learning enjoyable. By the end of the course, you’ll be confident in your cooking abilities and ready to impress with your culinary creations!"
                 ,
-            image:      "IMAGE/Cooking course2.jpg"
+            image:"IMAGE/Cooking course2.jpg"
 
 
         },
@@ -284,6 +284,10 @@
 }
 });
 });
+
+
+
+
 
 
 
