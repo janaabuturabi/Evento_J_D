@@ -125,7 +125,7 @@
 
               function goToAddress(address) {
                 fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`)
-              .then(res => res.json())
+                        .then(res => res.json())
                         .then(data => {
                           if (data.length === 0) {
                             alert("No location found.");
@@ -415,7 +415,7 @@
 
   // وظيفة البحث
   function goToAddress(address) {
-    fetch(https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)})
+    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`)
   .then(res => res.json())
             .then(data => {
               if (data.length === 0) {
@@ -446,4 +446,4 @@
 
 
 </body>
-</html
+</html>

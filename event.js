@@ -571,37 +571,4 @@
         document.body.style.overflow = 'hidden';
     }
 
-    function changeImage(eventId, direction) {
-        const event = eventData[eventId];
-        const images = document.querySelectorAll('.carousel-images .carousel-image');
-        let currentIndex = Array.from(images).findIndex(image => !image.classList.contains('hidden'));
-
-        // Update currentIndex based on direction
-        currentIndex += direction;
-
-        if (currentIndex < 0) currentIndex = images.length - 1; // Loop to the last image
-        if (currentIndex >= images.length) currentIndex = 0;   // Loop to the first image
-
-        // Hide all images
-        images.forEach(image => image.classList.add('hidden'));
-
-        // Show the new image
-        images[currentIndex].classList.remove('hidden');
-    }
-
-    function closeModal() {
-        const modal = document.getElementById('eventModal');
-        modal.classList.add('hidden');
-        document.body.style.overflow = 'auto';
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const modal = document.getElementById('eventModal');
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-    });
-
 

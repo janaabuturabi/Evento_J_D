@@ -227,61 +227,65 @@ function initMap() {
             });
         }
     });
+
+
 }
 
-// Get DOM elements
-const publishButton = document.getElementById('publish-event');
-const eventNameInput = document.getElementById('event-name');
-const eventDateInput = document.getElementById('event-date');
-const eventTimeInput = document.getElementById('event-time');
-const eventAddressInput = document.getElementById('event-address');
-const eventPriceInput = document.getElementById('event-price');
-const eventDescriptionInput = document.getElementById('event-description');
-const eventAudienceInputs = document.querySelectorAll('input[type="checkbox"]'); // For audience selection
-const eventTypeButtons = document.querySelectorAll('.tab-button'); // For event type selection
+document.getElementById('publish-event').addEventListener('click', async function(e) {
+    e.preventDefault();
 
-publishButton.addEventListener('click', function () {
-    // Collect data from the form
-    const eventName = eventNameInput.value;
-    const eventDate = eventDateInput.value;
-    const eventTime = eventTimeInput.value;
-    const eventAddress = eventAddressInput.value;
-    const eventPrice = eventPriceInput.value;
-    const eventDescription = eventDescriptionInput.value;
+    // نجمع البيانات
+    const data = new FormData();
+    data.append('name',           document.getElementById('event-name').value);
+    data.append('max_attendees',  document.getElementById('attendee-limit').value);
+    data.append('date',           document.getElementById('event-date').value);
+    data.append('time',           document.getElementById('event-time').value);
+    data.append('price',          document.getElementById('price-toggle').checked
+        ? document.getElementById('event-price').value
+        : 0);
+    data.append('address',        document.getElementById('event-address').value);
+    data.append('latitude',       window.marker ? window.marker.getLatLng().lat : '');
+    data.append('longitude',      window.marker ? window.marker.getLatLng().lng : '');
+    data.append('duration',       document.getElementById('event-duration').value);
+    data.append('duration_unit',  document.getElementById('duration-unit').value);
+    data.append('description',    document.getElementById('event-description').value);
+    data.append('rating',         document.querySelector('input[name="rating"]:checked')?.value || 0);
 
-    // Collect audience
-    const selectedAudience = [];
-    eventAudienceInputs.forEach(input => {
-        if (input.checked) {
-            selectedAudience.push(input.id);
+    //audience (مثلاً ["kids","adults",...])
+    const aud = Array.from(document.querySelectorAll('#audience-kids, #audience-adults, #audience-families, #audience-seniors'))
+        .filter(cb => cb.checked)
+        .map(cb => cb.id.replace('audience-',''));
+    data.append('audience', JSON.stringify(aud));
+
+    // event type
+    data.append('event_type', document.querySelector('.tab-button.active').dataset.type);
+
+    // features
+    const feats = Array.from(document.querySelectorAll('.feature-tag.selected'))
+        .map(div => div.dataset.feature);
+    data.append('features', JSON.stringify(feats));
+
+    // images
+    const files = document.getElementById('image-upload').files;
+    for (let i = 0; i < files.length; i++) {
+        data.append('images[]', files[i]);
+    }
+
+    // نرسل إلى الـPHP
+    try {
+        const resp = await fetch('process_event.php', {
+            method: 'POST',
+            body: data
+        });
+        const json = await resp.json();
+        if (json.success) {
+            alert('تم حفظ الحدث بنجاح (ID=' + json.id + ')');
+            window.location.href = 'events.html';
+        } else {
+            alert('خطأ: ' + json.error);
         }
-    });
-
-    // Collect event type
-    let eventType = '';
-    eventTypeButtons.forEach(button => {
-        if (button.classList.contains('active')) {
-            eventType = button.dataset.type;
-        }
-    });
-
-    // Store the event data in localStorage (or you can send it to a server)
-    const eventData = {
-        name: eventName,
-        date: eventDate,
-        time: eventTime,
-        address: eventAddress,
-        price: eventPrice,
-        description: eventDescription,
-        audience: selectedAudience,
-        type: eventType
-    };
-
-    localStorage.setItem('newEvent', JSON.stringify(eventData));
-
-    window.location.href = 'events.html'; // Or you can reload the page and update it dynamically
-
-
+    } catch (err) {
+        console.error(err);
+        alert('فشل الاتصال بالخادم.');
+    }
 });
-
-
